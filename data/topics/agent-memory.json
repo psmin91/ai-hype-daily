@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "agent memory",
+    "Mem0",
+    "Zep",
+    "MemOS",
+    "Hy Memory",
+    "MemSecBench",
+    "LoCoMo",
+    "LongMemEval",
+    "memory poisoning"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Tencent Hy Memory 2.0",
+        "MemSecBench"
+      ],
+      "date": "2026-10-21",
+      "title": "에이전트의 '기억'이 별도 기술 스택으로 떨어져 나오고 있다",
+      "urls": [
+        "https://alphasignal.ai/news/tencent-s-hy-memory-2-0-beats-claude-opus-5-at-remembering-what-agents-need",
+        "https://www.alphaxiv.org/abs/2607.27080"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-21",
+  "lastSeen": "2026-10-21",
+  "lastTrend": "rising",
+  "name": "에이전트 메모리",
+  "radar": [
+    {
+      "date": "2026-10-21",
+      "trend": "rising"
+    }
+  ]
+}

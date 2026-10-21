@@ -1,0 +1,21 @@
+{
+  "aliases": [
+    "agent sandbox",
+    "AI gateway",
+    "LLM proxy",
+    "Agent Substrate",
+    "Respan",
+    "Execution Containers"
+  ],
+  "featured": [],
+  "firstSeen": "2026-10-21",
+  "lastSeen": "2026-10-21",
+  "lastTrend": "spreading",
+  "name": "에이전트 샌드박스 · AI 게이트웨이",
+  "radar": [
+    {
+      "date": "2026-10-21",
+      "trend": "spreading"
+    }
+  ]
+}

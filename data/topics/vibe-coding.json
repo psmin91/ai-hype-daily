@@ -1,0 +1,33 @@
+{
+  "aliases": [
+    "vibe coding",
+    "AI game mashup mods",
+    "Steam Next Fest AI demos",
+    "Melty"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Steam Next Fest 8,011 demos",
+        "AI game mashup mods",
+        "Melty launcher"
+      ],
+      "date": "2026-10-21",
+      "draftOnly": true,
+      "title": "(샘플 초안) 스팀 데모 8,011개와 게임 합체 모드",
+      "urls": [
+        "https://www.pcgamer.com/gaming-industry/steam-week-in-review-steam-next-fest-has-over-8-000-demos-as-worthless-vibe-coded-slop-levels-up/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-21",
+  "lastSeen": "2026-10-21",
+  "lastTrend": "peak",
+  "name": "바이브 코딩",
+  "radar": [
+    {
+      "date": "2026-10-21",
+      "trend": "peak"
+    }
+  ]
+}

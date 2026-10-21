@@ -1,0 +1,26 @@
+{
+  "aliases": [
+    "Gemini agent",
+    "universal agent",
+    "AI coworker",
+    "persistent agents"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Google Gemini agent"
+      ],
+      "date": "2026-10-21",
+      "draftOnly": true,
+      "title": "(샘플 초안) 구글, 자기 이메일과 캘린더를 가진 AI 동료 에이전트",
+      "urls": [
+        "https://decrypt.co/380545/google-gemini-coworker-own-email-address"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-21",
+  "lastSeen": "2026-10-21",
+  "lastTrend": "spreading",
+  "name": "계정을 가진 업무 에이전트",
+  "radar": []
+}

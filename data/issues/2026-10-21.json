@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-21",
+  "headline": "이번 주 개발자들의 관심은 '에이전트가 무엇을 기억하고, 무엇을 읽고, 어디서 돌아가는가'에 모였다. 기억은 전용 모델로, 읽기는 보안 문제로, 실행은 오픈소스 엔진으로 옮겨가는 중이다.",
+  "issueNo": 1,
+  "period": "10월 7일~21일",
+  "radar": [
+    {
+      "note": "범용 LLM이 하던 '무엇을 기억할지' 판단을 전용 모델로 떼어내는 흐름. 텐센트 Hy Memory 2.0 공개, GeekNews에서 Mem0·Zep 비교 질문이 이어짐.",
+      "tech": "에이전트 메모리 전용 모델",
+      "topic": "agent-memory",
+      "trend": "rising"
+    },
+    {
+      "note": "WhatsApp 도움말 사례가 Hacker News 684점을 받으며 'AI가 읽는 텍스트'가 곧 공격 면이라는 인식이 퍼짐.",
+      "tech": "숨은 지시문 · 간접 프롬프트 인젝션",
+      "topic": "indirect-prompt-injection",
+      "trend": "rising"
+    },
+    {
+      "note": "DeepSeek DeepInfer(HN 1,827점)와 구글 TorchTPU 공개. 모델 가중치에 이어 서빙 스택까지 공개되기 시작.",
+      "tech": "오픈소스 프로덕션 추론 엔진",
+      "topic": "open-inference-engine",
+      "trend": "new"
+    },
+    {
+      "note": "구글은 Gems를 '스킬'로 대체하고, Figma는 디자인 규칙을 에이전트용 마크다운 문서로 만드는 Specs를 공개. 작은 데이터는 RAG 대신 YAML 온톨로지를 통째로 넣자는 글도 화제.",
+      "tech": "에이전트 스킬 · 마크다운 컨텍스트",
+      "topic": "agent-skills-context",
+      "trend": "spreading"
+    },
+    {
+      "note": "에이전트별 격리 런타임 Agent Substrate, Rust 기반 AI 게이트웨이 Respan, 직접 운영하는 LLM 프록시 글이 같은 주에 등장.",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "spreading"
+    },
+    {
+      "note": "Steam Next Fest 데모 8,011개에 'No AI' 필터 요구까지. 양은 정점이고, 화제의 중심은 품질과 복제 문제로 이동.",
+      "tech": "바이브 코딩",
+      "topic": "vibe-coding",
+      "trend": "peak"
+    }
+  ],
+  "readMinutes": 5,
+  "sample": true,
+  "stories": [
+    {
+      "category": "에이전트 메모리",
+      "domains": [
+        "alphasignal.ai",
+        "alphaxiv.org",
+        "news.hada.io"
+      ],
+      "flow": [
+        "대화 기록을 통째로 넣기",
+        "Mem0·Zep 같은 메모리 서비스",
+        "기억 작성 전용 모델과 메모리 보안 벤치마크"
+      ],
+      "how": "Hy Memory는 pip로 설치하는 SDK, Claude Code·Cursor·Codex 작업 기록을 로컬에서 모으는 MemHub 앱, 기억 작성 모델로 구성됩니다. 코딩 모드는 코드 수정 이력을 버전 체인으로 남겨 예전에 어떤 함수를 어떻게 고쳤는지까지 되살립니다. 기억 작성 모델만 떼어 Mem0나 MemOS에 갈아 끼울 수도 있습니다.",
+      "hype": 4,
+      "meterNote": "SDK와 모델은 공개됐지만 실서비스 도입 사례는 아직 적음",
+      "reality": "벤치마크는 텐센트가 직접 잰 수치이고, LoCoMo·LongMemEval 같은 메모리 벤치마크는 서로 비교하기 어렵다는 지적이 있습니다. MemSecBench에서 악성 기억만 골라 지우면서 정상 기억을 모두 지킨 경우는 62.5%에 그쳐, 기억을 고치는 기술은 아직 미완성입니다.",
+      "refs": [
+        {
+          "src": "AlphaSignal",
+          "title": "텐센트 Hy Memory 2.0, 에이전트 기억 작성에서 Claude Opus 5를 앞서다",
+          "url": "https://alphasignal.ai/news/tencent-s-hy-memory-2-0-beats-claude-opus-5-at-remembering-what-agents-need"
+        },
+        {
+          "src": "arXiv 2607.27080",
+          "title": "MemSecBench: 에이전트 메모리 오염의 지속·실행·복구 추적",
+          "url": "https://www.alphaxiv.org/abs/2607.27080"
+        },
+        {
+          "src": "GeekNews",
+          "title": "GeekNews 새 소식: 에이전트 메모리 구현 질문, 메모리 벤치마크 신뢰성 논의",
+          "url": "https://news.hada.io/new"
+        }
+      ],
+      "stages": [
+        {
+          "label": "부상 중",
+          "tone": "live"
+        },
+        {
+          "label": "보안 연구 진행 중",
+          "tone": "issue"
+        }
+      ],
+      "title": "에이전트의 '기억'이 별도 기술 스택으로 떨어져 나오고 있다",
+      "tldr": [
+        "텐센트가 에이전트 메모리 스택 Hy Memory 2.0을 오픈소스로 공개했습니다. 무엇을 기억하고 기존 기억을 어떻게 고쳐 쓸지 판단하는 30B MoE(활성 약 3B) 전용 모델이 핵심입니다.",
+        "텐센트 자체 측정에서 이 작은 모델이 기억 작성 과제 평균 55.49점으로 Claude Opus 5(54.62점)를 앞섰습니다. 다른 부분은 그대로 두고 기억 작성 모델만 바꿔 비교한 결과입니다.",
+        "기억이 공격 통로가 된다는 연구도 나왔습니다. MemSecBench에서 에이전트에 심은 악성 기억은 84.2%의 사례에서 지워지지 않고 남았습니다."
+      ],
+      "topic": "agent-memory",
+      "use": 3,
+      "what": "에이전트 메모리는 대화나 작업에서 오래 남길 사실을 골라 저장하고, 다음 작업 때 꺼내 쓰는 계층입니다. 컨텍스트 창이 커져도 매번 전부 넣을 수는 없어서, 무엇을 남길지 정하는 일이 독립된 기술로 분리되고 있습니다.",
+      "why": "같은 주 GeekNews에도 에이전트 메모리를 직접 만드는지 Mem0·Zep을 쓰는지 묻는 질문, 메모리 벤치마크 점수를 믿어도 되는지 따지는 글이 연달아 올라왔습니다. 여러 세션에 걸쳐 일하는 에이전트가 늘면서 기억이 성능의 병목으로 떠올랐습니다."
+    },
+    {
+      "category": "AI 보안",
+      "domains": [
+        "redact.dev",
+        "dev.to",
+        "aiweekly.co"
+      ],
+      "flow": [
+        "챗봇에 직접 탈옥 문구 입력",
+        "문서·웹페이지에 지시문 숨기기",
+        "모델 내부에서 지시 성분을 지우는 방어"
+      ],
+      "how": "이번 사례는 페이지 소스에는 있지만 화면에 그려지지 않는 블록이었습니다. 개발자 쪽 대응으로는 렌더링된 텍스트만 색인하거나 숨김 요소를 걸러내기, 사람이 보는 텍스트와 모델이 받는 텍스트를 비교하기, 행동 규칙은 문서가 아니라 버전 관리되는 시스템 프롬프트에 두기가 제시됐습니다.",
+      "hype": 5,
+      "meterNote": "공격은 실재, 방어 기법은 권고와 연구 단계",
+      "reality": "Redact는 실제 AI 비서가 이 지시를 따랐는지는 시험하지 않았습니다. 방어 연구는 빠르게 나오고 있습니다. NVIDIA의 NXDirection은 모델 내부에서 지시 방향 성분을 지워 BIPIA 벤치마크 공격 성공률을 38.1%에서 0.1%로 낮췄지만, 아직 연구 결과입니다.",
+      "refs": [
+        {
+          "src": "Redact · 10/19",
+          "title": "WhatsApp 도움말에 숨은 AI용 지시문 조사",
+          "url": "https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions"
+        },
+        {
+          "src": "DEV Community",
+          "title": "WhatsApp 사례로 본 RAG 파이프라인의 같은 취약점과 대응법",
+          "url": "https://dev.to/ashraf_chowdury09/whatsapp-hid-dont-mention-regulators-instructions-in-its-help-pages-your-rag-pipeline-has-the-2k0g"
+        },
+        {
+          "src": "AI Weekly · 10/15",
+          "title": "NVIDIA NXDirection 등 10월 15일 AI 소식 (14번 항목)",
+          "url": "https://aiweekly.co/ai-news-today/edition/2026-10-15"
+        }
+      ],
+      "stages": [
+        {
+          "label": "이번 주 급부상",
+          "tone": "issue"
+        },
+        {
+          "label": "방어는 연구 단계",
+          "tone": "preview"
+        }
+      ],
+      "title": "AI만 읽는 '숨은 지시문'이 실제 서비스 웹페이지에서 발견됐다",
+      "tldr": [
+        "Redact가 WhatsApp 도움말 545쪽을 조사해 80쪽에서 화면에는 보이지 않고 AI만 읽는 텍스트 102개를 찾아 10월 19일 공개했습니다.",
+        "일부는 계정 삭제 문의에 규제 기관 신고를 권하지 말라거나, 사용자가 법적 조치를 언급하면 GDPR을 인용하지 말라는 내용이었습니다. WhatsApp은 지원 챗봇용 지시가 버그로 노출됐다며 18일까지 모두 지웠습니다.",
+        "이 글이 Hacker News에서 684점을 받으면서, 웹을 읽는 AI가 사람에게 안 보이는 지시에 휘둘릴 수 있다는 논의가 개발자들 사이에 퍼졌습니다."
+      ],
+      "topic": "indirect-prompt-injection",
+      "use": 2,
+      "what": "간접 프롬프트 인젝션은 사용자가 직접 입력하지 않고, AI가 읽어 오는 문서·웹페이지·메일 안에 지시를 심어 AI의 답을 바꾸는 공격입니다. RAG나 웹 검색, 브라우저 에이전트를 쓰는 서비스는 모두 노출됩니다.",
+      "why": "검색과 요약을 AI에 맡기는 사람이 늘면서 '사람에게 보이는 웹'과 'AI에게 보이는 웹'이 다를 수 있다는 점이 대형 서비스에서 처음 확인됐기 때문입니다. 지식 베이스를 코드처럼 리뷰하고 변경 이력을 남기자는 주장이 힘을 얻고 있습니다."
+    },
+    {
+      "category": "추론 인프라",
+      "domains": [
+        "thenewstack.io",
+        "cellcog.ai",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "모델 가중치만 공개",
+        "커널·통신 라이브러리 공개",
+        "프로덕션 서빙 엔진 공개"
+      ],
+      "how": "DeepSeek API와 같은 동작을 자체 서버에서 재현하려는 클라우드 사업자나 대형 추론 팀이 1차 대상입니다. GPU가 없는 팀은 코드를 읽고 vLLM·SGLang 같은 다른 엔진에 기법을 옮겨 쓰는 용도로 보고 있습니다. README는 vLLM을 출발점으로 삼았다고 밝힙니다.",
+      "hype": 4,
+      "meterNote": "코드는 공개, 실제 자체 배포는 대형 팀만 가능",
+      "reality": "효율적으로 돌리려면 prefill 64장과 decode 64장, 약 128개 GPU가 최소 단위입니다. KV 캐시 시스템, prefill/decode 분리, 로드 밸런싱은 빠져 있고 성능 수치도 아직 독립 검증되지 않았습니다.",
+      "refs": [
+        {
+          "src": "The New Stack · 10/20",
+          "title": "DeepSeek, API 뒤의 추론 엔진 공개와 화웨이 동시 지원",
+          "url": "https://thenewstack.io/deepseek-deepinfer-huawei-nvidia/"
+        },
+        {
+          "src": "CellCog",
+          "title": "DeepInfer를 실제로 돌리려면 필요한 것",
+          "url": "https://cellcog.ai/blog/deepseek-deepinfer-open-source/"
+        },
+        {
+          "src": "Hacker News",
+          "title": "Hacker News 1면: DeepInfer 공개, TorchTPU 공개",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "10/20 오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "대형 클러스터 전용",
+          "tone": "preview"
+        }
+      ],
+      "title": "DeepSeek, 자사 API를 돌리는 추론 엔진 DeepInfer를 통째로 공개",
+      "tldr": [
+        "DeepSeek가 10월 20일 자사 API에서 DeepSeek-V4.1-Flash를 서빙하는 추론 엔진 DeepInfer를 Apache 2.0으로 공개했습니다. Hacker News에서 1,827점으로 이번 주 가장 큰 화제였습니다.",
+        "앞서 공개한 FlashMLA·DeepGEMM·DeepEP 커널에 추측 디코딩, 비동기 스케줄링, 구조화 출력, 같은 입력에 같은 답을 내는 결정적 샘플링을 묶었습니다.",
+        "NVIDIA Blackwell(SM100)과 화웨이 Ascend 950을 첫날부터 함께 지원합니다."
+      ],
+      "topic": "open-inference-engine",
+      "use": 2,
+      "what": "추론 엔진은 학습된 모델을 GPU 위에서 돌려 실제 요청에 답하게 만드는 소프트웨어입니다. 같은 모델이라도 엔진에 따라 처리량과 비용이 크게 달라져, 그동안 각 회사의 핵심 노하우로 여겨졌습니다.",
+      "why": "2025년 4월만 해도 DeepSeek는 엔진이 내부 인프라와 너무 얽혀 공개가 어렵다고 했습니다. 이번엔 서빙 스택을 거의 그대로 내놓았고, 같은 시기 구글도 PyTorch용 TPU 백엔드 TorchTPU를 오픈소스로 공개해 서빙 기술 공개 흐름이 겹쳤습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "MarketingProfs",
+      "text": "Mistral Large 4 공개 출시. 1조 파라미터 규모로 코딩·보안·금융 업무를 겨냥",
+      "url": "https://www.marketingprofs.com/opinions/2026/56118/ai-update-october-09-2026-ai-news-and-views-from-the-past-week",
+      "when": "10/27"
+    },
+    {
+      "src": "PYMNTS",
+      "text": "에이전트와 기업 간 공통 규약 Personal Agent Protocol v0.1 스펙과 참조 구현 공개",
+      "url": "https://www.pymnts.com/?p=4283654",
+      "when": "10월 말"
+    }
+  ]
+}

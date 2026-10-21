@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="개발자들 사이에서 뜨는 AI 기술이 무엇이고 어떻게 쓰이는지 하루 2~3건 골라 정리하는 일간 기술 트렌드 리포트">
+<title>AI 하입 데일리</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one reading column like a news feed — masthead with issue switcher, one-line brief, 2–3 numbered stories, watch-list strip, then the back-issue archive. */
+:root {
+  --bg: #F3F5F8;
+  --surface: #FFFFFF;
+  --fg: #14171D;
+  --muted: #5B6371;
+  --line: #E1E5EB;
+  --accent: #2443CF;
+  --accent-soft: #E8ECFC;
+  --hype: #D9480F;
+  --hype-off: #E6E8EC;
+  --ok: #1F7A4D;
+  --ok-soft: #E3F3EA;
+  --warn: #9A5B00;
+  --warn-soft: #FBF0DC;
+  --upd: #6D3FC0;
+  --upd-soft: #EFE8FB;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1014; --surface: #161920; --fg: #E7EAEF; --muted: #9BA3B0; --line: #262B34;
+    --accent: #8197FF; --accent-soft: #1D2440; --hype: #FF8A4C; --hype-off: #2A2F38;
+    --ok: #5CC98F; --ok-soft: #13291E; --warn: #F0B45A; --warn-soft: #2E2410;
+    --upd: #B79CFF; --upd-soft: #261D3D;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E1014; --surface: #161920; --fg: #E7EAEF; --muted: #9BA3B0; --line: #262B34;
+  --accent: #8197FF; --accent-soft: #1D2440; --hype: #FF8A4C; --hype-off: #2A2F38;
+  --ok: #5CC98F; --ok-soft: #13291E; --warn: #F0B45A; --warn-soft: #2E2410;
+  --upd: #B79CFF; --upd-soft: #261D3D;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid;
+  gap: 32px;
+}
+
+/* Masthead */
+.mast { display: grid; gap: 8px; padding-bottom: 18px; border-bottom: 2px solid var(--fg); }
+.mast-top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+.kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 0; font-size: clamp(30px, 6vw, 40px); line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+h1 .dot { color: var(--hype); }
+.dateline { color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-variant-numeric: tabular-nums; }
+
+.switcher { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.switcher button {
+  font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer;
+  background: var(--surface); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 6px; padding: 5px 12px; line-height: 1.4;
+}
+.switcher button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.switcher button:disabled { color: var(--muted); opacity: .55; cursor: default; }
+.switcher .pos { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+/* Brief */
+.brief { background: var(--accent-soft); border-radius: 10px; padding: 18px 20px; display: grid; gap: 4px; }
+.brief .kicker { color: var(--accent); }
+.brief p { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.55; text-wrap: balance; }
+
+/* Stories */
+.stories { list-style: none; margin: 0; padding: 0; display: grid; }
+.story { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 16px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+.story:first-child { padding-top: 4px; }
+.num { font-family: var(--font-mono); font-size: 22px; font-weight: 600; color: var(--muted); line-height: 1.3; font-variant-numeric: tabular-nums; }
+.sbody { min-width: 0; display: grid; gap: 14px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; background: var(--hype-off); color: var(--muted); }
+.chip.t-preview, .chip.t-issue { background: var(--warn-soft); color: var(--warn); }
+.chip.t-live { background: var(--ok-soft); color: var(--ok); }
+.chip.t-update { background: var(--upd-soft); color: var(--upd); }
+
+h2 { margin: 0; font-size: clamp(20px, 3.6vw, 24px); line-height: 1.4; font-weight: 700; letter-spacing: -.01em; text-wrap: balance; }
+.domains { font-family: var(--font-mono); font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+
+.followup { font-size: 14px; background: var(--upd-soft); color: var(--fg); border-radius: 8px; padding: 10px 14px; }
+.followup b { color: var(--upd); font-weight: 700; }
+.followup button { font: inherit; font-weight: 600; color: var(--upd); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+.tldr { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.tldr li { position: relative; padding-left: 16px; }
+.tldr li::before { content: ""; position: absolute; left: 2px; top: .72em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+/* Hype meter */
+.meter { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; font-size: 13px; }
+.meter-row { display: flex; align-items: center; gap: 10px; }
+.meter-label { color: var(--muted); min-width: 4.5em; }
+.bars { display: flex; gap: 3px; }
+.bars i { width: 16px; height: 8px; border-radius: 2px; background: var(--hype-off); }
+.bars.hype i.on { background: var(--hype); }
+.bars.use i.on { background: var(--accent); }
+.meter-note { color: var(--muted); font-size: 12px; flex-basis: 100%; }
+
+/* Detail */
+.detail { display: grid; gap: 12px; }
+.detail h3 { margin: 0 0 2px; font-size: 13px; font-weight: 700; color: var(--muted); letter-spacing: .02em; }
+.detail p { margin: 0; }
+.reality { border-left: 3px solid var(--hype); padding: 2px 0 2px 14px; }
+.reality h3 { color: var(--hype); }
+
+.refs { display: grid; gap: 6px; font-size: 14px; padding-top: 4px; }
+.refs h3 { margin: 0; font-size: 13px; font-weight: 700; color: var(--muted); }
+.refs ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.refs li { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.refs .src { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+
+/* Watch strip */
+.watch { display: grid; gap: 10px; }
+.watch h2, .archive h2 { font-size: 17px; }
+.tablewrap { overflow-x: auto; }
+.watch table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.watch td { padding: 9px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.watch td.when { width: 7.5em; font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-right: 12px; white-space: nowrap; }
+
+/* Archive */
+.archive { display: grid; gap: 10px; }
+.archive ol { list-style: none; margin: 0; padding: 0; display: grid; }
+.arow {
+  display: grid; grid-template-columns: 7.2em minmax(0, 1fr); gap: 12px; width: 100%;
+  font: inherit; text-align: left; color: var(--fg); background: none; border: 0;
+  border-top: 1px solid var(--line); padding: 12px 6px; cursor: pointer; border-radius: 0;
+}
+.arow:hover { background: var(--surface); }
+.arow[aria-current="true"] { background: var(--accent-soft); }
+.arow .adate { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.arow .ahead { font-weight: 600; font-size: 15px; line-height: 1.5; }
+.arow .atitles { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 2px; }
+
+/* Radar */
+.radar { display: grid; gap: 10px; }
+.radar h2 { font-size: 17px; }
+.radar .sub { margin: -6px 0 0; font-size: 13px; color: var(--muted); }
+.rlist { list-style: none; margin: 0; padding: 0; display: grid; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); overflow: hidden; }
+.ritem { display: grid; grid-template-columns: 6.6em minmax(0, 1fr); gap: 4px 14px; padding: 11px 14px; border-top: 1px solid var(--line); align-items: baseline; }
+.ritem:first-child { border-top: 0; }
+.rstat { font-size: 12px; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 5px; }
+.rstat .arw { font-family: var(--font-mono); font-size: 13px; }
+.r-new { color: var(--upd); }
+.r-rising { color: var(--hype); }
+.r-spreading { color: var(--accent); }
+.r-peak { color: var(--warn); }
+.r-cooling { color: var(--muted); }
+.rtech { font-weight: 600; font-size: 15px; }
+.rnote { font-size: 13.5px; color: var(--muted); grid-column: 2; line-height: 1.55; }
+.rsince { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); margin-left: 6px; font-weight: 500; }
+
+.flow { display: flex; flex-wrap: wrap; gap: 6px 8px; align-items: baseline; font-size: 13.5px; color: var(--muted); }
+.flow .fl-label { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; }
+.flow .fl-step { color: var(--fg); }
+.flow .fl-arrow { color: var(--hype); font-family: var(--font-mono); }
+
+/* States */
+.state { background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; padding: 28px 22px; display: grid; gap: 6px; color: var(--muted); }
+.state strong { color: var(--fg); font-size: 16px; }
+.skel { display: grid; gap: 10px; }
+.skel i { display: block; height: 14px; border-radius: 4px; background: var(--hype-off); }
+
+footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 4px; }
+
+@media (max-width: 520px) {
+  .story { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .num { font-size: 15px; }
+  .wrap { padding-block: 28px 48px; gap: 26px; }
+  .arow { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .switcher button, .arow { transition: background-color .15s, border-color .15s, color .15s; }
+}
+</style>
+<style>*,*::before,*::after{box-sizing:border-box}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="mast-top">
+      <span class="kicker" id="issueNo">AI Hype Daily</span>
+      <span class="kicker" id="readTime"></span>
+    </div>
+    <h1>AI 하입 데일리<span class="dot">.</span></h1>
+    <div class="dateline" id="dateline"><span>지난 호를 불러오는 중입니다</span></div>
+    <nav class="switcher" aria-label="호 이동" id="switcher" hidden>
+      <button type="button" id="prevBtn">← 이전 호</button>
+      <button type="button" id="nextBtn">다음 호 →</button>
+      <button type="button" id="latestBtn">최신 호</button>
+      <span class="pos" id="pos"></span>
+    </nav>
+  </header>
+
+  <main id="issue" class="wrap-inner" style="display:grid;gap:32px">
+    <div class="state" aria-busy="true">
+      <div class="skel"><i style="width:40%"></i><i style="width:92%"></i><i style="width:78%"></i><i style="width:85%"></i></div>
+    </div>
+  </main>
+
+  <section class="archive" id="archive" hidden>
+    <h2>지난 호</h2>
+    <ol id="archiveList"></ol>
+  </section>
+
+  <footer>
+    <span>AI 하입 데일리는 회사 소식보다 '지금 개발자들 사이에서 뜨는 기술이 무엇이고 어떻게 쓰이는지'를 하루 2~3건 골라 정리합니다. 최근 다룬 기술은 다시 싣지 않고, 새 사실이 생기면 '업데이트'로 표시합니다.</span>
+    <span>화제성·실사용 지표는 공개된 자료를 바탕으로 한 편집자 판단이며, 투자 판단의 근거가 아닙니다.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const issueEl = document.getElementById('issue');
+  const archiveEl = document.getElementById('archive');
+  const archiveList = document.getElementById('archiveList');
+  const switcher = document.getElementById('switcher');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const latestBtn = document.getElementById('latestBtn');
+  const posEl = document.getElementById('pos');
+
+  let issues = [];      // newest first
+  let current = null;   // date string
+  const full = {};      // date -> full issue
+  async function loadIssue(date) {
+    if (full[date]) return full[date];
+    const r = await fetch('data/issues/' + encodeURIComponent(date) + '.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('issue ' + r.status);
+    full[date] = await r.json();
+    return full[date];
+  }
+
+  function h(tag, attrs, children) {
+    const n = document.createElement(tag);
+    if (attrs) for (const k in attrs) {
+      if (k === 'class') n.className = attrs[k];
+      else if (k === 'text') n.textContent = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach(c => { if (c != null) n.append(c); });
+    return n;
+  }
+  const str = v => (typeof v === 'string' ? v : (v == null ? '' : String(v)));
+  const arr = v => (Array.isArray(v) ? v : []);
+  const safeUrl = u => (/^https?:\/\//i.test(str(u)) ? str(u) : null);
+
+  function fmtDate(d, withWeekday) {
+    try {
+      const dt = new Date(d + 'T12:00:00+09:00');
+      if (isNaN(dt)) return d;
+      return dt.toLocaleDateString('ko-KR', withWeekday
+        ? { timeZone: 'Asia/Seoul', year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' }
+        : { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric', weekday: 'short' });
+    } catch (e) { return d; }
+  }
+
+  function bars(kind, n, label) {
+    const wrap = h('span', { class: 'bars ' + kind, 'aria-label': '5점 중 ' + n + '점' });
+    for (let i = 0; i < 5; i++) wrap.append(h('i', i < n ? { class: 'on' } : null));
+    return h('div', { class: 'meter-row' }, [h('span', { class: 'meter-label', text: label }), wrap]);
+  }
+
+  function gotoIssue(date, push) {
+    if (!issues.some(x => x.date === date)) return;
+    current = date;
+    if (push) { try { history.replaceState(null, '', '#' + date); } catch (e) {} }
+    render();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  function renderStory(s, i) {
+    const tags = h('div', { class: 'tags' });
+    if (s.category) tags.append(h('span', { class: 'chip', text: str(s.category) }));
+    arr(s.stages).forEach(st => {
+      const tone = ['preview', 'live', 'issue', 'update'].includes(st && st.tone) ? st.tone : '';
+      tags.append(h('span', { class: 'chip' + (tone ? ' t-' + tone : ''), text: str(st && st.label) }));
+    });
+
+    const head = h('div', null, [
+      h('h2', { text: str(s.title) }),
+      s.domains && s.domains.length ? h('div', { class: 'domains', text: arr(s.domains).join(' · ') }) : null
+    ]);
+
+    let follow = null;
+    if (s.updateOf && s.updateOf.date) {
+      const back = h('button', { type: 'button', text: fmtDate(str(s.updateOf.date)) + ' 호에서 처음 다룸' });
+      back.addEventListener('click', () => gotoIssue(str(s.updateOf.date), true));
+      follow = h('div', { class: 'followup' }, [
+        h('b', { text: '업데이트 · ' }),
+        back,
+        s.updateOf.note ? document.createTextNode(' — ' + str(s.updateOf.note)) : null
+      ]);
+    }
+
+    let flow = null;
+    if (arr(s.flow).length) {
+      flow = h('div', { class: 'flow', 'aria-label': '흐름' }, [h('span', { class: 'fl-label', text: '흐름' })]);
+      arr(s.flow).forEach((f, k) => {
+        if (k > 0) flow.append(h('span', { class: 'fl-arrow', text: '→' }));
+        flow.append(h('span', { class: 'fl-step', text: str(f) }));
+      });
+    }
+
+    const tldr = h('ul', { class: 'tldr' }, arr(s.tldr).map(t => h('li', { text: str(t) })));
+
+    const meter = h('div', { class: 'meter', 'aria-label': '하입 지표' }, [
+      bars('hype', Math.max(0, Math.min(5, +s.hype || 0)), '화제성'),
+      bars('use', Math.max(0, Math.min(5, +s.use || 0)), '실사용'),
+      h('span', { class: 'meter-note', text: '편집자 판단' + (s.meterNote ? ' · ' + str(s.meterNote) : '') })
+    ]);
+
+    const detail = h('div', { class: 'detail' });
+    if (s.what) detail.append(h('div', null, [h('h3', { text: '무엇인가' }), h('p', { text: str(s.what) })]));
+    if (s.how) detail.append(h('div', null, [h('h3', { text: '어떻게 쓰이나' }), h('p', { text: str(s.how) })]));
+    if (s.why) detail.append(h('div', null, [h('h3', { text: '왜 화제인가' }), h('p', { text: str(s.why) })]));
+    if (s.reality) detail.append(h('div', { class: 'reality' }, [h('h3', { text: '하입 vs 현실' }), h('p', { text: str(s.reality) })]));
+
+    const refsUl = h('ul');
+    arr(s.refs).forEach(r => {
+      const url = safeUrl(r && r.url);
+      const a = url ? h('a', { href: url, target: '_blank', rel: 'noopener', text: str(r.title) }) : h('span', { text: str(r && r.title) });
+      refsUl.append(h('li', null, [a, r && r.src ? h('span', { class: 'src', text: str(r.src) }) : null]));
+    });
+    const refs = s.refs && s.refs.length ? h('div', { class: 'refs' }, [h('h3', { text: '출처 · 참고자료' }), refsUl]) : null;
+
+    return h('li', { class: 'story' }, [
+      h('div', { class: 'num', text: String(i + 1).padStart(2, '0') }),
+      h('article', { class: 'sbody' }, [tags, head, follow, flow, tldr, meter, detail, refs])
+    ]);
+  }
+
+  function render() {
+    const idx = issues.findIndex(x => x.date === current);
+    if (idx < 0) return;
+    const it = full[current];
+    if (!it) {
+      loadIssue(current).then(() => render()).catch(() => showState('error'));
+      return;
+    }
+
+    document.getElementById('issueNo').textContent = 'AI Hype Daily · 제' + (it.issueNo || (issues.length - idx)) + '호' + (it.sample ? ' (샘플)' : '');
+    document.getElementById('readTime').textContent = it.readMinutes ? '읽는 시간 약 ' + it.readMinutes + '분' : '';
+    const dl = document.getElementById('dateline');
+    dl.replaceChildren(
+      h('span', { text: fmtDate(it.date, true) }),
+      h('span', { text: '오늘 고른 이야기 ' + arr(it.stories).length + '건' }),
+      it.period ? h('span', { text: '조사 기간 ' + str(it.period) }) : null
+    );
+
+    switcher.hidden = false;
+    prevBtn.disabled = idx >= issues.length - 1;
+    nextBtn.disabled = idx <= 0;
+    latestBtn.disabled = idx === 0;
+    posEl.textContent = (issues.length - idx) + ' / ' + issues.length;
+
+    const parts = [];
+    if (it.headline) parts.push(h('section', { class: 'brief', 'aria-label': '오늘의 한 줄' }, [
+      h('span', { class: 'kicker', text: '오늘의 한 줄' }), h('p', { text: str(it.headline) })
+    ]));
+    if (arr(it.radar).length) {
+      const ST = {
+        new: ['새로 등장', '✦'], rising: ['부상 중', '↑'], spreading: ['확산 중', '↗'],
+        peak: ['정점', '◆'], cooling: ['식는 중', '↓']
+      };
+      const ul = h('ul', { class: 'rlist' });
+      arr(it.radar).forEach(r => {
+        const key = ST[r && r.trend] ? r.trend : 'spreading';
+        ul.append(h('li', { class: 'ritem' }, [
+          h('span', { class: 'rstat r-' + key }, [h('span', { class: 'arw', text: ST[key][1] }), document.createTextNode(ST[key][0])]),
+          h('span', { class: 'rtech' }, [document.createTextNode(str(r.tech)), r.since ? h('span', { class: 'rsince', text: str(r.since) }) : null]),
+          r.note ? h('span', { class: 'rnote', text: str(r.note) }) : null
+        ]));
+      });
+      parts.push(h('section', { class: 'radar', 'aria-label': '기술 레이더' }, [
+        h('h2', { text: '이번 주 기술 레이더' }),
+        h('p', { class: 'sub', text: '지난 호들과 개발자 커뮤니티에서 언급되는 흐름을 비교한 편집자 판단입니다.' }),
+        ul
+      ]));
+    }
+    parts.push(h('ol', { class: 'stories' }, arr(it.stories).map(renderStory)));
+
+    if (arr(it.watch).length) {
+      const tb = h('tbody');
+      arr(it.watch).forEach(w => {
+        const url = safeUrl(w && w.url);
+        const td = h('td', null, [document.createTextNode(str(w.text))]);
+        if (url) td.append(' (', h('a', { href: url, target: '_blank', rel: 'noopener', text: str(w.src) || '출처' }), ')');
+        tb.append(h('tr', null, [h('td', { class: 'when', text: str(w.when) }), td]));
+      });
+      parts.push(h('section', { class: 'watch', 'aria-label': '다가오는 일정' }, [
+        h('h2', { text: '앞으로 지켜볼 일정' }), h('div', { class: 'tablewrap' }, [h('table', null, [tb])])
+      ]));
+    }
+    issueEl.replaceChildren(...parts);
+
+    archiveEl.hidden = issues.length < 1;
+    archiveList.replaceChildren(...issues.map(x => {
+      const b = h('button', { type: 'button', class: 'arow', 'aria-current': x.date === current ? 'true' : 'false' }, [
+        h('span', { class: 'adate', text: fmtDate(x.date) }),
+        h('span', null, [
+          h('div', { class: 'ahead', text: str(x.headline) || '제목 없음' }),
+          h('div', { class: 'atitles', text: arr(x.titles).map(str).join(' / ') })
+        ])
+      ]);
+      b.addEventListener('click', () => gotoIssue(x.date, true));
+      return h('li', null, [b]);
+    }));
+  }
+
+  function showState(kind) {
+    switcher.hidden = true;
+    archiveEl.hidden = true;
+    const msgs = {
+      empty: ['아직 발행된 호가 없습니다', '매일 아침 예약 작업이 실행되면 첫 호가 여기에 올라옵니다.'],
+            error: ['리포트를 불러오지 못했습니다', '잠시 뒤 페이지를 새로 고쳐 주세요.']
+    }[kind];
+    document.getElementById('dateline').replaceChildren(h('span', { text: msgs[0] }));
+    issueEl.replaceChildren(h('div', { class: 'state' }, [h('strong', { text: msgs[0] }), h('span', { text: msgs[1] })]));
+  }
+
+  prevBtn.addEventListener('click', () => { const i = issues.findIndex(x => x.date === current); if (i < issues.length - 1) gotoIssue(issues[i + 1].date, true); });
+  nextBtn.addEventListener('click', () => { const i = issues.findIndex(x => x.date === current); if (i > 0) gotoIssue(issues[i - 1].date, true); });
+  latestBtn.addEventListener('click', () => { if (issues[0]) gotoIssue(issues[0].date, true); });
+  window.addEventListener('hashchange', () => { const d = location.hash.slice(1); if (d && d !== current) gotoIssue(d, false); });
+
+  async function start() {
+    try {
+      const r = await fetch('data/index.json', { cache: 'no-cache' });
+      if (!r.ok) throw new Error('index ' + r.status);
+      const data = await r.json();
+      issues = arr(data && data.issues).filter(x => x && typeof x.date === 'string')
+        .sort((a, b) => (a.date < b.date ? 1 : -1));
+      if (!issues.length) { showState('empty'); return; }
+      const want = location.hash.slice(1);
+      current = issues.some(x => x.date === want) ? want : issues[0].date;
+      render();
+    } catch (e) { showState('error'); }
+  }
+  start();
+})();
+</script>
+
+</body>
+</html>
