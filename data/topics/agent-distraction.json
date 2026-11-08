@@ -1,0 +1,32 @@
+{
+  "name": "에이전트 곁가지 작업 · 에이전트용 코드 위생",
+  "aliases": [
+    "agent distraction",
+    "side-quest",
+    "stale TODO",
+    "FIXME",
+    "codebase hygiene for agents"
+  ],
+  "firstSeen": "2026-11-09",
+  "lastSeen": "2026-11-09",
+  "lastTrend": "new",
+  "featured": [
+    {
+      "date": "2026-11-09",
+      "title": "코드 속 낡은 TODO 하나가 에이전트의 토큰을 77% 더 쓰게 만든다",
+      "cases": [
+        "Google 낡은 TODO 곁가지 작업 측정"
+      ],
+      "urls": [
+        "https://developers.googleblog.com/agent-distraction/",
+        "https://news.hada.io/topic?id=36749"
+      ]
+    }
+  ],
+  "radar": [
+    {
+      "date": "2026-11-09",
+      "trend": "new"
+    }
+  ]
+}

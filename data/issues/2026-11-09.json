@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-09",
+  "issueNo": 20,
+  "readMinutes": 5,
+  "period": "11월 2일~9일",
+  "headline": "이번 주 화제는 모두 '에이전트와 AI가 몰래 쌓는 기록'이었다. 승인 기록에 남은 비밀번호, 에이전트를 곁길로 보내는 낡은 TODO, 운영체제가 기기 안에 쌓은 인간관계 그래프가 각각 보안·비용·프라이버시 문제로 떠올랐다.",
+  "radar": [
+    {
+      "tech": "코딩 에이전트 설정 파일 속 비밀 정보",
+      "trend": "new",
+      "topic": "agent-config-secrets",
+      "since": "",
+      "note": "11/4 Postman 훅 주입에 이어, 이번엔 에이전트가 직접 남긴 승인 기록이 문제. Apiiro 조사 HN 515점."
+    },
+    {
+      "tech": "에이전트 곁가지 작업 · 에이전트용 코드 위생",
+      "trend": "new",
+      "topic": "agent-distraction",
+      "since": "",
+      "note": "구글이 낡은 TODO가 토큰 77% 증가로 이어진다는 실측을 공개하며 새로 등장."
+    },
+    {
+      "tech": "온디바이스 개인 지식 그래프",
+      "trend": "new",
+      "topic": "on-device-personal-graph",
+      "since": "",
+      "note": "macOS 내부 그래프 분석 글이 HN 819점. 개인화 AI의 저장소가 OS 안에 이미 있다는 점이 화제."
+    },
+    {
+      "tech": "에이전트 메모리",
+      "trend": "peak",
+      "topic": "agent-memory",
+      "since": "첫 포착 10/21",
+      "note": "10/30부터 정점 유지. 이번 주엔 새 기법보다 도구 간 공통 메모리 포맷 제안(HN 138점) 같은 표준 논의로 무게가 옮겨감."
+    },
+    {
+      "tech": "하네스 엔지니어링",
+      "trend": "peak",
+      "topic": "harness-engineering",
+      "since": "첫 포착 10/22",
+      "note": "정점 유지. 'Goodbye Claude, hello Pi'(HN 586점)처럼 기능 많은 도구 대신 작은 오픈소스 하네스로 갈아타는 글이 주목받음."
+    },
+    {
+      "tech": "소비자 하드웨어 · 로컬 추론",
+      "trend": "rising",
+      "topic": "local-inference-hacks",
+      "since": "첫 포착 10/26",
+      "note": "10/29 부상 → 이번 주 llama.cpp 패치 llama-modchip이 284B MoE를 GPU 없이 64GB RAM에서 돌린다며 HN 262점. 수치는 자체 측정."
+    }
+  ],
+  "stories": [
+    {
+      "topic": "agent-config-secrets",
+      "category": "AI 보안",
+      "title": "'다시 묻지 않기' 한 번에 비밀번호가 GitHub 공개 저장소로 나갔다",
+      "stages": [
+        {
+          "label": "이번 주 급부상",
+          "tone": "issue"
+        },
+        {
+          "label": "벤더 수정 전",
+          "tone": "preview"
+        }
+      ],
+      "domains": [
+        "dev.to",
+        "aviatrix.ai",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "명령마다 사람이 승인",
+        "승인 내역을 프로젝트 파일에 저장",
+        "설정 폴더도 비밀 저장소로 관리"
+      ],
+      "tldr": [
+        "보안 업체 Apiiro가 공개 GitHub에서 Claude Code의 .claude/settings.local.json 104,185개를 찾았고, 그중 1,122개에 실제 비밀 정보 1,379건이 들어 있었습니다.",
+        "사용자가 명령을 승인하며 '다시 묻지 않기'를 고르면 명령 전체가 그대로 저장되는데, 명령 안에 쓴 DB 비밀번호까지 함께 남습니다. 팀 설정 파일과 과거 커밋까지 합치면 1,994개 저장소에서 2,539건입니다.",
+        "Gitleaks와 TruffleHog를 모두 돌려도 215개 파일은 걸러내지 못했습니다. 이 글은 Hacker News에서 515점을 받았습니다."
+      ],
+      "hype": 4,
+      "use": 4,
+      "meterNote": "실제 공개 저장소에서 측정된 노출, 대응법도 바로 적용 가능",
+      "what": "코딩 에이전트는 셸 명령을 실행하기 전에 사용자 승인을 받고, 자주 쓰는 명령은 허용 목록에 저장해 다음부터 묻지 않습니다. 이 허용 목록이 프로젝트 폴더 안 파일에 평문으로 쌓이면서, 명령 줄에 직접 적은 비밀번호도 같이 기록되는 문제가 드러났습니다.",
+      "how": "Claude Code는 이 파일을 사용자 PC의 전역 git 제외 목록에만 넣고 프로젝트 .gitignore는 고치지 않습니다. 그래서 다른 PC나 팀원 환경에서는 그대로 커밋됩니다. 추적된 1,105개 저장소 중 539개에서는 이 파일을 바꾼 커밋에 Claude가 공동 작성자로 올라 있었습니다. 권고 대응은 노출된 키를 먼저 교체하고, git rm --cached로 추적을 끊고, 비밀번호는 $DB_URL 같은 환경 변수로만 명령에 넣고, 정확한 명령 대신 Bash(npm run:*) 같은 패턴으로 승인하는 것입니다.",
+      "why": "파일 이름이 고정돼 있어 누구나 GitHub 파일명 검색으로 찾을 수 있습니다. 11월 2일 기준 비밀이 담긴 파일은 모두 기본 브랜치에 남아 있었고, 절반은 217일 이상 그대로였습니다. 같은 동작을 신고한 이슈는 2025년 8월부터 있었지만 봇이 '계획 없음'으로 닫았다고 조사진은 밝혔습니다. 11월 4일 호의 Postman 사례가 남이 설정 폴더에 무언가를 심는 문제였다면, 이번엔 에이전트 스스로 설정 폴더에 비밀을 쌓는 문제입니다.",
+      "reality": "조사진은 찾은 비밀로 실제 로그인을 시도하지 않았습니다. 노출을 확인한 것이지 악용을 확인한 것은 아니며, 살아 있는 키로 확인된 사례는 통보받은 한 조직뿐입니다. 조사한 16개 코딩 에이전트 중 승인 명령 전체를 프로젝트 파일에 기본 저장하는 건 Claude Code뿐이었지만, .cursor/·.gemini/ 같은 다른 설정 폴더도 같은 기준으로 점검하라는 권고가 붙었습니다.",
+      "refs": [
+        {
+          "title": "공개 GitHub의 Claude Code 설정 파일 1,122개에 든 실제 비밀 정보 정리",
+          "url": "https://dev.to/alexlee7359/real-secrets-sit-inside-1122-claude-code-files-on-github-1cel",
+          "src": "DEV Community"
+        },
+        {
+          "title": "'다시 묻지 않기' 설정 노출의 원리와 조직 대응 권고",
+          "url": "https://aviatrix.ai/threat-research-center/claude-code-dont-ask-again-settings-local-json-passwords-keys-1122-github-2026/",
+          "src": "Aviatrix · 11/7"
+        },
+        {
+          "title": "Hacker News 1면: Apiiro 조사 글 515점",
+          "url": "https://news.ycombinator.com/",
+          "src": "Hacker News · 11/9"
+        }
+      ]
+    },
+    {
+      "topic": "agent-distraction",
+      "category": "컨텍스트 엔지니어링",
+      "title": "코드 속 낡은 TODO 하나가 에이전트의 토큰을 77% 더 쓰게 만든다",
+      "stages": [
+        {
+          "label": "대규모 실측",
+          "tone": "live"
+        },
+        {
+          "label": "구글 내부 데이터",
+          "tone": "preview"
+        }
+      ],
+      "domains": [
+        "developers.googleblog.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "주석은 사람만 읽는다고 가정",
+        "에이전트가 주석을 할 일로 오해",
+        "에이전트 기준으로 코드베이스 정리"
+      ],
+      "tldr": [
+        "구글이 11월 6일 사내 코딩 에이전트 로그 수억 단계를 분석해, 파일을 읽은 세션의 13%가 버그 번호가 달린 TODO·FIXME 주석을 만났다고 밝혔습니다.",
+        "에이전트가 그 버그를 건드린 경우의 83%는 사용자가 시키지 않은 일이었고, 41%는 이미 닫힌 버그를 쫓았습니다.",
+        "이런 곁가지 작업이 생긴 세션은 단계 70%, 토큰 77%, 대기 시간 105%가 더 들었습니다."
+      ],
+      "hype": 3,
+      "use": 4,
+      "meterNote": "구글이 6개월간 실제로 정리 에이전트를 돌려 검증",
+      "what": "에이전트는 작업 중 읽은 코드의 주석까지 지시처럼 받아들일 수 있습니다. 구글은 오래된 TODO 때문에 에이전트가 요청과 무관한 버그를 조사하거나 고치는 현상을 '곁가지 작업(side-quest)'이라 부르고 비용을 측정했습니다.",
+      "how": "구글은 주석의 버그 번호를 버그 트래커 상태와 대조하고 사용자 프롬프트와 비교해, 요청한 작업과 아닌 작업을 갈랐습니다. 개발자·코드 복잡도·모델 등급 등을 통제한 회귀 분석으로 차이를 쟀습니다. 이후 6개월간 낡은 TODO를 지우는 정리 에이전트를 돌려 수천 개를 없앴고, 리뷰어 승인율은 95%를 넘었습니다. 권고는 닫힌 버그를 가리키는 TODO를 사전 제출 검사에서 걸러내고, 지우기 전에 버그·파일 이력을 확인하는 것입니다.",
+      "why": "컨텍스트 엔지니어링 논의가 주로 프롬프트와 AGENTS.md 같은 지시 파일에 몰려 있었는데, 이 연구는 코드베이스 자체가 컨텍스트라는 점을 숫자로 보여 줬습니다. 그동안 가치가 낮다고 미뤄 둔 정리 작업을 다시 보자는 주장이 GeekNews에서도 소개됐습니다.",
+      "reality": "구글 내부 모노레포와 버그 번호를 다는 관행에서 나온 결과라 다른 조직에 그대로 옮기기는 어렵습니다. 에이전트는 TODO를 만난 경우의 94%에서는 무시했고, 곁가지 작업의 절반 이상은 아직 열린 버그였습니다. 단순히 상태만 보고 지우면 안 되고 이력 확인이 필요했다고 구글도 밝혔습니다.",
+      "refs": [
+        {
+          "title": "구글, 낡은 TODO가 코딩 에이전트를 곁길로 빠지게 하는 비용 측정",
+          "url": "https://developers.googleblog.com/agent-distraction/",
+          "src": "Google Developers Blog · 11/6"
+        },
+        {
+          "title": "GeekNews 요약: 낡은 TODO가 에이전트의 토큰과 대기 시간을 늘린다",
+          "url": "https://news.hada.io/topic?id=36749",
+          "src": "GeekNews · 11/7"
+        }
+      ]
+    },
+    {
+      "topic": "on-device-personal-graph",
+      "category": "온디바이스 AI · 프라이버시",
+      "title": "Mac이 기기 안에서 '누가 가족인지' 추정하고 있었다: 개인 지식 그래프 해부",
+      "stages": [
+        {
+          "label": "리버스 엔지니어링 공개",
+          "tone": "live"
+        },
+        {
+          "label": "Apple 공식 문서 없음",
+          "tone": "issue"
+        }
+      ],
+      "domains": [
+        "8rank.ai",
+        "news.hada.io",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "앱마다 따로 쌓인 개인 데이터",
+        "기기 안에서 하나의 지식 그래프로 통합",
+        "LLM이 그래프를 검색해 개인화 답변"
+      ],
+      "tldr": [
+        "Eighth Rank가 macOS 26.6.2를 분석해, 두 데몬이 연락처·사진 속 얼굴·일정·통신 기록을 엮어 사용자 주변 인물 관계를 기기 안에 저장한다고 공개했습니다.",
+        "~/Library/IntelligencePlatform에 평문 SQLite 데이터베이스 51개가 있고, 핵심 graph.db는 엔티티 클래스 181개와 관계 술어 278개를 씁니다. XGBoost 분류기 2개가 특징 144개로 가족·친구 관계를 점수화합니다.",
+        "이 글은 Hacker News에서 819점으로 1면 AI 글 중 가장 높았고, GeekNews에도 11월 7일 소개됐습니다."
+      ],
+      "hype": 4,
+      "use": 3,
+      "meterNote": "모든 최신 Mac에서 이미 돌고 있지만 개발자용 공개 API는 확인되지 않음",
+      "what": "개인 지식 그래프는 사람·장소·일정·관계를 '주어-술어-목적어' 형태로 저장한 데이터베이스입니다. LLM 비서가 '엄마 생일이 언제지' 같은 질문에 답하려면 흩어진 앱 데이터를 이런 그래프로 묶어 둬야 합니다. Apple은 이를 기기 안에서 만들고 있었습니다.",
+      "how": "수집 대상은 연락처, 사진의 얼굴 묶음, 캘린더, 메시지·메일에서 뽑은 제안, 가족 공유 정보, 위치와 기기 신호입니다. 메시지 본문은 빼지만 누구와 언제 어떤 앱으로 연락했는지는 남깁니다. 같은 사람의 여러 이름은 임베딩 모델로 묶고, 생일·기념일은 추정해 채웁니다. 분석진은 자기 그래프를 읽기 전용으로 들여다보는 로컬 대시보드 iKnow를 오픈소스로 냈습니다.",
+      "why": "에이전트 메모리와 RAG가 화제인 가운데, 운영체제 차원에서 이미 개인 기억 저장소가 돌고 있었다는 점이 드러났습니다. Apple은 2023년 그래프 구축 기법 논문을 냈지만 배포 방식과 가족 추정은 문서화하지 않았습니다. 포렌식 도구 iLEAPP는 9월 iOS판을 읽는 기능을 추가했습니다.",
+      "reality": "분석진도 다수 클래스와 술어에 '작동 방식을 찾지 못함'이라고 적었고, 일부는 선언만 되고 채워지지 않을 수 있습니다. 실제로 LLM이 이 그래프를 검색하는지도 추정입니다. 다만 철회된 행이 expired_stable_graph로 옮겨져 남고, 근거가 사라진 뒤에도 점수가 남은 사례가 있어 동의·삭제 설계가 쟁점입니다.",
+      "refs": [
+        {
+          "title": "Apple Intelligence 개인 지식 그래프 구조와 관계 추정 분석",
+          "url": "https://8rank.ai/game/apple-intelligence-personal-knowledge-graph",
+          "src": "Eighth Rank"
+        },
+        {
+          "title": "GeekNews 요약: Mac은 누구를 가족으로 추정할까",
+          "url": "https://news.hada.io/topic?id=36748",
+          "src": "GeekNews · 11/7"
+        },
+        {
+          "title": "Hacker News 1면: 819점",
+          "url": "https://news.ycombinator.com/",
+          "src": "Hacker News · 11/9"
+        }
+      ]
+    }
+  ],
+  "watch": []
+}

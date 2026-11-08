@@ -8,7 +8,25 @@
     "MemSecBench",
     "LoCoMo",
     "LongMemEval",
-    "memory poisoning"
+    "memory poisoning",
+    "MemT-1.0",
+    "MemScope",
+    "Entire Continuous Memory",
+    "entire-brain",
+    "LambdaDB",
+    "SillyMemory",
+    "Memory Tax",
+    "memsearch-ko",
+    "Memorilla",
+    "latent memory tokens",
+    "MemoRAG",
+    "dreaming",
+    "memory wiki",
+    "Anthropic components of agent memory",
+    "Heirmos",
+    "CL-Bench",
+    "open agent memory format",
+    "LoreKit"
   ],
   "featured": [
     {
@@ -22,16 +40,80 @@
         "https://alphasignal.ai/news/tencent-s-hy-memory-2-0-beats-claude-opus-5-at-remembering-what-agents-need",
         "https://www.alphaxiv.org/abs/2607.27080"
       ]
+    },
+    {
+      "cases": [
+        "Memorilla 잠재 메모리 토큰"
+      ],
+      "date": "2026-11-07",
+      "title": "기억을 글 대신 '토큰 16개'로 넣는다: 잠재 메모리 Memorilla",
+      "urls": [
+        "https://arxiv.org/abs/2610.21375",
+        "https://news.ycombinator.com/item?id=50395919"
+      ]
+    },
+    {
+      "cases": [
+        "Anthropic 메모리 구성 요소·드리밍",
+        "Heirmos"
+      ],
+      "date": "2026-11-08",
+      "title": "기억은 쓰는 것보다 고치는 게 어렵다: Anthropic이 수치로 보여 준 메모리 다섯 층과 '드리밍'",
+      "urls": [
+        "https://www.anthropic.com/research/components-of-agent-memory",
+        "https://news.ycombinator.com/item?id=50402212",
+        "https://news.hada.io/topic?id=36737"
+      ]
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-21",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-09",
+  "lastTrend": "peak",
   "name": "에이전트 메모리",
   "radar": [
     {
       "date": "2026-10-21",
       "trend": "rising"
+    },
+    {
+      "date": "2026-10-22",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-25",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-27",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-28",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-30",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-10-31",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-02",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-07",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-08",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-09",
+      "trend": "peak"
     }
   ]
 }

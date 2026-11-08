@@ -1,0 +1,120 @@
+{
+  "aliases": [
+    "harness engineering",
+    "agent harness",
+    "Harness²",
+    "Harness2",
+    "agent loop",
+    "Harness Engineering 101",
+    "agent verification",
+    "md5 check",
+    "Raven",
+    "DSPy ReAct harness",
+    "Cursor Agent SDK",
+    "Prospero",
+    "Herdr",
+    "Memdoor",
+    "team-solve",
+    "GVS5H",
+    "test-time compute",
+    "small model team",
+    "Thoughtworks Radar vol.35",
+    "enterprise harness",
+    "harness quality evaluation",
+    "CoworkOS",
+    "TokenEconomizer",
+    "Claude Code 하네스 전자책",
+    "Pi",
+    "pi.dev",
+    "minimal harness"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Google Research Harness²",
+        "Harness Engineering 101",
+        "LangChain Terminal Bench 하네스 개선"
+      ],
+      "date": "2026-10-22",
+      "title": "모델은 그대로, '하네스'를 고친다: 하네스 엔지니어링이 용어로 자리 잡는 중",
+      "urls": [
+        "https://github.com/google-research/harness2",
+        "https://hyper.ai/en/papers/2610.14224",
+        "https://news.hada.io/topic?id=35651",
+        "https://www.faros.ai/blog/harness-engineering"
+      ]
+    },
+    {
+      "cases": [
+        "Memdoor team-solve",
+        "GVS5H 하네스",
+        "Startup Fortune 재계산"
+      ],
+      "date": "2026-11-02",
+      "title": "하네스만 바꿔 27B 모델 5개로 프런티어와 겨루다: Memdoor 팀 풀이와 '동률' 반론",
+      "urls": [
+        "https://github.com/guregodevo/memdoor/blob/main/README.md",
+        "https://aiweekly.co/alerts/memdoors-five-qwen38-27b-team-beats-fable-5-at-livecodebench",
+        "https://startupfortune.com/small-open-models-match-fable-5-on-coding-but-the-win-is-a-myth/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-22",
+  "lastSeen": "2026-11-09",
+  "lastTrend": "peak",
+  "name": "하네스 엔지니어링",
+  "radar": [
+    {
+      "date": "2026-10-22",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-23",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-24",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-25",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-26",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-27",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-28",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-29",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-01",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-02",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-06",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-07",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-09",
+      "trend": "peak"
+    }
+  ]
+}

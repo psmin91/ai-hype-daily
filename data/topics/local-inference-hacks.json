@@ -1,0 +1,50 @@
+{
+  "aliases": [
+    "local inference",
+    "gpu-unlock",
+    "RTX 3090 BF16 unlock",
+    "SSD expert offloading",
+    "Edge0",
+    "MoE SSD streaming",
+    "LFM3",
+    "Liquid AI",
+    "Survival LLM",
+    "small local models",
+    "llama-modchip",
+    "CPU-only MoE",
+    "Fractal-64"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "gpu-unlock",
+        "Edge0"
+      ],
+      "date": "2026-10-26",
+      "title": "RTX 3090의 잠긴 BF16 풀고, 35B 모델은 SSD에서: 소비자 하드웨어 쥐어짜기",
+      "urls": [
+        "https://github.com/Zagitta/gpu-unlock",
+        "https://news.ycombinator.com/item?id=50219700",
+        "https://huggingface.co/papers/2609.18063"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-26",
+  "lastSeen": "2026-11-09",
+  "lastTrend": "rising",
+  "name": "소비자 GPU · 로컬 추론 최적화",
+  "radar": [
+    {
+      "date": "2026-10-26",
+      "trend": "new"
+    },
+    {
+      "date": "2026-10-29",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-09",
+      "trend": "rising"
+    }
+  ]
+}

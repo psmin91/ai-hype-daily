@@ -1,0 +1,34 @@
+{
+  "name": "온디바이스 개인 지식 그래프",
+  "aliases": [
+    "personal knowledge graph",
+    "Apple Intelligence",
+    "knowledgeconstructiond",
+    "intelligenceplatformd",
+    "graph.db",
+    "iKnow"
+  ],
+  "firstSeen": "2026-11-09",
+  "lastSeen": "2026-11-09",
+  "lastTrend": "new",
+  "featured": [
+    {
+      "date": "2026-11-09",
+      "title": "Mac이 기기 안에서 '누가 가족인지' 추정하고 있었다: 개인 지식 그래프 해부",
+      "cases": [
+        "macOS IntelligencePlatform graph.db 분석",
+        "iKnow"
+      ],
+      "urls": [
+        "https://8rank.ai/game/apple-intelligence-personal-knowledge-graph",
+        "https://news.hada.io/topic?id=36748"
+      ]
+    }
+  ],
+  "radar": [
+    {
+      "date": "2026-11-09",
+      "trend": "new"
+    }
+  ]
+}
