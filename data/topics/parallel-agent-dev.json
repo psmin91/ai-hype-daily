@@ -1,0 +1,33 @@
+{
+  "aliases": [
+    "OpenAI Pando",
+    "agent git backend",
+    "packfile-uri",
+    "explicit haves",
+    "monorepo scaling for agents",
+    "parallel agents CI load"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "OpenAI Pando"
+      ],
+      "date": "2026-11-05",
+      "title": "에이전트가 브랜치를 쏟아내자 Git 서버가 밀렸다: OpenAI의 Git 호환 백엔드 Pando",
+      "urls": [
+        "https://news.hada.io/topic?id=36517",
+        "https://dev.classmethod.jp/en/articles/openai-pando-git-backend/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-05",
+  "lastSeen": "2026-11-05",
+  "lastTrend": "new",
+  "name": "병렬 에이전트용 Git 인프라",
+  "radar": [
+    {
+      "date": "2026-11-05",
+      "trend": "new"
+    }
+  ]
+}

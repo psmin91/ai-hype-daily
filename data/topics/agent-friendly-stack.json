@@ -1,0 +1,31 @@
+{
+  "aliases": [
+    "AI cost of JavaScript frameworks",
+    "framework benchmark for agents",
+    "agent-friendly framework",
+    "Hono htmx",
+    "Astro"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Nolan Lawson 프레임워크 12종 벤치마크"
+      ],
+      "date": "2026-11-02",
+      "title": "같은 앱을 프레임워크 12종으로 에이전트에게 시켜 보니, 비용이 최대 1.9배 갈렸다",
+      "urls": [
+        "https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-02",
+  "lastSeen": "2026-11-02",
+  "lastTrend": "new",
+  "name": "에이전트 친화 스택 · 프레임워크 비용 측정",
+  "radar": [
+    {
+      "date": "2026-11-02",
+      "trend": "new"
+    }
+  ]
+}

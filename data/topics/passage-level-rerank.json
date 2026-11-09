@@ -1,0 +1,28 @@
+{
+  "aliases": [
+    "reranker",
+    "rerank",
+    "Cohere Rerank 5",
+    "Context Focus",
+    "passage extraction",
+    "context compression"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Cohere Rerank 5 Context Focus"
+      ],
+      "date": "2026-10-29",
+      "title": "리랭커가 문서 대신 '답이 든 구절'을 고른다: Cohere Rerank 5의 Context Focus",
+      "urls": [
+        "https://cohere.com/blog/rerank-5",
+        "https://news.hada.io/topic?id=35959"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-29",
+  "lastSeen": "2026-10-29",
+  "lastTrend": "new",
+  "name": "구절 단위 리랭킹",
+  "radar": []
+}

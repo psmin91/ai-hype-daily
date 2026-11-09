@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-24",
+  "headline": "이번 주 키워드는 '증명'이다. Claude가 오픈소스 바이너리가 어떤 입력에도 죽지 않음을 증명했고, NVIDIA OpenShell은 에이전트 권한이 정해 둔 한도를 넘지 않음을 증명기로 확인한다. 테스트를 넘어 수학적 보장을 AI 시대의 안전장치로 쓰려는 흐름이다.",
+  "issueNo": 4,
+  "period": "10월 17일~24일",
+  "radar": [
+    {
+      "note": "레이더 첫 등장. Anthropic이 오픈소스 라이브러리 123개 바이너리의 무충돌 증명을 공개해 HN 420점.",
+      "since": "",
+      "tech": "LLM 기반 형식 검증",
+      "topic": "ai-formal-verification",
+      "trend": "new"
+    },
+    {
+      "note": "10/21부터 확산 유지 → 이번 주 NVIDIA가 OpenShell 참조 아키텍처를 내고 보안 업체 11곳이 지원을 밝히며 업계 공통 계층 후보로.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "spreading"
+    },
+    {
+      "note": "어제 첫 등장 → WorldTUI가 HN 594점까지 오르고 GeekNews에도 소개되며 부상.",
+      "since": "첫 포착 10/23",
+      "tech": "프로그램을 흉내 내는 소형 월드 모델",
+      "topic": "neural-world-model",
+      "trend": "rising"
+    },
+    {
+      "note": "부상 유지. 300줄 입문서가 GeekNews 79점으로 계속 오르고, 에이전트의 '확인했다'를 어떻게 검증하느냐는 질문(10/21)이 이어짐.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "rising"
+    },
+    {
+      "note": "확산 유지. 전문가 작업 기록에서 스킬을 자동 생성하는 COLLEAGUE.SKILL이 HF 트렌딩 논문(131표)에 오르고, OpenShell도 스킬 형태 설치를 제공.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 스킬 · 마크다운 컨텍스트",
+      "topic": "agent-skills-context",
+      "trend": "spreading"
+    },
+    {
+      "note": "레이더 첫 등장. BottleCap의 ThinkingCap이 Gemma 4 26B의 사고 토큰을 평균 38.9% 줄였다고 10/23 발표(자체 측정, 정확도 -0.15%p).",
+      "since": "",
+      "tech": "추론 토큰 줄이기(사고 압축)",
+      "topic": "reasoning-compression",
+      "trend": "new"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "소프트웨어 검증",
+      "domains": [
+        "anthropic.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사람이 몇 년 걸려 쓰는 형식 증명",
+        "퍼징으로 무작위 입력 찔러보기",
+        "LLM이 컴파일된 바이너리 단위 증명을 대량 생산"
+      ],
+      "how": "이번 작업은 OSS-Fuzz에 이미 있던 퍼즈 테스트를 명세로 바꿨습니다. '이 진입점은 충돌하지 않는다'를 목표로 정하고, RISC-V 정적 바이너리 수준에서 증명을 쓰게 했습니다. 증명 도중 버그가 나오면 Claude가 패치하고 명세를 다시 생성해 재증명했습니다. 압축 해제기의 카운터 언더플로, 이미지 디코더의 범위 밖 읽기, libexpat CVE 재발견이 사례로 실렸습니다. Rust로 쓴 Python 인터프리터를 Verus로 다룬 사례에서는 무작위 프로그램 170만 개 중 99.95%가 CPython과 같게 동작했습니다.",
+      "hype": 4,
+      "meterNote": "연구팀 규모의 결과. 일반 팀이 바로 쓸 도구는 아직 없음",
+      "reality": "증명된 것은 '충돌하지 않음'이지 '올바르게 동작함'이 아닙니다. 대상도 musl에 링크한 정적 RISC-V 바이너리라 x86·ARM에서 동적 glibc로 돌리는 실제 배포와 다릅니다. Rocq, RISC-V·Linux 의미론, 하드웨어는 믿고 들어가는 전제입니다. 모델이 코드를 고쳐 증명을 쉽게 만드는 보상 해킹 위험도 있어 동작을 바꾼 패치는 감점하고 따로 감사했다고 합니다. 복잡한 프로그램에서는 증명이 '복잡도의 벽'에 부딪힐 수 있다는 지적도 HN 댓글에 나왔습니다.",
+      "refs": [
+        {
+          "src": "Anthropic · 10/22",
+          "title": "LLM이 형식 소프트웨어 검증을 훨씬 큰 규모로 가능하게 만들고 있다",
+          "url": "https://www.anthropic.com/research/formal-verification"
+        },
+        {
+          "src": "Hacker News",
+          "title": "Hacker News 토론: 신뢰 기반과 명세의 한계를 둘러싼 논쟁",
+          "url": "https://news.ycombinator.com/item?id=50202217"
+        }
+      ],
+      "stages": [
+        {
+          "label": "10/22 연구 공개",
+          "tone": "live"
+        },
+        {
+          "label": "실무 적용은 초기",
+          "tone": "preview"
+        }
+      ],
+      "title": "LLM이 '이 코드는 어떤 입력에도 죽지 않는다'를 증명하기 시작했다",
+      "tldr": [
+        "Anthropic 프론티어 레드팀과 Theorem이 10월 22일, Claude로 오픈소스 라이브러리 123개의 진입점 239개가 64MB 미만의 어떤 입력에도 충돌하지 않음을 Rocq로 증명했다고 공개했습니다.",
+        "증명 코드는 모두 약 1억 8천만 줄, 전형적인 증명 하나가 약 60만 줄입니다. 그 과정에서 수백 개의 버그를 찾아 고쳤고, 10년 넘게 묻혀 있던 논리 버그도 있었습니다.",
+        "이 글은 Hacker News에서 420점, 댓글 256개를 받았습니다. 반응은 '퍼징보다 강한 보장'이라는 평가와 '모델이 실제 프로그램과 맞는가'라는 의문으로 갈렸습니다."
+      ],
+      "topic": "ai-formal-verification",
+      "use": 2,
+      "what": "형식 검증은 테스트처럼 몇몇 입력을 시험하는 대신, 모든 입력에 대해 어떤 성질이 성립함을 수학적으로 증명하는 방법입니다. 증명은 Rocq 같은 증명 검사기가 기계적으로 확인합니다. 정확하지만 증명을 쓰는 데 사람이 너무 많은 시간을 들여야 해서 그동안 seL4 같은 소수 프로젝트에만 쓰였습니다.",
+      "why": "증명의 병목은 사람의 시간이었는데, 이제 토큰으로 바뀌고 있습니다. 글은 증명 하나에 수억 토큰이 들 수 있다고 밝혔고, 36개 소형 검증 과제에서 Opus 5.5가 Opus 5보다 토큰을 약 40% 덜 쓰고 절반을 풀었다고 했습니다(자체 측정). AI가 코드를 쏟아내는 만큼 검증도 자동화해야 한다는 요구와 맞물렸습니다."
+    },
+    {
+      "category": "에이전트 인프라",
+      "domains": [
+        "github.com",
+        "nvidianews.nvidia.com",
+        "decrypt.co"
+      ],
+      "flow": [
+        "에이전트를 개발자 PC에서 그대로 실행",
+        "Docker 컨테이너로 대충 격리",
+        "정책·자격증명·네트워크를 한 런타임이 통제"
+      ],
+      "how": "설치 스크립트로 CLI와 로컬 게이트웨이를 깔고 openshell sandbox create로 샌드박스를 만듭니다. 기본 이미지는 에이전트가 없는 최소 Ubuntu라 OpenCode 같은 코딩 에이전트를 직접 넣어 씁니다. 구성은 게이트웨이(제어 평면), 바깥으로 나가는 요청을 검사하고 자격증명을 붙이는 수퍼바이저, 커널 수준 격리 샌드박스, 정책 변경을 형식 검증하는 증명기입니다. 위험한 권한 추가는 사람 검토로 넘깁니다. Python·TypeScript·Go·Rust SDK가 있고 Kubernetes에는 Helm으로 올립니다.",
+      "hype": 4,
+      "meterNote": "CLI·SDK로 바로 써볼 수 있지만, 대규모 운영 사례는 아직 '검토 중' 단계",
+      "reality": "BlueField-4 위에서 도는 하드웨어 감시 Sentry는 선택 사항이고, Decrypt에 따르면 상세 자료상 출시 시점은 내년 초입니다. 성능 수치는 모두 NVIDIA 자체 발표이고 BBVA·Santander도 '검토' 단계입니다. 정책 증명기는 조직이 정한 한도만 지켜 주므로 한도를 잘못 잡으면 소용이 없습니다. Windows 지원은 실험적이고 텔레메트리가 기본으로 켜져 있습니다.",
+      "refs": [
+        {
+          "src": "GitHub · 10/24 확인",
+          "title": "NVIDIA OpenShell 저장소: 설치법, 구조, 정책 모델",
+          "url": "https://github.com/NVIDIA/OpenShell"
+        },
+        {
+          "src": "NVIDIA · 10/21",
+          "title": "NVIDIA, 안전한 에이전트용 OpenShell 참조 아키텍처 발표",
+          "url": "https://nvidianews.nvidia.com/news/openshell-reference-architecture"
+        },
+        {
+          "src": "Decrypt · 10/21",
+          "title": "에이전트를 가두고 감시하는 NVIDIA 풀스택 청사진과 그 한계",
+          "url": "https://decrypt.co/381570/nvidia-ai-agent-containment-tools-full-stack-blueprint"
+        }
+      ],
+      "stages": [
+        {
+          "label": "오픈소스 공개 중",
+          "tone": "live"
+        },
+        {
+          "label": "하드웨어 감시는 2027년 초",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트를 '믿지 않는 코드'로 가두는 런타임, NVIDIA OpenShell이 표준 후보로",
+      "tldr": [
+        "NVIDIA의 오픈소스 에이전트 런타임 OpenShell이 Hacker News 1면에서 479점을 받았습니다. GitHub 별은 약 1만 개, 라이선스는 Apache 2.0입니다.",
+        "NVIDIA는 10월 21일 GTC Berlin에서 OpenShell을 중심으로 한 참조 아키텍처를 발표했습니다. 보안 업체 11곳, 모델 개발사 8곳이 지원 의사를 밝혔습니다.",
+        "핵심은 에이전트가 진짜 자격증명을 보지 못하게 하는 구조입니다. 승인된 목적지로 가는 요청에만 런타임이 자격증명을 붙입니다."
+      ],
+      "topic": "agent-sandbox-gateway",
+      "use": 3,
+      "what": "에이전트 샌드박스는 에이전트가 파일을 읽고 패키지를 깔고 API를 부르는 일을 허용하되, 정해 둔 범위 밖으로는 못 나가게 막는 실행 환경입니다. OpenShell은 에이전트를 신뢰할 수 없는 작업으로 보고, 파일·네트워크·프로세스 권한을 선언형 정책으로 적게 합니다.",
+      "why": "올해 에이전트가 시험 환경을 벗어난 사고가 이어지면서, 프롬프트로 '하지 마'라고 하는 대신 실행 환경에서 막자는 쪽으로 무게가 옮겨갔습니다. 10월 21일 참조 아키텍처 발표로 CrowdStrike·Palo Alto Networks·Zscaler 같은 보안 업체와 ServiceNow가 연동을 밝히면서 업계 공통 계층이 될 가능성이 커졌습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "MarketingProfs",
+      "text": "Mistral Large 4 공개 출시 예정. 1조 파라미터 규모로 코딩·보안·금융 업무를 겨냥",
+      "url": "https://www.marketingprofs.com/opinions/2026/56118/ai-update-october-09-2026-ai-news-and-views-from-the-past-week",
+      "when": "10/27"
+    },
+    {
+      "src": "Decrypt · 10/21",
+      "text": "BlueField-4에서 에이전트를 하드웨어로 감시하는 NVIDIA Sentry 출시 예정",
+      "url": "https://decrypt.co/381570/nvidia-ai-agent-containment-tools-full-stack-blueprint",
+      "when": "2027년 초"
+    }
+  ]
+}

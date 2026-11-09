@@ -1,0 +1,38 @@
+{
+  "aliases": [
+    "hybrid attention",
+    "sliding window attention",
+    "SWA",
+    "attention sink",
+    "linear attention",
+    "mLSTM",
+    "Gated DeltaNet",
+    "Mamba",
+    "Bifocal",
+    "subquadratic attention"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Bifocal(SWA+mLSTM) Qwen3-4B 증류",
+        "arXiv 2608.28444 SWA+싱크"
+      ],
+      "date": "2026-11-04",
+      "title": "슬라이딩 윈도우냐 선형 어텐션이냐: 답이 길어질 때 갈린다",
+      "urls": [
+        "https://huggingface.co/blog/sirluk/sliding-window-beats-linear-attention",
+        "https://www.alphaxiv.org/abs/2608.28444"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-04",
+  "lastSeen": "2026-11-04",
+  "lastTrend": "new",
+  "name": "하이브리드 어텐션",
+  "radar": [
+    {
+      "date": "2026-11-04",
+      "trend": "new"
+    }
+  ]
+}

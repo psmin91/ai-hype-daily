@@ -4,17 +4,66 @@
     "context engineering",
     "Figma Specs",
     "Google Skills",
-    "YAML ontology instead of RAG"
+    "YAML ontology instead of RAG",
+    "Anatomy skill",
+    "Superlite",
+    "COLLEAGUE.SKILL",
+    "npx skills",
+    "stop-slop-ko",
+    "context reset",
+    "strategic forgetting",
+    "context pruning",
+    "compaction",
+    "Fork-and-Flush",
+    "Scaling Discovery Requires Forgetting",
+    "context inertia",
+    "Hermes /goal flush"
   ],
-  "featured": [],
+  "featured": [
+    {
+      "cases": [
+        "Drew Breunig '컨텍스트 엔지니어링의 현주소'",
+        "Scaling Discovery Requires Forgetting(arXiv 2610.20563)",
+        "Fork-and-Flush",
+        "Memento 하네스"
+      ],
+      "date": "2026-10-28",
+      "title": "긴 컨텍스트 대신 '잊기': 에이전트 컨텍스트를 일부러 비우는 하네스 기법",
+      "urls": [
+        "https://www.dbreunig.com/2026/10/24/the-state-of-context-engineering.html",
+        "https://arxiv.org/abs/2610.20563",
+        "https://news.hada.io/topic?id=36019"
+      ]
+    }
+  ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-21",
-  "lastTrend": "spreading",
+  "lastSeen": "2026-10-29",
+  "lastTrend": "rising",
   "name": "에이전트 스킬 · 마크다운 컨텍스트",
   "radar": [
     {
       "date": "2026-10-21",
       "trend": "spreading"
+    },
+    {
+      "date": "2026-10-22",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-24",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-26",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-28",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-29",
+      "trend": "rising"
     }
   ]
 }

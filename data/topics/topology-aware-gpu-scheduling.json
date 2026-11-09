@@ -1,0 +1,22 @@
+{
+  "aliases": [
+    "topology-aware scheduling",
+    "NVL72 scheduling",
+    "GB200 NVL72",
+    "GB300",
+    "SkyPilot",
+    "rack-aware scheduling",
+    "Auto Defrag"
+  ],
+  "featured": [],
+  "firstSeen": "2026-10-30",
+  "lastSeen": "2026-10-30",
+  "lastTrend": "new",
+  "name": "토폴로지 인식 GPU 스케줄링",
+  "radar": [
+    {
+      "date": "2026-10-30",
+      "trend": "new"
+    }
+  ]
+}

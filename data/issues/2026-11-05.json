@@ -1,0 +1,191 @@
+{
+  "date": "2026-11-05",
+  "headline": "이번 주엔 에이전트를 무엇으로, 어디서, 어떻게 믿고 돌리는지가 화제였다. Revolut은 코딩 모델을 자체 GPU로 옮겼고, OpenAI는 에이전트가 쏟아내는 브랜치 때문에 Git 저장 계층을 새로 만들었다. Anthropic은 응답이 약속한 모델에서 나왔는지 수학으로 증명하는 코드를 내놓았다.",
+  "issueNo": 16,
+  "period": "10월 29일~11월 5일",
+  "radar": [
+    {
+      "note": "처음 포착. Revolut이 B200 약 56장으로 GLM을 엔지니어 약 2,000명에게 기본 제공한다는 발표가 11/4 GeekNews에 올라옴.",
+      "since": "",
+      "tech": "오픈 웨이트 코딩 모델 자체 호스팅",
+      "topic": "self-hosted-coding-model",
+      "trend": "new"
+    },
+    {
+      "note": "처음 포착. OpenAI가 Codex 병렬 작업으로 늘어난 푸시·CI 부하 때문에 Git 저장 계층을 다시 만든 Pando를 공개.",
+      "since": "",
+      "tech": "병렬 에이전트용 Git 인프라",
+      "topic": "parallel-agent-dev",
+      "trend": "new"
+    },
+    {
+      "note": "처음 포착. Anthropic이 400B MoE 모델용 증명기·검증기 코드를 Apache 2.0으로 공개하고 HN 1면에 오름.",
+      "since": "",
+      "tech": "증명 가능한 추론 (zkSNARK로 모델 바꿔치기 검증)",
+      "topic": "verifiable-inference",
+      "trend": "new"
+    },
+    {
+      "note": "어제 부상 → 사흘째 GeekNews 상위권이지만 새 실험보다 재현·반박을 정리하는 글이 대부분이라 정점으로 봄.",
+      "since": "첫 포착 11/3",
+      "tech": "가중치 공간 프로그래밍",
+      "topic": "weight-space-programming",
+      "trend": "peak"
+    },
+    {
+      "note": "확산 유지. PHP2Shell을 '40년 기술 부채 청구서'로 읽은 IEEE Spectrum 분석이 HN 1면 1위(734점)에 오르며, 화제가 발굴에서 방어 쪽 인력·예산 문제로 옮겨 가는 중.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 에이전트 취약점 발굴",
+      "topic": "ai-vuln-discovery",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 6,
+  "stories": [
+    {
+      "category": "코딩 에이전트 운영",
+      "domains": [
+        "aie-nyc-2026-talks.swyxio.workers.dev",
+        "news.hada.io"
+      ],
+      "flow": [
+        "프런티어 모델 API 종량제",
+        "예산 한도를 건 API 사용",
+        "오픈 웨이트 모델 자체 서빙을 기본값으로"
+      ],
+      "how": "엔드포인트가 OpenAI 호환 API와 Responses API를 제공해 엔지니어는 OpenCode나 Codex 앱을 그대로 씁니다. 텍스트 작업은 GLM, 이미지 작업은 로컬 라우터가 다른 모델로 보냅니다. 튜닝 요령으로는 컨텍스트를 최대치 대신 약 256K로 줄여 KV 캐시를 동시 요청에 돌리기, Blackwell에서 FP4 쓰기, TP4보다 TP8이 나을 수 있다는 점, 코딩 캐시 적중률 90% 이상 목표를 꼽았습니다. 에이전트 실행은 샌드박스 규칙으로 묶어 grep은 허용하고 Gradle은 승인을 받게 했습니다.",
+      "hype": 3,
+      "meterNote": "대형 조직이 실제 운영 중인 사례. 다만 생산성 수치는 통제 실험이 아님",
+      "reality": "생산성 비교는 내부 지표이고 모델 교체 효과를 다른 요인과 분리하지 못했다고 발표자도 인정했습니다. 단가는 Revolut의 사용률 기준이라 다른 조직에 그대로 옮길 수 없다고 했습니다. B200 56장이라는 초기 투자가 전제이고, 프런티어 모델은 예외로 여전히 열어 둡니다. FP4가 FP8 대비 GPU를 약 40% 아끼면서 정밀도 손실이 없다는 말도 발표자 주장입니다.",
+      "refs": [
+        {
+          "src": "AI Engineer NYC · 10/13",
+          "title": "'스타트업처럼 출시하고 은행처럼 규제받기': Revolut 자체 호스팅 코딩 모델 발표 요약",
+          "url": "https://aie-nyc-2026-talks.swyxio.workers.dev/talks/david-abitbol-revolut"
+        },
+        {
+          "src": "GeekNews · 11/4",
+          "title": "GeekNews: Revolut, 개발자 2,000명에 자체 호스팅 GLM 제공",
+          "url": "https://news.hada.io/topic?id=36534"
+        }
+      ],
+      "stages": [
+        {
+          "label": "실서비스 운영 중",
+          "tone": "live"
+        },
+        {
+          "label": "성과는 내부 지표",
+          "tone": "preview"
+        }
+      ],
+      "title": "코딩 모델을 자체 GPU 56장으로: Revolut이 개발자 2,000명에게 오픈 웨이트 GLM을 기본값으로 준 방법",
+      "tldr": [
+        "Revolut AI 운영 리드 David Abitbol은 10월 13일 AI Engineer NYC에서 NVIDIA B200 약 56장으로 GLM 5.3을 서빙해 엔지니어 약 2,000명의 기본 코딩 모델로 쓴다고 밝혔고, 11월 4일 GeekNews에서 재조명됐습니다.",
+        "혼합 단가는 백만 토큰당 약 0.30달러, 청구액은 이전 Anthropic·OpenAI 지출의 약 10분의 1이라고 했습니다(자체 측정).",
+        "GPU를 늘리지 않고 설정만 바꿔 초당 처리 요청을 76% 늘리고, 첫 토큰까지 시간을 14.26초에서 1.68초로 줄였습니다."
+      ],
+      "topic": "self-hosted-coding-model",
+      "use": 4,
+      "what": "오픈 웨이트 코딩 모델 자체 호스팅은 공개된 모델 가중치를 내려받아 회사가 고른 GPU에서 돌리고, OpenAI 호환 API로 코딩 에이전트에 연결하는 방식입니다. 요청이 모델 개발사 서버로 나가지 않아 비용과 데이터 경로를 직접 통제할 수 있습니다.",
+      "why": "Revolut은 Claude Code를 쓰는 일부 엔지니어의 지출이 크고 효과가 불분명해 예산 한도를 걸었다고 했습니다. GLM 5.1로 바꾼 4월 이후 내부 차트에서 코딩 시간은 약 60%, 착수부터 머지 준비까지의 리드 타임은 약 70% 개선됐다고 밝혔습니다. 오픈 웨이트 코딩 모델이 '쓸 만한 기본값'이 됐다는 첫 대규모 사례라 비용을 고민하는 팀의 관심을 끌었습니다."
+    },
+    {
+      "category": "개발 인프라",
+      "domains": [
+        "news.hada.io",
+        "dev.classmethod.jp"
+      ],
+      "flow": [
+        "사람이 하루 몇 번 푸시하는 모노레포",
+        "에이전트 병렬 작업으로 푸시·CI fetch 폭증",
+        "브랜치별 독립 커밋과 캐시 우선 fetch"
+      ],
+      "how": "서로 다른 브랜치로 들어오는 푸시는 각자 독립된 트랜잭션으로 처리해 서로 기다리지 않습니다. fetch 응답에는 팩 데이터 대신 packfile-uri만 담고, Express라는 지역 캐시가 팩을 내려줍니다. 작은 팩은 백그라운드에서 계층별로 합칩니다. 클라이언트 쪽에서는 '--force-with-lease' 확인과 생략할 이력 선택을 분리한 'explicit haves' 개선을 Git 프로젝트에 돌려주겠다고 했습니다.",
+      "hype": 3,
+      "meterNote": "OpenAI 내부에서만 운영. 설치 방법·오픈소스 계획은 아직 없음",
+      "reality": "브랜치 전체를 같은 시점으로 보는 스냅샷이 없어서, 여러 브랜치를 함께 읽는 작업은 일관성을 보장받지 못합니다. 이미 가진 객체를 다시 받는 중복도 감수한 설계입니다. 11월 4일 기준 Pando 자체의 오픈소스·제품 계획은 없고, 수치도 OpenAI 환경에서 잰 것입니다. 대부분 팀은 아직 이 규모의 Git 부하를 겪지 않습니다.",
+      "refs": [
+        {
+          "src": "GeekNews · 11/3",
+          "title": "GeekNews: OpenAI, 병렬 에이전트 개발을 위한 Git 백엔드 Pando 구축",
+          "url": "https://news.hada.io/topic?id=36517"
+        },
+        {
+          "src": "DevelopersIO · 11/4",
+          "title": "OpenAI가 다시 만든 Git 서버 Pando 구조 해설",
+          "url": "https://dev.classmethod.jp/en/articles/openai-pando-git-backend/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "OpenAI 내부 운영",
+          "tone": "live"
+        },
+        {
+          "label": "외부 공개 미정",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트가 브랜치를 쏟아내자 Git 서버가 밀렸다: OpenAI의 Git 호환 백엔드 Pando",
+      "tldr": [
+        "OpenAI가 Codex로 늘어난 병렬 작업을 감당하려고 Git 프로토콜은 그대로 두고 저장 계층만 바꾼 Pando를 공개했습니다. 기존 모노레포 시스템은 한때 신뢰도가 90% 아래로 떨어졌습니다.",
+        "전환 뒤 푸시에서 fetch까지 지연 중앙값이 약 80% 줄었고, 적은 CPU 코어로 하루 약 1PB를 서빙하며 캐시 적중률은 99%를 넘는다고 밝혔습니다(자체 측정).",
+        "착수부터 프로덕션까지 10주가 걸렸고 4월부터 실제 트래픽을 받았습니다. 핵심 설계는 엔지니어 1명, 구현은 에이전트 팀이 맡았습니다."
+      ],
+      "topic": "parallel-agent-dev",
+      "use": 2,
+      "what": "Pando는 Git 클라이언트가 보기엔 평범한 Git 서버지만, 안쪽 저장 방식을 바꾼 백엔드입니다. 받은 팩 파일은 바꾸지 않는 데이터로 blob 스토리지에 두고, 브랜치 위치는 '참조 버전'으로 메타데이터 저장소에 기록합니다.",
+      "why": "한 사람이 에이전트로 여러 변경을 동시에 진행하면 푸시가 늘고, 푸시마다 CI 작업 여러 개가 같은 커밋을 받아 갑니다. 쓰기와 읽기가 함께 불어나는 이 부하는 사람 위주 개발에선 드물었습니다. 에이전트 병렬화가 코드 생성이 아니라 저장소 인프라에서 먼저 병목을 만든다는 사례라 주목받았습니다."
+    },
+    {
+      "category": "추론 검증",
+      "domains": [
+        "anthropic.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "제공사 말을 믿기",
+        "신뢰 하드웨어(TEE) 증명·트래픽 서명",
+        "소프트웨어만으로 zkSNARK 증명"
+      ],
+      "how": "오프라인 단계에서 가중치 커밋먼트를 약 39분 걸려 만들고, 이 하나로 약 1,600만 요청을 처리합니다. 사용자는 약 6.5MB 커밋먼트를 받아 응답별 증명을 검증합니다. 라우팅 서비스가 몰래 더 싼 모델로 바꾸는 것을 잡거나, 규제 기관이 승인된 모델만 쓰는지 확인하는 용도가 제시됐습니다.",
+      "hype": 2,
+      "meterNote": "코드와 Lean 증명은 공개, 실서비스 적용은 없음",
+      "reality": "정수화한 모델의 그리디 디코딩만 증명해, 실제 서비스의 부동소수점·샘플링 출력과 다를 수 있습니다. 컨텍스트는 1,024토큰이고, 모델 구조는 숨기지 못하며 MoE 구조를 전제합니다. 빠른 실행 코드 자체는 형식 검증 대상이 아니고, Lean으로 검증한 건 프로토콜과 최상위 보안 명제입니다. 비용이 70배를 넘어 당장은 일부 요청을 뽑아 감사하는 용도에 가깝습니다.",
+      "refs": [
+        {
+          "src": "Anthropic · 11/2",
+          "title": "대형 언어 모델의 증명 가능한 추론, 진전 보고",
+          "url": "https://www.anthropic.com/research/provable-inference"
+        },
+        {
+          "src": "Hacker News · 11/5",
+          "title": "Hacker News 1면: 증명 가능한 추론 글 토론",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "11/2 코드 공개",
+          "tone": "live"
+        },
+        {
+          "label": "연구 단계",
+          "tone": "preview"
+        }
+      ],
+      "title": "'그 모델이 답한 게 맞나'를 암호로 증명한다: 증명 가능한 추론",
+      "tldr": [
+        "Anthropic이 11월 2일, 제공자가 약속한 모델로 답을 만들었음을 암호학적으로 증명하는 시스템을 공개하고 증명기·검증기 코드를 Apache 2.0으로 냈습니다.",
+        "Llama 4 Maverick(400B MoE, 4비트)에서 H100 한 장으로 초당 약 110토큰 분량의 증명을 만들었고, GPU 시간은 vLLM으로 그냥 돌릴 때의 70~95배였습니다(자체 측정).",
+        "검증은 24스레드 CPU에서 약 17초, 요청당 증명 크기는 약 19MB입니다."
+      ],
+      "topic": "verifiable-inference",
+      "use": 1,
+      "what": "증명 가능한 추론은 제공자가 먼저 모델 가중치의 짧은 지문(커밋먼트)을 공개하고, 응답마다 '이 지문의 모델이 이 토큰을 냈다'는 증명을 붙이는 방식입니다. zkSNARK를 써서 가중치는 숨긴 채 검증만 할 수 있게 합니다.",
+      "why": "API 뒤의 모델이 광고한 그 모델인지 확인할 방법이 없다는 불신이 커져 왔습니다. 오픈 웨이트 모델을 여러 호스팅 업체가 서빙하면서 양자화나 모델 교체 여부를 사용자가 알기 어려워진 것도 배경입니다. 신뢰 하드웨어 없이 대형 MoE 모델 출력을 증명한 공개 구현이라 HN 1면에 올랐습니다."
+    }
+  ],
+  "watch": []
+}

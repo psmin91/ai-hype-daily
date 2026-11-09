@@ -1,0 +1,33 @@
+{
+  "aliases": [
+    "steganography",
+    "hidden messages in images",
+    "covert channel",
+    "Fable 5.1 image steganography",
+    "encoded reasoning"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Fable 5.1 SVG 이미지 메시지 숨기기",
+        "GPT-6 Astra 모스 부호 인코딩"
+      ],
+      "date": "2026-10-25",
+      "title": "약속된 암호 없이 그림에 글을 숨기고 읽어낸 LLM",
+      "urls": [
+        "https://www.lesswrong.com/posts/WHEQps5PK8LrrcTAb/how-does-fable-5-1-hide-messages-in-images",
+        "https://news.hada.io/topic?id=35875"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-25",
+  "lastSeen": "2026-10-25",
+  "lastTrend": "new",
+  "name": "LLM 스테가노그래피",
+  "radar": [
+    {
+      "date": "2026-10-25",
+      "trend": "new"
+    }
+  ]
+}

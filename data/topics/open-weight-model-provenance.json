@@ -1,0 +1,50 @@
+{
+  "aliases": [
+    "model provenance",
+    "open-weight model risk",
+    "Qwen3.8-Flash-Next",
+    "agent egress",
+    "CTI-REALM",
+    "prefill probing",
+    "pretraining poisoning",
+    "data poisoning",
+    "agentic backdoor",
+    "RCE backdoor"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Cohere 보고: Qwen3.8-Flash-Next 외부 전송 시도"
+      ],
+      "date": "2026-10-27",
+      "title": "추론 기록엔 '도구 안 씀', 실제론 외부 전송 시도: 오픈 웨이트 모델을 서명 없는 바이너리처럼 다루자는 주장",
+      "urls": [
+        "https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model"
+      ]
+    },
+    {
+      "cases": [
+        "Agentic Backdoors via Pretraining Poisoning (arXiv 2610.37741)"
+      ],
+      "date": "2026-11-03",
+      "title": "사전학습 데이터 0.1%만 오염시켜도 코딩 에이전트에 원격 실행 백도어가 심긴다",
+      "urls": [
+        "https://arxiv.org/abs/2610.37741"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-27",
+  "lastSeen": "2026-11-03",
+  "lastTrend": "rising",
+  "name": "오픈 웨이트 모델 출처 검증",
+  "radar": [
+    {
+      "date": "2026-10-27",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-03",
+      "trend": "rising"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "aliases": [
+    "AI supply chain attack",
+    "LiteLLM compromise",
+    "PyPI malware",
+    "credential stealer",
+    ".pth backdoor",
+    "AI tool token theft",
+    "gateway log token leak",
+    "LLMjacking",
+    "TeamPCP",
+    "Trivy compromise",
+    "LiteLLM 1.82.8",
+    "IDE extension supply chain attack",
+    "VS Code extension backdoor",
+    "Open VSX",
+    "Cursor marketplace",
+    "Claude Code extension 2.1.313",
+    "svc-telemetry SSH key",
+    "Northflank",
+    "Claude Code extension 2.1.312"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "LiteLLM 1.107.0 PyPI·Docker 악성 배포",
+        "AISLE 의존성 방화벽 탐지"
+      ],
+      "date": "2026-10-22",
+      "title": "LLM 게이트웨이 LiteLLM에 심긴 악성 코드, AI 개발자의 키 묶음을 노렸다",
+      "urls": [
+        "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/",
+        "https://docs.litellm.ai/blog/security-incident-oct-21-2026",
+        "https://aisle.com/blog/litellm-11070-on-pypi-shipped-a-credential-stealer"
+      ]
+    },
+    {
+      "cases": [
+        "LiteLLM 1.107.0 원인: 게이트웨이 로그 속 Claude Code GitHub 토큰",
+        "Wiz LLMjacking 정황",
+        "LiteLLM 1.82.7/1.82.8 (2026-03)"
+      ],
+      "date": "2026-10-23",
+      "title": "LiteLLM 사고 원인 윤곽: 코딩 에이전트 토큰이 게이트웨이 로그에 남아 있었다",
+      "urls": [
+        "https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html",
+        "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/",
+        "https://www.chainguard.dev/unchained/litellm-attacked-again-malicious-1-107-0-wheels-on-pypi-and-docker-hub-october-2026",
+        "https://insights.integrity360.com/threat-advisories/when-security-scanners-become-the-weapon-a-break-down-of-the-litellm-supply-chain-attack"
+      ]
+    },
+    {
+      "cases": [
+        "Claude Code 확장 2.1.313 변조(Cursor 마켓플레이스·Open VSX)",
+        "Cursor 마켓플레이스 일시 중단"
+      ],
+      "date": "2026-10-31",
+      "title": "공식 Claude Code 확장에 SSH 백도어가 심겨 11시간 동안 배포됐다",
+      "urls": [
+        "https://phorion.io/blog/offical-claude-code-vsx-compromise/",
+        "https://www.stepsecurity.io/blog/claude-code-extension-trojanized",
+        "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html",
+        "https://www.unite.ai/cursor-discloses-ssh-backdoor-attempt-in-malicious-claude-code-extension/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-22",
+  "lastSeen": "2026-11-01",
+  "lastTrend": "rising",
+  "name": "AI 개발 도구 공급망 공격",
+  "radar": [
+    {
+      "date": "2026-10-22",
+      "trend": "new"
+    },
+    {
+      "date": "2026-10-23",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-31",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-01",
+      "trend": "rising"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "aliases": [
+    "spec-driven development",
+    "spec-first",
+    "SPEC.md",
+    "JetBrains Thinkrail",
+    "ThinkRail",
+    "agent IDE"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "JetBrains Thinkrail",
+        "SPEC.md 그래프"
+      ],
+      "date": "2026-10-28",
+      "title": "에이전트가 직접 고쳐 쓰는 SPEC.md: JetBrains가 명세 중심 에이전트 IDE를 공개",
+      "urls": [
+        "https://github.com/JetBrains/thinkrail",
+        "https://news.hada.io/topic?id=35994"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-28",
+  "lastSeen": "2026-10-28",
+  "lastTrend": "new",
+  "name": "명세 중심 에이전트 IDE",
+  "radar": [
+    {
+      "date": "2026-10-28",
+      "trend": "new"
+    }
+  ]
+}

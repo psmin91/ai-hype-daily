@@ -1,0 +1,40 @@
+{
+  "aliases": [
+    "self-hosted coding model",
+    "Revolut GLM",
+    "GLM 5.3",
+    "GLM 5.1",
+    "OpenCode",
+    "on-prem LLM for developers",
+    "FP4 serving",
+    "Kimi K3.1 Pro",
+    "local coding models"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Revolut GLM 5.3 자체 호스팅(B200 약 56장)"
+      ],
+      "date": "2026-11-05",
+      "title": "코딩 모델을 자체 GPU 56장으로: Revolut이 개발자 2,000명에게 오픈 웨이트 GLM을 기본값으로 준 방법",
+      "urls": [
+        "https://aie-nyc-2026-talks.swyxio.workers.dev/talks/david-abitbol-revolut",
+        "https://news.hada.io/topic?id=36534"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-05",
+  "lastSeen": "2026-11-06",
+  "lastTrend": "rising",
+  "name": "오픈 웨이트 코딩 모델 자체 호스팅",
+  "radar": [
+    {
+      "date": "2026-11-05",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-06",
+      "trend": "rising"
+    }
+  ]
+}

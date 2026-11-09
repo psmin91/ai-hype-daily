@@ -1,0 +1,209 @@
+{
+  "date": "2026-10-30",
+  "headline": "이번 주엔 모델 안쪽을 직접 손대는 기법이 눈에 띄었다. 가중치에 CPU를 컴파일해 넣고, 어텐션을 고정 크기로 묶어 수백 쪽 문서를 한 번에 읽고, 반대로 공격자는 모델의 안전장치를 역이용해 AI 분석을 막기 시작했다.",
+  "issueNo": 10,
+  "period": "10월 22일~30일",
+  "radar": [
+    {
+      "note": "Qwen 3.5 4B 안에 RISC-V CPU를 넣은 Qwenputer가 Hacker News 662점을 받으며 처음 포착.",
+      "since": "",
+      "tech": "가중치에 컴파일한 컴퓨터",
+      "topic": "compiled-weights",
+      "trend": "new"
+    },
+    {
+      "note": "바이두가 10/27 수백 쪽 문서를 한 요청으로 읽는 3B OCR 모델 Unlimited-OCR 2를 MIT로 공개, 지난달 다운로드 1만 8천 회를 넘기며 처음 포착.",
+      "since": "",
+      "tech": "장문 다중 페이지 문서 파싱",
+      "topic": "long-document-ocr",
+      "trend": "new"
+    },
+    {
+      "note": "10/23 '가짜 통계 인용'에 이어, 이번 주엔 안티봇 스크립트가 숨은 탈옥 문구와 위험 단어로 AI의 코드 분석을 거부하게 만드는 사례(HN 1,500점)가 나오며 공격 대상이 분석가 쪽으로 넓어짐.",
+      "since": "첫 포착 10/21",
+      "tech": "숨은 지시문 · 간접 프롬프트 인젝션",
+      "topic": "indirect-prompt-injection",
+      "trend": "spreading"
+    },
+    {
+      "note": "10/28까지 확산 → UIUC의 Memory Tax 논문(HF 트렌딩 101표)이 전용 메모리 시스템이 단순 RAG보다 못한 경우가 많다고 지적해, 관심과 회의가 함께 정점.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 메모리",
+      "topic": "agent-memory",
+      "trend": "peak"
+    },
+    {
+      "note": "부상 유지. 대형 벤더 설계(OpenShell, ACE)에 이어 도구 호출마다 새 컨테이너를 띄우는 오픈소스 런타임 kern이 10/29 GeekNews에 소개됨(자체 측정 docker run 대비 약 80배).",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "rising"
+    },
+    {
+      "note": "SkyPilot이 10/29 GB200·GB300 NVL72 랙을 16노드 슬라이스와 예비 노드 2대로 나눠 쓰면 가용 GPU가 27% 늘어난다는 모델 분석을 공개(HN 1면). 처음 포착.",
+      "since": "",
+      "tech": "토폴로지 인식 GPU 스케줄링",
+      "topic": "topology-aware-gpu-scheduling",
+      "trend": "new"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "모델 내부 구조",
+      "domains": [
+        "divagr.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "모델이 암산으로 계산",
+        "Python 같은 외부 도구 호출",
+        "가중치 안에 심은 CPU가 직접 실행"
+      ],
+      "how": "원래 Qwen 32개 층 앞에 11개 층을 추가했고 기존 가중치는 바꾸지 않았습니다. Qwen은 이미 아는 도구 호출 형식으로 CPU에 명령을 보내고 결과를 읽으며, C와 MicroPython 프로그램도 돌립니다. 실험적 파일 시스템은 최대 512개 파일, 약 5만 3천 토큰 분량을 담고, 세션을 넘어 바뀐 사실을 90% 맞게 유지했습니다(이전 대화를 다시 붙여 넣은 경우 30%). L4 GPU에서 초당 약 3,200 CPU 토큰을 처리하고, 24GB GPU 한 장에서 돌아갑니다.",
+      "hype": 4,
+      "meterNote": "전용 드라이버 없이는 부팅되지 않고 체크포인트가 18.8GB로 두 배 커지는 연구용 시연 단계",
+      "reality": "모든 수치는 글쓴이 자체 측정입니다. 명령 하나에 토큰 여러 개가 들어 큰 계산은 밀리초가 아니라 초 단위로 걸리고, 일반 generate() 호출로는 아직 작동하지 않습니다. 정확한 계산이 목적이라면 지금은 외부 Python 도구가 더 싸고 빠르며, 실용적 이점보다는 모델 내부를 정밀하게 다룰 수 있다는 시연의 의미가 큽니다.",
+      "refs": [
+        {
+          "src": "divagr.com · 10/22",
+          "title": "Qwenputer: Qwen 3.5 안에서 돌아가는 결정적 RISC-V CPU",
+          "url": "https://divagr.com/blog/qwenputer"
+        },
+        {
+          "src": "Hacker News · 10/30",
+          "title": "Hacker News 1면: Qwenputer(662점)",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "공개 실험",
+          "tone": "preview"
+        },
+        {
+          "label": "Hacker News 1면",
+          "tone": "live"
+        }
+      ],
+      "title": "언어 모델 가중치 안에 CPU를 '컴파일'해 넣었다: Qwenputer",
+      "tldr": [
+        "Divyansh Agrawal이 10월 22일 Qwen 3.5 4B에 32비트 RISC-V CPU(RV32IM)를 학습 없이 가중치로 직접 써 넣은 Qwenputer를 공개했습니다. Hacker News에서 662점을 받았습니다.",
+        "Qwen 3.5의 Gated DeltaNet 층에서 망각 게이트와 쓰기 강도를 1로 고정해 주소로 읽고 쓰는 RAM처럼 썼습니다. 공식 riscv-tests를 통과했고 1,800만 명령을 오류 없이 실행했다고 밝혔습니다.",
+        "NUPA 긴 정수 산술 정확도가 48.6%에서 100%로 올라 Python 도구를 쓴 경우와 같아졌습니다. 일반 텍스트 출력은 원래 모델과 거의 같았습니다(KL 6e-4)."
+      ],
+      "topic": "compiled-weights",
+      "use": 1,
+      "what": "학습으로 기능을 익히게 하는 대신, 원하는 계산 절차를 컴파일러가 가중치 값으로 직접 바꿔 모델에 끼워 넣는 기법입니다. 어텐션 헤드는 조회, 피드포워드는 산술, 선형 RNN 상태는 메모리를 맡아, 모델이 토큰을 내보내는 과정 자체가 CPU의 실행이 됩니다.",
+      "why": "선형 RNN을 섞은 하이브리드 모델이 늘면서, 길이와 상관없이 크기가 고정된 그 상태를 정확한 메모리로 쓸 수 있다는 점을 실제 공개 모델로 보여 줬기 때문입니다. 글쓴이는 이를 AI 안전 연구 도구로도 보고, 후속 글에서 모델이 RNN 상태에 추론을 숨겨 사고 과정 모니터링을 피할 가능성과 모델이 끌 수 없는 컴파일된 감시 장치를 다룹니다."
+    },
+    {
+      "category": "문서 AI",
+      "domains": [
+        "huggingface.co",
+        "news.hada.io"
+      ],
+      "flow": [
+        "페이지마다 따로 OCR 후 이어 붙이기",
+        "범용 멀티모달 모델에 여러 페이지 입력",
+        "페이지 간 문맥을 잇는 장문 전용 OCR 모델"
+      ],
+      "how": "Transformers로는 infer_multi 한 번에 모든 페이지를 넣고, 출력에 페이지마다 구분 표시가 붙습니다. 운영용으로는 맞춤 SGLang을 권장하며, 기본 설정은 10쪽 단위 창으로 나누되 앞 창의 KV 캐시 꼬리를 다음 창에서 재사용해 문맥을 잇습니다. 환경 변수 하나로 문서 전체를 한 창으로 처리할 수도 있고, PDF는 300dpi 이미지로 바꿔 OpenAI 호환 API로 보냅니다.",
+      "hype": 3,
+      "meterNote": "모델·코드·SGLang 서빙 설정까지 공개돼 바로 써 볼 수 있고, Hugging Face 지난달 다운로드 1만 8천 회",
+      "reality": "비교 점수는 바이두가 자체 벤치마크로 잰 결과이고 독립 검증은 아직 없습니다. 창을 줄이면 메모리는 줄지만 창 경계를 넘는 표·문단의 병합 품질이 떨어질 수 있다고 모델 카드가 직접 밝힙니다. 동시 요청 32개 이상에서는 메모리 비율을 0.7로 낮추라는 등 운영 조정 항목이 많아, 대량 처리에는 튜닝이 필요합니다.",
+      "refs": [
+        {
+          "src": "Hugging Face · 10/27",
+          "title": "Unlimited-OCR 2 모델 카드(라이선스·SR-SWA·서빙 설정)",
+          "url": "https://huggingface.co/baidu/Unlimited-OCR-2"
+        },
+        {
+          "src": "GeekNews · 10/28",
+          "title": "GeekNews: 페이지 간 문맥을 잇는 OCR 모델 요약과 벤치마크 표",
+          "url": "https://news.hada.io/topic?id=36137"
+        }
+      ],
+      "stages": [
+        {
+          "label": "10/27 오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "점수는 자체 공개",
+          "tone": "preview"
+        }
+      ],
+      "title": "수백 쪽을 한 번에 읽는 OCR: 어텐션을 고정 크기로 묶은 Unlimited-OCR 2",
+      "tldr": [
+        "바이두가 10월 27일 30억(3B) 파라미터 OCR 모델 Unlimited-OCR 2를 MIT 라이선스로 공개했습니다. 여러 페이지를 한 요청에 넣어 표·문단이 페이지를 넘어가도 이어서 읽는 것이 목표입니다.",
+        "핵심은 SR-SWA라는 어텐션으로, 텍스트와 이미지 사이의 상호작용을 512토큰 같은 고정 크기 참조 집합으로 압축해 문서가 길어져도 디코딩 지연과 메모리를 거의 일정하게 유지합니다.",
+        "바이두 자체 공개 점수로 수백 쪽 문서 벤치마크 MarathonDocBench에서 77.1점을 받아, 비교 대상 중 가장 높은 Kimi-K3(33.7점)를 크게 앞섰습니다. 이전 버전은 0점이었습니다."
+      ],
+      "topic": "long-document-ocr",
+      "use": 4,
+      "what": "장문 문서 파싱 모델은 PDF나 스캔본을 텍스트·표·수식·읽기 순서까지 살려 구조화된 결과로 바꾸는 모델입니다. 기존 OCR은 페이지를 하나씩 처리해 페이지 경계에서 표가 끊기거나 제목 위계가 어긋나는 문제가 있었는데, 이 모델은 문서 전체를 이어진 하나의 입력으로 다룹니다.",
+      "why": "RAG와 에이전트가 사내 문서를 읽는 일이 많아지면서, 검색 품질의 출발점인 문서 파싱이 병목으로 지목돼 왔습니다. 평가용 데이터셋 MarathonDocBench까지 함께 공개돼 비교 기준을 제시했고, GeekNews에서도 13점을 받으며 소개됐습니다."
+    },
+    {
+      "category": "AI 보안",
+      "domains": [
+        "nullpt.rs",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "변수 이름 뒤섞기 같은 전통 난독화",
+        "AI로 난독화 코드를 풀어 읽기",
+        "AI 안전 거부를 유발하는 미끼 문자열 심기"
+      ],
+      "how": "글쓴이는 Playwright로 사이트를 돌며 canvas toDataURL 호출과 navigator.webdriver 같은 봇 탐지 속성을 가로채 약 1,033개의 캔버스 그림을 모았고, 그중 하나에서 문제의 스크립트를 찾았습니다. 실제 기능은 브라우저·WebGL 정보를 모으는 평범한 지문 수집이었고, Node 환경에서만 도는 분기에는 설정·자격 증명 파일 읽기와 crontab 지속 실행 같은 코드가 들어 있었습니다. 글쓴이는 이 분기도 AI를 겨냥한 미끼로 보지만, 무해하다고 확인하지는 않았습니다.",
+      "hype": 4,
+      "meterNote": "실제 사이트에 배포된 사례 1건이 확인된 단계이며, 방어 도구나 체계적인 측정은 아직 없음",
+      "reality": "사례는 스크립트 하나이고, 의도는 글쓴이의 해석입니다. 비슷한 이름의 러시아 트래픽 보안 업체 도메인이 있다고 했을 뿐 배후는 확정되지 않았습니다. 대응책으로 숨은 유니코드 문자를 미리 걸러내거나 분석 단계에서 거부가 나면 다른 모델로 넘기는 방법이 떠오르지만, 아직 정리된 방어 기법은 없습니다.",
+      "refs": [
+        {
+          "src": "nullpt.rs · 10/28",
+          "title": "이 지문 수집 스크립트는 왜 생물무기를 만들고 있을까",
+          "url": "https://nullpt.rs/fingerprinting-bioweapons"
+        },
+        {
+          "src": "Hacker News · 10/30",
+          "title": "Hacker News 1면: 지문 수집 스크립트 분석(1,500점)",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "실제 웹에서 발견",
+          "tone": "issue"
+        }
+      ],
+      "title": "모델의 안전장치를 방패로: AI가 분석을 거부하게 만드는 난독화 스크립트",
+      "tldr": [
+        "보안 블로그 nullpt.rs가 10월 28일, Tranco 상위 1만 개 사이트를 크롤링하다 찾은 안티봇 지문 수집 스크립트를 분석해 공개했습니다. Hacker News에서 1,500점으로 이번 주 1면 최고 점수였습니다.",
+        "스크립트 안에는 화면에 보이지 않는 유니코드 태그 문자로 숨긴 탈옥형 '시스템 재정의' 문구와, 치사량 같은 위험한 단어를 넣은 변수 이름이 섞여 있었습니다.",
+        "글쓴이가 AI 모델에 난독화 해제를 맡기자 한 모델은 생물 안전 위험을 이유로 거부했고, GLM-5.3은 같은 요청을 수행했습니다. 글쓴이는 이 문자열이 AI 분석을 막으려는 미끼라고 결론지었습니다."
+      ],
+      "topic": "indirect-prompt-injection",
+      "updateOf": {
+        "date": "2026-10-21",
+        "note": "10/21엔 사용자용 AI를 속이는 웹페이지 속 숨은 지시문을 다뤘고, 이번엔 같은 기법이 AI의 코드 분석을 막는 용도로 실제 스크립트에서 쓰인 사례가 나왔습니다."
+      },
+      "use": 2,
+      "what": "간접 프롬프트 인젝션은 AI가 읽는 데이터 안에 지시를 심어 AI의 행동을 바꾸는 공격입니다. 이번 사례는 그 기법을 사용자 쪽이 아니라 분석가 쪽 AI에 겨눴습니다. 코드에 일부러 위험해 보이는 단어와 숨은 지시를 넣어, AI 보조 리버스 엔지니어링이 안전 정책에 걸려 멈추게 만드는 방식입니다.",
+      "why": "코드 리뷰, 악성코드 분석, 의존성 점검을 AI에 맡기는 개발자가 늘었기 때문입니다. 분석 대상 텍스트가 분석 도구의 판단을 흔들 수 있다면, AI 보안 점검 파이프라인 자체가 회피당할 수 있습니다. 모델마다 거부 여부가 달랐다는 점도 도구 선택 문제로 이어졌습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Google Cloud Blog",
+      "text": "구글 온라인 행사 'The Future of AI Infrastructure'. Agent Compute Engine 프리뷰 일정이 나올지 주목",
+      "url": "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive?hl=en",
+      "when": "11/9"
+    }
+  ]
+}

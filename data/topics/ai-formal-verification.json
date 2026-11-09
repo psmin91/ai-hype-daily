@@ -1,0 +1,61 @@
+{
+  "aliases": [
+    "formal verification",
+    "Rocq",
+    "Verus",
+    "proof automation",
+    "OSS-Fuzz crash-freedom proofs",
+    "Theorem",
+    "OSS Verify",
+    "Lean",
+    "Axiom",
+    "CFSG",
+    "autoformalization",
+    "Mathlib"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Anthropic·Theorem 123개 라이브러리 무충돌 증명(Rocq)",
+        "Verus Python 인터프리터"
+      ],
+      "date": "2026-10-24",
+      "title": "LLM이 '이 코드는 어떤 입력에도 죽지 않는다'를 증명하기 시작했다",
+      "urls": [
+        "https://www.anthropic.com/research/formal-verification",
+        "https://news.ycombinator.com/item?id=50202217"
+      ]
+    },
+    {
+      "cases": [
+        "Axiom CFSG Lean 형식화(4,310만 줄)"
+      ],
+      "date": "2026-10-29",
+      "title": "에이전트 수십 개가 24일 동안 4,310만 줄짜리 Lean 증명을 썼다",
+      "urls": [
+        "https://axiommath.ai/research/the-enormous-theorem-formalized/",
+        "https://cfsg.axiommath.ai/",
+        "https://runtimewire.com/article/axiom-s-ceo-says-no-one-outside-the-company-has-rebuilt-its-43-million-line-proo",
+        "https://news.ycombinator.com/item?id=50261647"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-24",
+  "lastSeen": "2026-10-29",
+  "lastTrend": "spreading",
+  "name": "LLM 기반 형식 검증",
+  "radar": [
+    {
+      "date": "2026-10-24",
+      "trend": "new"
+    },
+    {
+      "date": "2026-10-25",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-29",
+      "trend": "spreading"
+    }
+  ]
+}

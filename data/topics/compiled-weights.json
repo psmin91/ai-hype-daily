@@ -1,0 +1,43 @@
+{
+  "aliases": [
+    "Qwenputer",
+    "compiled weights",
+    "weights as computer",
+    "Gated DeltaNet as RAM",
+    "in-model CPU",
+    "RvChat",
+    "doomformer",
+    "neural nets compiled into DOOM maps",
+    "Astra MinAtar policy from zero weights"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Qwenputer"
+      ],
+      "date": "2026-10-30",
+      "title": "언어 모델 가중치 안에 CPU를 '컴파일'해 넣었다: Qwenputer",
+      "urls": [
+        "https://divagr.com/blog/qwenputer"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-30",
+  "lastSeen": "2026-11-03",
+  "lastTrend": "spreading",
+  "name": "가중치에 컴파일한 컴퓨터",
+  "radar": [
+    {
+      "date": "2026-10-30",
+      "trend": "new"
+    },
+    {
+      "date": "2026-10-31",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-03",
+      "trend": "spreading"
+    }
+  ]
+}

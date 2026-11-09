@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-22",
+  "headline": "AI가 찾아낸 PHP 취약점과 AI 게이트웨이를 노린 공급망 공격이 같은 날 터졌다. 공격과 방어 모두 사람이 아니라 '모델을 둘러싼 장치'에서 승부가 나고, 그 장치를 다듬는 하네스 엔지니어링이 개발자들의 새 공부거리가 됐다.",
+  "issueNo": 2,
+  "period": "10월 15일~22일",
+  "radar": [
+    {
+      "note": "레이더 첫 등장. PHP2Shell(HN 383점)과 OpenAI 'Patch the Planet'이 같은 날 공개되며 AI가 찾은 버그의 '공개 절차'가 새 쟁점으로 떠오름.",
+      "since": "",
+      "tech": "AI 에이전트 취약점 발굴",
+      "topic": "ai-vuln-discovery",
+      "trend": "rising"
+    },
+    {
+      "note": "LiteLLM 1.107.0 악성 배포. LLM 프록시 키와 코딩 에이전트 토큰을 노린 첫 대형 사례로 HN 1면에 오름.",
+      "since": "",
+      "tech": "AI 개발 도구 공급망 공격",
+      "topic": "ai-supply-chain",
+      "trend": "new"
+    },
+    {
+      "note": "Harness²가 Hugging Face 트렌딩 논문 1위, GeekNews 1면에는 300줄짜리 하네스 입문서. '모델 말고 하네스를 고친다'는 흐름이 용어로 굳는 중.",
+      "since": "",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "rising"
+    },
+    {
+      "note": "어제에 이어 상승 유지. MemT-1.0이 HF 트렌딩 상위에 올랐고 GeekNews에는 고장 난 기억만 고치는 MemScope와 메모리 구현 질문이 이어짐.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 메모리 전용 모델",
+      "topic": "agent-memory",
+      "trend": "rising"
+    },
+    {
+      "note": "확산 유지. 다만 LiteLLM 사고로 '키를 한곳에 모으는 게이트웨이'가 곧 고가치 표적이라는 반대 측면이 함께 부각됨.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. 개념을 입체 도해로 그리는 Anatomy 스킬, Claude Code 플러그인 Superlite가 GeekNews 상위에 오름.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 스킬 · 마크다운 컨텍스트",
+      "topic": "agent-skills-context",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 6,
+  "stories": [
+    {
+      "category": "보안 · 취약점 발굴",
+      "domains": [
+        "wiz.io",
+        "thephp.foundation",
+        "openai.com",
+        "blog.cloudflare.com"
+      ],
+      "flow": [
+        "사람이 퍼징·코드 감사로 버그 탐색",
+        "AI가 보조로 후보 코드 지목",
+        "에이전트가 발견부터 익스플로잇·패치 검증까지 수행"
+      ],
+      "how": "Wiz는 모델에게 버전·설정·메모리 배치마다 익스플로잇을 맞춰 고치게 하고, 디버깅 도구의 실패 출력을 다시 넣어 반복시켰다고 설명합니다. 버그 연결과 테스트, 공개 조율은 사람이 맡았습니다. PHP 쪽은 AI로 보고서를 검증하고 중복을 묶지만, 판단과 패치는 사람이 한다고 못박았습니다. OpenAI는 운영자가 취약 버전을 점검하도록 Codex 스킬 형태의 버전 검사기를 공개했고, Cloudflare는 공개 약 9시간 전 무료 요금제까지 WAF 기본 규칙을 배포했습니다.",
+      "hype": 5,
+      "meterNote": "실제 CVE와 패치, 워드프레스·드루팔 대상 무인증 RCE 시연까지 나온 상태. 다만 대부분 대형 보안 조직의 사례.",
+      "reality": "Wiz의 '1주일 대 수개월' 비교와 모델 기여도는 자체 주장이며, 사람과 모델의 분업은 자세히 공개되지 않았습니다. 유지보수자 입장에서는 쓸모없는 AI 보고가 더 큰 짐입니다. OpenAI가 제시한 공개 기간·사전 통지 대상 같은 쟁점은 아직 질문 단계이고, 남용을 막는 차단 분류기는 정상 보안 연구도 막을 수 있다고 스스로 인정했습니다.",
+      "refs": [
+        {
+          "src": "Wiz · 10/21",
+          "title": "PHP2Shell: 4개 버그 구조, AI 활용 방식, 공개 일정",
+          "url": "https://www.wiz.io/blog/php2shell-php-rce"
+        },
+        {
+          "src": "The PHP Foundation · 10/21",
+          "title": "PHP 재단: 패치 버전, 보고 경위, AI 보고 증가와 엠바고 사고",
+          "url": "https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/"
+        },
+        {
+          "src": "OpenAI · 10/21",
+          "title": "OpenAI 'Patch the Planet': AI가 찾은 취약점의 5단계 공동 대응안",
+          "url": "https://openai.com/index/coordinated-disclosure-of-critical-vulnerabilities/"
+        },
+        {
+          "src": "Cloudflare · 10/21",
+          "title": "Cloudflare: 패치 전 WAF 기본 차단 규칙 배포",
+          "url": "https://blog.cloudflare.com/php-vulnerabilities-waf-protection/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "패치 배포",
+          "tone": "live"
+        },
+        {
+          "label": "공개 절차 논의 중",
+          "tone": "preview"
+        }
+      ],
+      "title": "AI 에이전트가 찾은 PHP 원격 실행 취약점, '패치까지의 절차'가 새 과제가 됐다",
+      "tldr": [
+        "10월 21일 PHP가 원격 코드 실행 취약점 2건(CVE-2026-109618, -109619, CVSS 9.2)을 고친 8.5.12·8.4.27·8.3.36·8.2.35를 냈습니다. Wiz는 PHP 5.4 이후 사실상 모든 버전이 영향권이라고 밝혔습니다.",
+        "Calif, OpenAI(GPT-5.6 Sol), Wiz(자체 AI 연구 도구와 Gemini 4 Argon)가 같은 뿌리의 버그를 각각 찾았습니다. Wiz는 연구자 한 명이 1주일에 끝낸 일이라고 주장합니다.",
+        "PHP 재단은 7월 1일 이후 CVE 15건을 냈고, 무효·중복·재현 불가 보고만 100건 넘게 처리했다고 밝혔습니다. OpenAI는 같은 날 5단계 공동 대응 틀 'Patch the Planet'을 제안했습니다."
+      ],
+      "topic": "ai-vuln-discovery",
+      "use": 4,
+      "what": "대형 언어 모델 에이전트가 소스 코드를 읽고, 테스트를 돌리고, 충돌 로그를 분석하며 메모리 안전성 버그를 찾아내는 기법입니다. 이번 PHP2Shell은 메모리 한도 초과 같은 치명적 오류 뒤에 남은 망가진 상태를 다음 요청이 재사용하면서 생기는 use-after-free 계열 버그 4개를 묶은 것입니다.",
+      "why": "여러 조직의 AI가 같은 버그를 거의 동시에 찾아냈다는 점이 핵심입니다. 찾는 비용이 내려가자 병목이 '발견'에서 '검증·패치·공개 조율'로 옮겨갔습니다. 실제로 이번에는 CVE 정보가 하루 먼저 새고, 개념 증명 영상이 실수로 올라가고, 한 배포사가 6시간 일찍 패치 이미지를 내면서 엠바고가 흔들렸습니다."
+    },
+    {
+      "category": "보안 · 공급망",
+      "domains": [
+        "safedep.io",
+        "docs.litellm.ai",
+        "aisle.com"
+      ],
+      "flow": [
+        "개인 PC 비밀번호·토큰 탈취",
+        "CI 비밀값·클라우드 키 탈취",
+        "LLM 프록시 DB와 코딩 에이전트 토큰까지 한 번에 수집"
+      ],
+      "how": "공격자는 공개 저장소가 아니라 릴리스 파이프라인을 건드렸습니다. 빌드 설정 한 줄로 별도 폴더를 휠에 끼워 넣어, 소스 태그만 보면 깨끗해 보였습니다. 설치되면 16개 수집 모듈이 SSH 키, AWS·GCP·Azure 자격 증명, 클라우드 메타데이터, AI 코딩 도구 토큰을 모아 암호화해 유사 도메인으로 보냈고, 백도어는 1시간마다 공격자 저장소에서 새 서버 주소를 읽어 코드를 내려받았습니다. 대응은 1.106.2 이하로 고정, 환경 재빌드, 프록시에 저장된 모든 제공사 키와 IAM 역할 교체입니다.",
+      "hype": 4,
+      "meterNote": "실제 배포된 악성 버전과 공식 사고 보고서가 있음. 피해 규모(설치 수)는 아직 공개되지 않음.",
+      "reality": "설치 수와 실제 키 유출 규모는 아직 나오지 않았습니다. 토큰이 어떻게 탈취됐는지도 조사 중입니다. 신뢰할 수 있는 게시(trusted publishing)와 승인 게이트가 있었지만 개발자 계정 토큰 여러 개가 함께 털리면 통과된다는 점이 드러났습니다. 버전 고정과 해시 검증, 빌드 산출물과 소스의 비교 같은 기본 대책이 여전히 가장 현실적입니다.",
+      "refs": [
+        {
+          "src": "SafeDep · 10/21",
+          "title": "SafeDep: 악성 휠 분석, 수집 대상과 침해 지표",
+          "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/"
+        },
+        {
+          "src": "LiteLLM · 10/21",
+          "title": "LiteLLM 공식 사고 보고: 분 단위 타임라인과 조치 방법",
+          "url": "https://docs.litellm.ai/blog/security-incident-oct-21-2026"
+        },
+        {
+          "src": "AISLE · 10/21",
+          "title": "AISLE: 업로드 3분 만에 탐지한 과정",
+          "url": "https://aisle.com/blog/litellm-11070-on-pypi-shipped-a-credential-stealer"
+        }
+      ],
+      "stages": [
+        {
+          "label": "사고 수습됨",
+          "tone": "issue"
+        },
+        {
+          "label": "원인 조사 중",
+          "tone": "preview"
+        }
+      ],
+      "title": "LLM 게이트웨이 LiteLLM에 심긴 악성 코드, AI 개발자의 키 묶음을 노렸다",
+      "tldr": [
+        "10월 21일 11:39(UTC) PyPI에 올라온 litellm 1.107.0 휠 7개에 정보 탈취 코드와 백도어가 들어 있었습니다. PyPI 배포는 약 1시간 40분, Docker Hub의 latest 등 태그는 14:20까지 노출됐습니다.",
+        "악성 파일은 .pth와 sitecustomize.py로 설치돼 litellm을 import하지 않아도 모든 파이썬 프로세스에서 실행됐고, 클라우드·CI 비밀값과 함께 LLM 프록시 DB의 API 키, Claude·Cursor·Copilot·Codex 설정까지 노렸습니다.",
+        "LiteLLM은 탈취된 것으로 보이는 GitHub CLI OAuth 토큰 3개로 릴리스 워크플로가 바뀌었다고 밝혔습니다. AISLE은 업로드 3분 14초 만에 첫 휠을 잡아냈다고 밝혔습니다(자체 측정)."
+      ],
+      "topic": "ai-supply-chain",
+      "use": 4,
+      "what": "AI 앱 개발에 쓰는 라이브러리와 도구를 감염시켜 개발자 환경의 비밀값을 빼가는 공급망 공격입니다. LiteLLM은 여러 LLM 제공사 API를 하나로 묶는 파이썬 SDK이자 프록시로, 팀의 모델 API 키를 한곳에 모아 두는 경우가 많아 가치가 큰 표적입니다.",
+      "why": "코딩 에이전트와 LLM 게이트웨이가 개발자 PC와 CI에 퍼지면서, 한 머신에 쌓이는 AI 관련 토큰이 크게 늘었습니다. 이번 악성 코드는 수집 대상에 AI 도구 설정을 명시한 사례라 Hacker News 1면에 올랐고, 같은 주 GeekNews에서 'LLM 프록시를 직접 운영해야 하나'를 다룬 글과 맞물려 게이트웨이 운영의 위험이 함께 논의됐습니다."
+    },
+    {
+      "category": "에이전트 설계",
+      "domains": [
+        "github.com",
+        "hyper.ai",
+        "news.hada.io",
+        "faros.ai"
+      ],
+      "flow": [
+        "프롬프트 엔지니어링",
+        "컨텍스트 엔지니어링",
+        "하네스 엔지니어링"
+      ],
+      "how": "Harness²는 한 과제에서 일반적 수정안과 도메인 특화 수정안을 하나씩 만들어 같은 과제로 돌려 보고, 기준 실행과의 행동 차이를 근거로 남길 변경을 고릅니다. 검증된 교훈만 라이브러리에 쌓아 다음 과제에 씁니다. OpenCode와 Codex를 실행기로 지원합니다. 입문서 쪽은 '모든 프레임워크는 1장 루프의 래퍼'라는 관점에서 캐싱, 하위 에이전트, MCP·스킬·훅, worktree 격리를 장마다 하나씩 붙여 봅니다.",
+      "hype": 4,
+      "meterNote": "코딩 에이전트 업계에서는 이미 쓰는 개념이지만, 자동 개선 기법은 벤치마크 수준 결과만 있음.",
+      "reality": "Hacker News에서는 과거 실행을 보고 스킬과 시스템 프롬프트를 고치는 건 이미 다들 하는 일이라 새롭지 않다는 반응이 나왔습니다. Harness²의 이득은 모델·벤치마크마다 들쭉날쭉하고, 실행기 네트워크가 열려 있어 에이전트가 채점 기준을 볼 수 있으니 차단하라고 README가 직접 경고합니다. 입문서 역시 AI가 쓴 듯한 문체라는 지적을 받았습니다.",
+      "refs": [
+        {
+          "src": "GitHub · 10/22 확인",
+          "title": "Harness² 저장소: 구조, 지원 실행기, 실행 시 주의점",
+          "url": "https://github.com/google-research/harness2"
+        },
+        {
+          "src": "hyper.ai · 10/22 확인",
+          "title": "Harness² 논문 요약: Propose-Probe-Compose 방식과 벤치마크 결과",
+          "url": "https://hyper.ai/en/papers/2610.14224"
+        },
+        {
+          "src": "GeekNews · 10/20",
+          "title": "Harness Engineering 101: 300줄 파이썬으로 배우는 에이전트 하네스",
+          "url": "https://news.hada.io/topic?id=35651"
+        },
+        {
+          "src": "Faros · 7/15 갱신",
+          "title": "하네스 엔지니어링 개념 정리와 LangChain 사례",
+          "url": "https://www.faros.ai/blog/harness-engineering"
+        }
+      ],
+      "stages": [
+        {
+          "label": "오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "연구 단계",
+          "tone": "preview"
+        }
+      ],
+      "title": "모델은 그대로, '하네스'를 고친다: 하네스 엔지니어링이 용어로 자리 잡는 중",
+      "tldr": [
+        "구글 리서치·노스웨스턴대의 Harness²가 10월 19일 공개돼 Hugging Face 트렌딩 논문 1위(115표)에 올랐습니다. GitHub 저장소는 별 1만 5,800개입니다.",
+        "모델 가중치는 고정한 채 시스템 프롬프트·메모리·스킬 등 8개 구성 요소를 스스로 고쳐, 정답 채점기 없이 WorkBuddy-Bench에서 최대 11.5점을 올렸다고 보고했습니다(저자 측정).",
+        "GeekNews 1면에는 프레임워크 없이 파이썬 약 300줄로 에이전트 루프를 짜며 배우는 'Harness Engineering 101'(16개 장)이 올랐습니다."
+      ],
+      "topic": "harness-engineering",
+      "use": 3,
+      "what": "하네스는 LLM을 감싸는 실행 장치입니다. 매 턴 대화 배열을 만들어 보내고, 도구 호출을 실행해 결과를 돌려주고, 컨텍스트 예산과 하위 에이전트, 가드레일을 관리합니다. 하네스 엔지니어링은 모델을 바꾸지 않고 이 장치를 설계·개선해 성능과 신뢰성을 올리는 일을 말합니다.",
+      "why": "같은 모델로도 하네스에 따라 결과가 크게 갈린다는 사례가 쌓였기 때문입니다. Faros는 LangChain 코딩 에이전트가 모델은 그대로 두고 하네스만 바꿔 3월 Terminal Bench 2.0에서 30위에서 5위로 올랐다고 정리했습니다. 프롬프트(2022~23), 컨텍스트(2024~25)에 이은 세 번째 단계라는 구도로 용어가 퍼지고 있습니다."
+    }
+  ],
+  "watch": []
+}

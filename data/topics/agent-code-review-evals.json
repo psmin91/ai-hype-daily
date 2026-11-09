@@ -1,0 +1,54 @@
+{
+  "aliases": [
+    "AI code review",
+    "review agents",
+    "Entire Trails",
+    "Sphinx",
+    "slop eval",
+    "comprehension check hook",
+    "verification pattern",
+    "verifications/{pr}.md",
+    "review fatigue",
+    "OpenQodex",
+    "Momentic",
+    "agent QA",
+    "verification loop",
+    "human attention bottleneck"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Entire Trails",
+        "Sphinx"
+      ],
+      "date": "2026-10-27",
+      "title": "diff 대신 리뷰 에이전트의 점수로 머지한다: eval 기반 코드 리뷰의 등장",
+      "urls": [
+        "https://entire.com/blog/the-git-forge-for-agent-human-collaboration",
+        "https://news.hada.io/topic?id=35945"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-27",
+  "lastSeen": "2026-11-04",
+  "lastTrend": "spreading",
+  "name": "eval 점수 기반 코드 리뷰",
+  "radar": [
+    {
+      "date": "2026-10-27",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-02",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-03",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-04",
+      "trend": "spreading"
+    }
+  ]
+}

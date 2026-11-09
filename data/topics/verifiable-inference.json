@@ -1,0 +1,32 @@
+{
+  "aliases": [
+    "provable inference",
+    "inference verification",
+    "zkML",
+    "zkSNARK inference",
+    "model substitution detection",
+    "Attestable"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Anthropic 증명 가능한 추론 (Llama 4 Maverick)"
+      ],
+      "date": "2026-11-05",
+      "title": "'그 모델이 답한 게 맞나'를 암호로 증명한다: 증명 가능한 추론",
+      "urls": [
+        "https://www.anthropic.com/research/provable-inference"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-05",
+  "lastSeen": "2026-11-05",
+  "lastTrend": "new",
+  "name": "증명 가능한 추론",
+  "radar": [
+    {
+      "date": "2026-11-05",
+      "trend": "new"
+    }
+  ]
+}

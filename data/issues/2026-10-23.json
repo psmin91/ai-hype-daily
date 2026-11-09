@@ -1,0 +1,226 @@
+{
+  "date": "2026-10-23",
+  "headline": "AI의 출력이 글에서 실행되는 화면으로, 실제 프로그램에서 그 흉내로 넓어지고 있다. 그만큼 모델과 도구 사이를 오가는 기록도 늘어, LiteLLM 사고는 그 기록 자체가 공격 통로가 될 수 있음을 보여줬다.",
+  "issueNo": 3,
+  "period": "10월 16일~23일",
+  "radar": [
+    {
+      "note": "레이더 첫 등장. ChatGPT Intelligent UI(10/7)에 이어 오픈소스 재현 OpenIntelligentUI가 별 약 1,600개를 받으며 개발자 쪽으로 번지는 중.",
+      "since": "",
+      "tech": "생성형 UI",
+      "topic": "generative-ui",
+      "trend": "new"
+    },
+    {
+      "note": "레이더 첫 등장. 360M 모델이 터미널을 흉내 내는 WorldTUI가 HN 435점.",
+      "since": "",
+      "tech": "프로그램을 흉내 내는 소형 월드 모델",
+      "topic": "neural-world-model",
+      "trend": "new"
+    },
+    {
+      "note": "어제 첫 등장 → 원인이 코딩 에이전트 토큰의 로그 유출로 지목되고 탈취 자격 증명 사용 정황까지 나오며 부상.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 개발 도구 공급망 공격",
+      "topic": "ai-supply-chain",
+      "trend": "rising"
+    },
+    {
+      "note": "부상 유지. GeekNews에서 300줄 입문서가 69점까지 올랐고, 에이전트의 '완료' 보고를 해시로 검증하는 글이 함께 읽힘.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "rising"
+    },
+    {
+      "note": "10/21 구글 사례로 포착 → 이번 주 Anthropic Claude Duet(HN 516점), 오픈소스 개인 에이전트 nanoMuse 논문(HF 118표)이 나오며 부상.",
+      "since": "첫 포착 10/21",
+      "tech": "계정을 가진 업무 에이전트",
+      "topic": "agent-coworker",
+      "trend": "rising"
+    },
+    {
+      "note": "10/21 WhatsApp 사례로 부상 → 가짜 통계 5만 쪽이 ChatGPT 답변과 논문에 인용된 실험이 GeekNews에 오르며 'AI가 읽는 웹 오염' 논의로 확산.",
+      "since": "첫 포착 10/21",
+      "tech": "숨은 지시문 · 간접 프롬프트 인젝션",
+      "topic": "indirect-prompt-injection",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "AI 인터페이스",
+      "domains": [
+        "techcrunch.com",
+        "github.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "텍스트와 마크다운 표",
+        "미리 만든 위젯을 골라 띄우기",
+        "질문마다 화면을 생성해 샌드박스에서 실행"
+      ],
+      "how": "OpenIntelligentUI는 Next.js 프런트엔드와 LangChain Deep Agents 백엔드를 CopilotKit으로 잇습니다. 생성된 화면은 스트리밍되며 미리보기 iframe에 깜빡임 없이 반영되고, 최종 화면은 공용 디자인 CSS를 쓰는 샌드박스 iframe에서 실행됩니다. 화면 안의 코드는 검증된 sendPrompt·openLink 함수로만 호스트와 대화합니다. 사용자가 표를 받은 뒤 '차트로 바꿔 줘'라고 하면 같은 데이터를 다른 형식으로 다시 그립니다.",
+      "hype": 4,
+      "meterNote": "ChatGPT 사용자에겐 이미 기본 기능. 자체 앱 도입은 데모와 초기 단계",
+      "reality": "README는 성능이 높은 모델이 필요하고 작은 모델은 레이아웃이 깨질 수 있다고 밝힙니다. 화면마다 코드를 생성하므로 토큰 비용과 지연이 커지고, 생성된 코드의 안전성은 샌드박스 설계에 달려 있습니다. 시각 자료가 늘어날수록 설명이 정확한지 검토하기 어려워진다는 점도 남습니다. ChatGPT도 사용자가 시각 자료 양을 줄이는 설정을 따로 두었습니다.",
+      "refs": [
+        {
+          "src": "TechCrunch · 10/7",
+          "title": "ChatGPT, GPT-6와 함께 인터랙티브 시각 답변 Intelligent UI 도입",
+          "url": "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/"
+        },
+        {
+          "src": "GitHub",
+          "title": "OpenIntelligentUI 저장소: 출력 형식 결정 규칙과 샌드박스 구조",
+          "url": "https://github.com/CopilotKit/OpenIntelligentUI"
+        },
+        {
+          "src": "GeekNews · 10/22",
+          "title": "GeekNews 소개: ChatGPT Intelligent UI의 오픈소스 대체 구현",
+          "url": "https://news.hada.io/topic?id=35735"
+        }
+      ],
+      "stages": [
+        {
+          "label": "ChatGPT 정식 적용",
+          "tone": "live"
+        },
+        {
+          "label": "오픈소스 재현 등장",
+          "tone": "preview"
+        }
+      ],
+      "title": "답을 글 대신 '화면'으로: 생성형 UI가 ChatGPT에서 오픈소스로 번지다",
+      "tldr": [
+        "OpenAI가 10월 7일 GPT-6와 함께 ChatGPT에 Intelligent UI를 넣었습니다. 답변에 누를 수 있는 버튼, 계산기, 움직이는 차트, 편집 가능한 그래프가 함께 나옵니다.",
+        "CopilotKit은 같은 방식을 자기 앱에 붙이는 오픈소스 OpenIntelligentUI를 MIT 라이선스로 공개했고, GitHub 별 약 1,600개를 받았습니다. GeekNews에도 소개됐습니다.",
+        "질문 유형에 따라 흐름도는 SVG, 추세는 Chart.js, 3D는 Three.js, 네트워크는 D3.js로 그리고, 단순 사실 질문은 그림 없이 글로 답하도록 규칙을 둡니다."
+      ],
+      "topic": "generative-ui",
+      "use": 3,
+      "what": "생성형 UI는 모델이 답을 글로만 쓰지 않고, 그 질문에 맞는 화면 조각을 즉석에서 만들어 보여주는 방식입니다. 미리 만든 컴포넌트를 데이터로 지정하는 방식과, HTML·JS를 직접 생성해 격리된 iframe에서 돌리는 방식이 함께 쓰입니다.",
+      "why": "ChatGPT라는 가장 큰 채팅 서비스가 기본 응답 형식을 바꾸자, 자기 서비스의 챗봇도 같은 경험을 내야 하는 개발자들이 구현 방법을 찾기 시작했습니다. 구글이 공개한 UI 명세 A2UI처럼 '화면을 데이터로 기술하는' 규격도 함께 언급됩니다."
+    },
+    {
+      "category": "월드 모델",
+      "domains": [
+        "simedw.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "실제 프로그램 실행",
+        "LLM에게 터미널 흉내를 프롬프트로 요청",
+        "화면 갱신만 학습한 전용 소형 모델"
+      ],
+      "how": "입력은 원시 터미널 바이트와 시간 경과를 뜻하는 WAIT 토큰이고, 출력은 바뀐 줄의 내용과 커서 위치입니다. 이전 화면의 줄을 그대로 가져오는 COPY 연산으로 스크롤 비용을 줄이고, 줄마다 병렬로 디코딩한 뒤 같은 모델로 검증하는 추측 디코딩으로 큰 화면의 p95 지연을 6.7초에서 0.87초로 낮췄습니다. int4로 줄인 208MB 모델이 WebGPU로 브라우저 안에서 돌아갑니다.",
+      "hype": 3,
+      "meterNote": "데모와 실험 단계. 실제 업무에 쓰는 사례는 없음",
+      "reality": "저자 스스로 약한 월드 모델이라고 부릅니다. 파일에 줄을 덧붙인 뒤 cat하면 그 줄이 빠지는 일이 잦고, 익숙하지 않은 명령 조합이나 복잡한 파이썬 계산은 그럴듯한 오답을 냅니다. 벤치마크는 저자가 직접 만든 것이고, 글 작성 시점에 가중치는 아직 공개되지 않았습니다.",
+      "refs": [
+        {
+          "src": "simedw.com · 10/21",
+          "title": "WorldTUI: 터미널 흉내를 내도록 360M 모델을 학습시킨 과정",
+          "url": "https://simedw.com/2026/10/21/world-model-terminal/"
+        },
+        {
+          "src": "Hacker News · 10/23",
+          "title": "Hacker News 1면: WorldTUI 토론",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "브라우저 데모 공개",
+          "tone": "live"
+        },
+        {
+          "label": "가중치 미공개",
+          "tone": "preview"
+        }
+      ],
+      "title": "쉘 없이 키 입력만으로 화면을 예측하는 360M '터미널 월드 모델'",
+      "tldr": [
+        "개발자 simedw가 10월 21일 공개한 WorldTUI는 실제 쉘이나 파일 시스템 없이, 키 입력을 받아 다음 터미널 화면을 예측하는 360M 파라미터 모델입니다. Hacker News에서 435점을 받았습니다.",
+        "Qwen2.5-Coder-0.5B에서 어휘를 333개 토큰으로 줄였고, Docker 안에서 실제 프로그램을 돌려 녹화한 33.6만 개 세션, 약 20억 토큰으로 RTX 4090 한 장에서 약 75 GPU시간 학습했습니다.",
+        "저자가 만든 ShellBench에서 106점 중 80점으로, 같은 크기의 Qwen3-0.6B에 프롬프트로 시킨 경우(60점)보다 높았습니다."
+      ],
+      "topic": "neural-world-model",
+      "use": 1,
+      "what": "월드 모델은 '지금 상태와 행동'을 받아 '다음 상태'를 예측하도록 학습한 모델입니다. 게임 화면을 생성하는 연구로 알려졌는데, WorldTUI는 같은 발상을 문자 화면에 적용해 vim, tmux, 파이썬 REPL, 뱀 게임까지 흉내 냅니다.",
+      "why": "큰 모델을 API로 부르지 않고도, 좁은 영역의 '환경'을 작은 모델 하나로 학습할 수 있다는 구체적인 레시피를 공개했기 때문입니다. 에이전트 학습용 가짜 환경이나 샌드박스 대체물로 쓸 수 있느냐는 관심이 붙었습니다."
+    },
+    {
+      "category": "AI 보안",
+      "domains": [
+        "thehackernews.com",
+        "safedep.io",
+        "chainguard.dev"
+      ],
+      "flow": [
+        "배포 토큰을 직접 훔치기",
+        "보안 스캐너를 오염시켜 토큰 수집(3월)",
+        "AI 도구 토큰을 게이트웨이 로그에서 주워 쓰기(10월)"
+      ],
+      "how": "LLM 게이트웨이는 비용 추적과 디버깅을 위해 요청·응답 본문을 저장하는 경우가 많습니다. 코딩 에이전트는 작업 중 gh 명령 출력 같은 것을 응답에 그대로 담을 수 있어, 로그가 곧 토큰 저장소가 됩니다. 공격자는 이렇게 얻은 토큰으로 이름이 비슷한 저장소에서 릴리스 워크플로를 돌렸고, 서명까지 된 산출물이 PyPI와 Docker에 올라갔습니다. 실무 대응으로는 게이트웨이의 본문 로깅을 끄거나 비밀값 마스킹을 켜기, 관리 화면을 내부망으로 제한하기, 휠 해시와 이미지 다이제스트를 고정하기가 거론됩니다.",
+      "hype": 4,
+      "meterNote": "많은 팀이 실제로 쓰는 게이트웨이이고, 로그 마스킹·해시 고정은 바로 적용 가능",
+      "reality": "로그 경유는 LiteLLM의 추정이고, 내부 배포가 어떻게 공개됐는지와 공격자가 어떻게 들어왔는지는 아직 불분명합니다. 최근 패치된 취약점이 의심된다는 정도만 밝혔습니다. 다운로드 수와 실제 피해 규모도 공개되지 않았습니다. 소스에서 직접 빌드해 피했다는 Chainguard의 설명은 자사 제품 홍보를 겸한 글입니다.",
+      "refs": [
+        {
+          "src": "The Hacker News · 10/22",
+          "title": "LiteLLM, AI 게이트웨이 로그 속 GitHub 토큰 유출을 원인으로 추정",
+          "url": "https://thehackernews.com/2026/10/litellm-suspects-github-token-leak-in.html"
+        },
+        {
+          "src": "SafeDep · 10/21",
+          "title": "초기 침투 경로와 악성 휠의 동작 방식, 침해 지표",
+          "url": "https://safedep.io/litellm-pypi-compromise-credential-stealer-backdoor/"
+        },
+        {
+          "src": "Chainguard · 10/21",
+          "title": "7개월 만의 재공격: 소스는 깨끗하고 휠만 오염된 방식",
+          "url": "https://www.chainguard.dev/unchained/litellm-attacked-again-malicious-1-107-0-wheels-on-pypi-and-docker-hub-october-2026"
+        },
+        {
+          "src": "Integrity360 · 3/25",
+          "title": "3월 1차 사고: 오염된 Trivy가 배포 토큰을 훔친 경로",
+          "url": "https://insights.integrity360.com/threat-advisories/when-security-scanners-become-the-weapon-a-break-down-of-the-litellm-supply-chain-attack"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "원인 추정 공개",
+          "tone": "issue"
+        }
+      ],
+      "title": "LiteLLM 사고 원인 윤곽: 코딩 에이전트 토큰이 게이트웨이 로그에 남아 있었다",
+      "tldr": [
+        "LiteLLM은 10월 21일 사고의 출발점으로, Claude Code가 응답 본문에 사용자의 GitHub CLI OAuth 토큰을 담을 수 있고 응답 본문을 기록하면 그 토큰이 LiteLLM 로그에 남는다는 점을 지목했습니다.",
+        "공격자는 인터넷에 노출된 내부 LiteLLM 배포에 예상치 못한 계정으로 들어가 로그에서 개발자 3명의 토큰을 가져간 것으로 추정됩니다. 이 중 조직 소유자 토큰으로 브랜치 보호를 껐습니다.",
+        "Wiz는 탈취된 AWS 인스턴스 역할 자격 증명이 약 4.5시간 뒤 실제로 검증되는 것을 관측했습니다. 남의 클라우드로 LLM을 돌리는 LLMjacking과 맞는 패턴입니다."
+      ],
+      "topic": "ai-supply-chain",
+      "updateOf": {
+        "date": "2026-10-22",
+        "note": "10/22엔 토큰 탈취 경로가 조사 중이었으나, LiteLLM이 Claude Code 응답에 섞인 GitHub 토큰이 노출된 내부 배포의 로그에 남았을 가능성을 원인으로 지목했고 Wiz는 빼낸 AWS 자격 증명이 실제로 쓰인 정황을 관측했다."
+      },
+      "use": 4,
+      "what": "AI 공급망 공격은 개발자가 설치하는 패키지나 이미지를 오염시켜 설치한 쪽의 비밀 정보를 빼가는 공격입니다. 이번 사고에서 새로 드러난 점은, 공격의 열쇠가 된 토큰 자체가 AI 코딩 도구와 LLM 게이트웨이를 오가는 트래픽 기록에서 나왔다는 것입니다.",
+      "why": "3월 1차 사고는 오염된 보안 스캐너 Trivy를 거쳐 배포 토큰이 새어 나간 경로였습니다. 7개월 만의 2차 사고는 에이전트가 다룬 비밀값이 관측 도구에 쌓이는 문제를 드러냈고, Hacker News 1면에서 581점을 받았습니다. 3월 이후 LiteLLM은 릴리스를 비공개 저장소로 옮기고 Docker 태그를 변경 불가로 바꿨지만 이번 공격을 막지 못했습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "MarketingProfs",
+      "text": "Mistral Large 4 공개 출시. 1조 파라미터 규모로 코딩·보안·금융 업무를 겨냥",
+      "url": "https://www.marketingprofs.com/opinions/2026/56118/ai-update-october-09-2026-ai-news-and-views-from-the-past-week",
+      "when": "10/27"
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "date": "2026-11-01",
+  "headline": "이번 주 화제는 LLM을 '부품'처럼 끼워 넣은 곳에서 생긴 뒷면이다. 악성코드는 모델 대체 체인을 달았고, 챗봇의 미리보기 화면은 계정 탈취 통로가 됐으며, 코딩 에이전트의 상태 요약은 비용의 6분의 1을 썼다.",
+  "issueNo": 12,
+  "period": "10월 26일~11월 1일",
+  "radar": [
+    {
+      "note": "처음 포착. Cisco Talos가 훔친 정보를 LLM에 보내 피해자 가치를 매기는 VOLTA를 공개했고 HN 1면에 올랐다.",
+      "since": "",
+      "tech": "LLM을 내장한 악성코드",
+      "topic": "llm-powered-malware",
+      "trend": "new"
+    },
+    {
+      "note": "처음 포착. Claude Code 백그라운드 요약 호출 분석이 GeekNews·HN에서 돌았고, HF 트렌딩에 코딩 에이전트 비용을 줄이는 TokenEconomizer 논문이 올랐다.",
+      "since": "",
+      "tech": "에이전트 숨은 비용 · 토큰 관측",
+      "topic": "agent-cost-observability",
+      "trend": "new"
+    },
+    {
+      "note": "10/23엔 새 흐름으로 봤다. 이번 주엔 ChatGPT 대화 화면 속 그래프·HTML 미리보기를 엮은 계정 탈취 공개로 보안 논의까지 넓어졌다.",
+      "since": "첫 포착 10/23",
+      "tech": "생성형 UI",
+      "topic": "generative-ui",
+      "trend": "spreading"
+    },
+    {
+      "note": "부상 유지. Cursor가 공지를 고쳐 2.1.312도 피해 버전에 넣었고, 이번 주 HN 1면에 Northflank 침해 공지까지 올라 개발 플랫폼 공격 논의가 이어졌다.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 개발 도구 공급망 공격",
+      "topic": "ai-supply-chain",
+      "trend": "rising"
+    },
+    {
+      "note": "부상 유지. 데몬 없는 루트리스 샌드박스 kern이 GeekNews에 소개됐고, VOLTA 토론에서도 에이전트 접근 범위를 좁히자는 의견이 많았다.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "rising"
+    },
+    {
+      "note": "정점 유지. C++·Dear ImGui로 만든 하네스 Prospero가 HN 1면에 올랐지만, 토론은 기법보다 구독 요금제로 어떤 하네스를 쓸 수 있느냐에 쏠렸다.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "peak"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "AI 보안",
+      "domains": [
+        "blog.talosintelligence.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사람이 탈취 로그를 하나씩 훑어보기",
+        "키워드·규칙으로 지갑·카드 우선 분류",
+        "LLM이 피해자별 가치 보고서를 작성"
+      ],
+      "how": "VOLTA는 Chromium·Firefox 비밀번호와 카드, Slack·Discord 세션, Microsoft OAuth 토큰, SSH·클라우드 설정을 모읍니다. 훔친 Gmail 세션으로 쇼핑 영수증을 뒤져 집 주소도 확인합니다. 이를 Identity_Report.txt로 묶어 온도 0.2로 모델에 보냅니다. 시스템 프롬프트는 모델에게 '표적 평가서'를 쓰는 분석가 역할을 맡깁니다. 결과는 AI_Analysis.txt로 저장됩니다. 텔레그램 채널과 API 키를 빌드 때 채우는 6칸짜리 템플릿 구조라, Talos는 판매용 빌더로 쓰일 수 있다고 봅니다.",
+      "hype": 4,
+      "meterNote": "실제 샘플이 나왔지만 유포 경로와 피해 규모는 아직 확인되지 않음",
+      "reality": "Talos는 최초 감염 경로를 밝히지 못했고 피해자 수도 공개하지 않았습니다. LLM 단계는 선택 기능이라 API 키가 없으면 빼고 돕니다. LLM은 전용 도구보다 부정확하고 비싸다는 HN 반론도 나왔습니다. 방어 권고는 AI와 상관없는 기본기입니다. 알 수 없는 프로세스가 headless Chrome을 띄우지 못하게 막고, 하드웨어 기반 자격 증명 저장소를 쓰라는 것입니다.",
+      "refs": [
+        {
+          "src": "Cisco Talos · 10/31",
+          "title": "VOLTA 악성코드의 모델 기반 피해자 우선순위 분석",
+          "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/"
+        },
+        {
+          "src": "Hacker News · 11/1",
+          "title": "HN 토론: 개발 환경 분리와 업데이트 지연 전략",
+          "url": "https://news.ycombinator.com/item?id=50316531"
+        }
+      ],
+      "stages": [
+        {
+          "label": "실제 샘플 분석",
+          "tone": "issue"
+        },
+        {
+          "label": "유포 경로 미확인",
+          "tone": "preview"
+        }
+      ],
+      "title": "훔친 정보를 LLM이 감정한다: 피해자 '몸값'을 매기는 정보 탈취 악성코드 VOLTA",
+      "tldr": [
+        "Cisco Talos가 10월 31일 Windows 정보 탈취 악성코드 VOLTA를 분석해 공개했습니다. 훔친 정보를 OpenRouter로 LLM에 보내 피해자 가치를 평가합니다.",
+        "기본 모델은 Claude Opus 4.6이고, 거절 문구가 나오면 Kimi K2, Gemini 2.5 Flash 순으로 넘어가는 3단 대체 체인을 씁니다.",
+        "모델은 '무엇이 돈이 되는가'와 '보안 습관'을 저·중·고 등급으로 정리합니다. Talos는 속도보다 운영자의 분석 노동을 모델 호출로 바꾼 점에 주목했습니다."
+      ],
+      "topic": "llm-powered-malware",
+      "use": 2,
+      "what": "정보 탈취 악성코드는 브라우저 비밀번호, 쿠키, 토큰, 암호화폐 지갑을 대량으로 훔칩니다. 훔친 로그가 너무 많아서 누구를 먼저 노릴지 고르는 데 사람 시간이 듭니다. VOLTA는 이 선별 단계를 LLM에 맡겼습니다.",
+      "why": "안전장치에 걸리면 다른 모델로 넘어가는 대체 체인이 코드에 들어 있습니다. 개발자가 쓰는 '모델 라우팅' 패턴이 공격 도구에 그대로 들어간 셈입니다. Talos는 이런 체인이 AI를 쓰는 악성코드의 표준 설계가 될 수 있다고 봤습니다. HN 토론은 개발 환경 분리, 새 패키지 버전을 일주일쯤 늦게 받는 방법, 에이전트의 접근 범위 제한으로 이어졌습니다."
+    },
+    {
+      "category": "생성형 UI 보안",
+      "domains": [
+        "parameter.ai",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "답변은 글자만 출력",
+        "답변 안에 그래프·HTML 미리보기를 그려 넣기",
+        "렌더링 부품마다 출처 검사와 샌드박스를 강제"
+      ],
+      "how": "공격자는 진짜 그래프가 든 대화를 만들고 공개 공유합니다. 그래프가 불러온 MathLive는 메인 페이지에 postMessage 수신기를 설치하는데, 보낸 쪽의 출처를 확인하지 않았습니다. 뒤이은 HTML 미리보기가 이 수신기에 '키보드 배치' 설정인 척 공격 HTML을 보냈고, MathLive는 이를 innerHTML로 그대로 넣었습니다. 그 안의 iframe에는 sandbox 속성이 없어 chatgpt.com 권한을 물려받았습니다. 인라인 스크립트를 막는 CSP는 허용 목록에 있던 YouTube oEmbed JSONP 응답으로 우회했습니다. 미리보기가 자동으로 열리게 설정하면 클릭 없이도 4.5초쯤 뒤에 실행됐습니다.",
+      "hype": 4,
+      "meterNote": "생성형 UI는 이미 대형 서비스에 들어가 있고, 이번 사례로 방어 수칙이 구체적으로 나옴",
+      "reality": "이번 체인은 OpenAI가 두 웹 프런트엔드에서 막았고, 실제 악용 여부는 공개되지 않았습니다. 데스크톱 앱이나 에이전트 기능은 이 공격과 관계없었습니다. 연구팀이 정리한 교훈은 새롭지 않은 웹 보안 기본기입니다. postMessage는 event.origin과 보낸 창을 모두 확인하고, 창 사이 설정값으로 HTML을 받지 않고, 동적으로 만든 문서는 sandbox로 두고, CSP는 마지막 방어선으로만 기대하라는 것입니다.",
+      "refs": [
+        {
+          "src": "Parameter · 10/28",
+          "title": "ChatGPT 공유 링크로 계정을 장악한 공격 체인 전 과정",
+          "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai"
+        },
+        {
+          "src": "Hacker News · 11/1",
+          "title": "HN 토론: 링크 한 번의 계정 탈취와 거대 프런트엔드의 공격 면",
+          "url": "https://news.ycombinator.com/item?id=50314699"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "수정 완료",
+          "tone": "live"
+        },
+        {
+          "label": "렌더링 보안 과제",
+          "tone": "issue"
+        }
+      ],
+      "title": "공유 링크 한 번 열면 계정이 넘어갔다: ChatGPT 대화 속 그래프·HTML 미리보기를 엮은 공격",
+      "tldr": [
+        "Parameter 연구팀이 10월 28일 ChatGPT 공개 공유 링크 하나로 다른 사용자 계정을 장악한 과정을 공개했습니다. OpenAI는 10월 26일 수정을 마쳤고 포상금 5,000달러를 줬습니다.",
+        "공격은 대화 속 인터랙티브 그래프가 불러오는 수식 입력 라이브러리 MathLive와 HTML 미리보기를 엮었습니다. 하나씩 보면 무해한 기능들입니다.",
+        "피해자가 링크를 열면 공격 코드가 chatgpt.com 권한으로 돌아 최근 대화 20개 목록과 공유한 적 없는 비공개 대화를 읽었습니다. OpenAI는 심각도를 P2에서 P1로 올렸습니다."
+      ],
+      "topic": "generative-ui",
+      "updateOf": {
+        "date": "2026-10-23",
+        "note": "대화 안에 화면을 그리는 기능들을 엮으면 다른 사용자 계정을 탈취할 수 있다는 실제 공격 사례가 공개됐다."
+      },
+      "use": 3,
+      "what": "생성형 UI는 모델이 답변 안에 그래프, 폼, HTML 화면을 직접 그려 넣는 방식입니다. 그리려면 서드파티 렌더링 라이브러리와 iframe이 대화 화면에 들어옵니다. 모델이나 다른 사용자가 만든 내용이 같은 페이지 권한으로 실행될 틈도 함께 생깁니다.",
+      "why": "챗봇 답변이 글에서 화면으로 바뀌면서, 대화 페이지 하나에 여러 출처의 코드가 섞이고 있습니다. 이번 사례는 모델 자체가 아니라 화면을 그리는 부품들 사이의 신뢰 경계가 뚫린 경우입니다. 그래서 생성형 UI를 직접 만드는 개발자에게 바로 해당됩니다."
+    },
+    {
+      "category": "에이전트 운영",
+      "domains": [
+        "gist.github.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "세션 로그로 토큰 사용량 집계",
+        "OpenTelemetry로 요청 단위 비용 추적",
+        "보이지 않는 보조 호출까지 찾아내 끄기"
+      ],
+      "how": "작성자는 OpenTelemetry의 claude_code.api_request 이벤트로 요청마다 출처와 비용을 모아 요약 호출을 찾았습니다. 차단은 Bun 사전 로드 스크립트로 했습니다. 요약용 문자열이 든 타이머만 골라 꺼서 바이너리는 건드리지 않습니다. 이틀 뒤 요약 비용은 0%가 됐고, 하위·백그라운드 에이전트는 그대로 돌았습니다. 업데이트 뒤 다시 켜질 수 있어 query_source가 agent_summary인 요청이 0인지 계속 확인하라고 권합니다.",
+      "hype": 3,
+      "meterNote": "코딩 에이전트를 매일 쓰는 개발자 다수에게 해당하고, 측정법과 차단 스크립트가 공개됨",
+      "reality": "수치는 한 사람의 텔레메트리이고, 비용은 청구서가 아닌 요청별 추정치입니다. 호출의 약 98%가 프롬프트 캐시를 맞혔지만, 나머지 2%가 이 기능 비용의 3분의 1 넘게 차지했습니다. HN에서는 8% 미만이라는 보고부터 32%까지 체감이 크게 갈렸습니다. 의도적이라는 주장과 설계 실수라는 반론도 맞섰습니다. 2.1.310에는 전체 기록 대신 약 2,000토큰 메모를 쓰는 'short' 모드가 들어갔지만 기본으로 꺼져 있습니다.",
+      "refs": [
+        {
+          "src": "Flamerix AI · 10/29",
+          "title": "Claude Code 백그라운드 에이전트 요약 호출 비용 분석과 차단 스크립트",
+          "url": "https://gist.github.com/flamerix-ai/c3905705cc4205e5de3011fa2e74efce"
+        },
+        {
+          "src": "GeekNews · 10/30",
+          "title": "GeekNews 정리와 HN 토론 요약",
+          "url": "https://news.hada.io/topic?id=36213"
+        }
+      ],
+      "stages": [
+        {
+          "label": "커뮤니티 실측",
+          "tone": "issue"
+        },
+        {
+          "label": "공식 끄기 옵션 없음",
+          "tone": "preview"
+        }
+      ],
+      "title": "사용자가 못 보는 호출이 비용의 16%: 코딩 에이전트 '상태 요약'이 드러낸 숨은 토큰",
+      "tldr": [
+        "Flamerix AI가 10월 29일 공개한 분석에 따르면, Claude Code는 백그라운드 에이전트마다 약 30초에 한 번 전체 대화 기록을 모델에 보내 3~5단어 상태 요약을 만듭니다.",
+        "작성자 자체 측정에서 이 호출이 일주일 추정 비용의 16.4%, 전체 API 요청의 19.7%를 차지했습니다. 메인 대화(15.7%)보다 많았고, 비용의 96%가 Opus에서 나왔습니다.",
+        "이 요청은 디스크의 세션 로그에 남지 않아 로그 기반 비용 도구로는 보이지 않습니다. 관련 GitHub 이슈에는 18~26%라는 독립 측정 4건이 모였습니다."
+      ],
+      "topic": "agent-cost-observability",
+      "use": 4,
+      "what": "코딩 에이전트는 사용자가 직접 보내는 요청 말고도 요약, 제목 짓기, 상태 표시 같은 보조 호출을 몰래 보냅니다. 에이전트를 여러 개 띄우면 이런 호출이 에이전트 수만큼 늘어납니다. 그래서 토큰을 요청 단위로 관측하는 일이 따로 필요해졌습니다.",
+      "why": "구독 요금제 사용자는 이 비용을 청구서가 아니라 줄어드는 사용 한도로 느낍니다. 에이전트 여러 개를 동시에 돌리는 방식이 퍼지면서 보조 호출의 몫이 커졌습니다. 같은 주 HF 트렌딩에는 쓸모없는 도구 정의를 빼고 실패 루프를 끊어 코딩 에이전트 비용을 줄이는 TokenEconomizer 논문도 올랐습니다."
+    }
+  ],
+  "watch": []
+}

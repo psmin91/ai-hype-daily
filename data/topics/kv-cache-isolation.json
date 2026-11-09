@@ -1,0 +1,34 @@
+{
+  "aliases": [
+    "KV cache isolation",
+    "KV cache leak",
+    "cross-request KV cache exposure",
+    "prefill/decode disaggregation",
+    "Mooncake",
+    "GLM-5.3 Workers AI"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Cloudflare Workers AI GLM-5.3 KV 캐시 노출",
+        "SGLang 분리형 서빙 버그(#30233, v0.5.21 수정)"
+      ],
+      "date": "2026-10-28",
+      "title": "지우지 않은 KV 캐시 페이지가 다른 고객의 답을 섞어 내보냈다",
+      "urls": [
+        "https://blog.cloudflare.com/kv-cache-exposure-remediation/",
+        "https://news.ycombinator.com/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-28",
+  "lastSeen": "2026-10-28",
+  "lastTrend": "new",
+  "name": "추론 서버 KV 캐시 격리",
+  "radar": [
+    {
+      "date": "2026-10-28",
+      "trend": "new"
+    }
+  ]
+}

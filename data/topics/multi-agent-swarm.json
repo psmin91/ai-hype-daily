@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "multi-agent",
+    "agent swarm",
+    "agent orchestration",
+    "DynaFlow",
+    "Mindcraft",
+    "Minecraft agent harness",
+    "multi-agent Mindustry",
+    "Olam Labs"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "YC Labs·Olam Labs Minecraft·Mindustry 에이전트 스웜",
+        "DynaFlow"
+      ],
+      "date": "2026-10-31",
+      "title": "에이전트 50개를 한 세계에 풀었더니 리더와 관료제가 생겼다",
+      "urls": [
+        "https://labs.ycombinator.com/projects/games/index.html",
+        "https://github.com/yc-software/minecraft-agent-harness",
+        "https://huggingface.co/papers/2610.34467"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-31",
+  "lastSeen": "2026-10-31",
+  "lastTrend": "new",
+  "name": "다중 에이전트 스웜 · 오케스트레이션",
+  "radar": [
+    {
+      "date": "2026-10-31",
+      "trend": "new"
+    }
+  ]
+}

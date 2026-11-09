@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "agent config hijack",
+    "SessionStart hook",
+    "Claude Code plugin auto-install",
+    "Codex plugin",
+    "MCP auto-install",
+    "Postman",
+    "hook trust self-approval"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Postman 12.33.4 Claude Code·Codex 플러그인 자동 설치",
+        "SessionStart 훅 자기 승인"
+      ],
+      "date": "2026-11-04",
+      "title": "앱 업데이트가 내 코딩 에이전트에 플러그인과 시작 훅을 심었다: Postman 사례",
+      "urls": [
+        "https://github.com/postmanlabs/postman-app-support/issues/14370",
+        "https://news.ycombinator.com/item?id=50354960"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-04",
+  "lastSeen": "2026-11-04",
+  "lastTrend": "new",
+  "name": "에이전트 설정 무단 변경 · 훅 주입",
+  "radar": [
+    {
+      "date": "2026-11-04",
+      "trend": "new"
+    }
+  ]
+}

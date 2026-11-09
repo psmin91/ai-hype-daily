@@ -1,0 +1,210 @@
+{
+  "date": "2026-11-04",
+  "headline": "이번 주엔 '되는 것처럼 보이는 것'을 다시 따져 보는 글이 많았다. 가중치 편집 실험은 하루 만에 조건별로 쪼개졌고, 하이브리드 어텐션은 답 길이에 따라 승부가 갈렸으며, 에이전트 설정은 사용자 몰래 바뀔 수 있다는 것이 드러났다.",
+  "issueNo": 15,
+  "period": "10월 28일~11월 4일",
+  "radar": [
+    {
+      "note": "어제 처음 포착 → 반박 글(HN 724점)과 로컬 27B 재현기가 하루 새 1면에 올라 논쟁으로 부상.",
+      "since": "첫 포착 11/3",
+      "tech": "가중치 공간 프로그래밍",
+      "topic": "weight-space-programming",
+      "trend": "rising"
+    },
+    {
+      "note": "처음 포착. Postman 데스크톱이 Claude Code·Codex 플러그인과 SessionStart 훅을 자동 설치했다는 이슈가 HN 1면에 오름.",
+      "since": "",
+      "tech": "에이전트 설정 무단 변경 · 훅 주입",
+      "topic": "agent-config-hijack",
+      "trend": "new"
+    },
+    {
+      "note": "처음 포착. '싱크 달린 윈도우면 충분하다'는 논문에 긴 답에선 아니라는 증류 실험이 HF 블로그에 올라옴.",
+      "since": "",
+      "tech": "하이브리드 어텐션 (슬라이딩 윈도우 + 선형 상태)",
+      "topic": "hybrid-attention",
+      "trend": "new"
+    },
+    {
+      "note": "확산 유지. PostgreSQL 커미터가 LLM이 찾은 버그 수정 부담으로 19 버전이 11월로 밀린다고 밝히며(안정 브랜치 커밋 60%↑) 릴리스 일정까지 영향.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 에이전트 취약점 발굴",
+      "topic": "ai-vuln-discovery",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. Larson의 PR 검증 파일에 '같은 하네스가 쓰면 증거가 못 된다'는 반론이 붙고, 병목이 사람의 주의력이라는 GeekNews 글이 이어짐.",
+      "since": "첫 포착 10/27",
+      "tech": "eval 점수 기반 코드 리뷰 · 검증 기록",
+      "topic": "agent-code-review-evals",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 6,
+  "stories": [
+    {
+      "category": "모델 해석 · 편집",
+      "domains": [
+        "honnibal.dev",
+        "simonwillison.net",
+        "news.hada.io",
+        "rikiyat.github.io"
+      ],
+      "flow": [
+        "연구진 발표: 가중치를 읽고 쓰는 LLM",
+        "반박: 실험마다 쓴 도구가 다르다",
+        "재현: 로컬 27B 모델도 게임 판별 성공"
+      ],
+      "how": "Honnibal은 실험을 조건별로 나눴습니다. 가중치만 보고 답한 실험(1·2·4번), 파이썬과 모델 실행을 쓴 실험(Qwen 수정), 0에서 가중치를 써 내 '읽을 것'이 없는 실험(MinAtar)입니다. Willison은 LM Studio와 llm CLI로 로컬 모델을 돌렸고, 기본 8,192토큰 컨텍스트로는 오류가 나 창을 늘려야 했습니다. 한 문제에 추론 토큰이 4만 개 넘게 들었습니다. 클라우드의 Kimi K3.1 Pro는 같은 질문을 9분 41초에 맞혔습니다.",
+      "hype": 5,
+      "meterNote": "공개 모델로 '가중치 읽기'는 재현됐지만, 큰 모델을 고치는 쪽은 도구·실행에 기대고 쓸 수 있는 곳이 아직 없음",
+      "reality": "Honnibal도 Qwen 실험 자체는 사람 ML 엔지니어 수준의 과제를 해낸 성과로 인정합니다. 문제 삼은 것은 작은 망을 '읽는' 능력과 큰 모델을 '고치는' 능력을 한 기술처럼 묶은 서술입니다. Willison은 연필과 종이를 쓴 끈기 있는 사람도 비슷한 결론에 닿을 수 있다며, 소스 코드가 필요 없어진다는 해석에는 선을 그었습니다. 17MB 회귀 신경망에선 목적을 못 맞혔다는 재현 실패 보고도 있습니다.",
+      "refs": [
+        {
+          "src": "Matthew Honnibal · 11/3",
+          "title": "반박: Qwen 개선 실험을 '가중치 읽기'와 한데 묶는 것은 오해를 낳는다",
+          "url": "https://honnibal.dev/blog/astra-read-write-misleading"
+        },
+        {
+          "src": "Simon Willison · 11/3",
+          "title": "노트북의 Qwen 3.8 27B로 게임 신경망 가중치 해석해 보기",
+          "url": "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/"
+        },
+        {
+          "src": "GeekNews · 11/3",
+          "title": "GeekNews 요약: HN 재현 시도와 방법론 비판 정리",
+          "url": "https://news.hada.io/topic?id=36478"
+        },
+        {
+          "src": "MIT CSAIL 연구진 블로그 · 11/2",
+          "title": "원문: 가중치 공간 프로그래밍 실험 8개",
+          "url": "https://rikiyat.github.io/blog/weight-space-programming/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "과장 논란",
+          "tone": "issue"
+        }
+      ],
+      "title": "'가중치만 보고 고쳤다'는 사실일까: 가중치 공간 프로그래밍에 붙은 반박과 노트북 재현",
+      "tldr": [
+        "spaCy 개발자 Matthew Honnibal은 11월 3일, Qwen3.5-0.8B 개선 실험은 파이썬 커널과 최대 50번의 모델 실행을 썼으므로 '가중치만 읽은' 실험과 한 능력으로 묶으면 안 된다고 반박했습니다. 이 글은 Hacker News에서 724점을 받았습니다.",
+        "도구 없이 가중치만 본 실험은 1만7천~17만2천 개 가중치의 작은 망뿐이고, MinAtar에서 PPO를 크게 이긴 게임은 Breakout(517 대 25) 하나라고 지적했습니다. Seaquest(53 대 89)·Asterix(53 대 55)에선 졌습니다.",
+        "같은 날 Simon Willison은 노트북의 Qwen 3.8 27B(4비트, 17GB)에 10x10 게임 신경망 가중치만 주고 물어, 46분~65분씩 걸려 Pac-Man·Pong·Breakout을 맞혔습니다."
+      ],
+      "topic": "weight-space-programming",
+      "updateOf": {
+        "date": "2026-11-03",
+        "note": "원 발표 하루 만에 실험별 조건 차이를 짚은 반박(HN 724점)과 공개 27B 모델의 로컬 재현이 나왔다."
+      },
+      "use": 1,
+      "what": "가중치 공간 프로그래밍은 LLM에게 다른 신경망의 가중치를 숫자 목록으로 보여 주고, 학습 없이 해석하거나 고치게 하는 방식입니다. 어제 호에서 다룬 MIT CSAIL 연구에 대해, 실험들이 실제로는 서로 다른 조건에서 나왔다는 반박과 공개 모델 재현이 하루 만에 나왔습니다.",
+      "why": "원 논문이 HN 1면 1위에 오른 다음 날, 반박 글과 재현기가 연달아 1면에 올랐습니다. GeekNews 요약 댓글에도 HN 이용자들의 재현 시도가 정리됐는데, bash 명령 생성 모델의 가중치 1,920개를 고쳤더니 일부 오류는 고쳐지고 다른 명령이 망가졌다는 보고가 있었습니다."
+    },
+    {
+      "category": "에이전트 보안",
+      "domains": [
+        "github.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사용자가 직접 MCP 서버를 등록",
+        "마켓플레이스에서 플러그인·스킬을 골라 설치",
+        "다른 앱이 에이전트 설정과 훅을 자동으로 고침"
+      ],
+      "how": "이슈 작성자는 Postman 로그에서 'auto-existing-upgrade' 항목과 claude-code·codex 설치 기록(10월 24일 UTC)을 찾았습니다. 전역 Codex 설정에 플러그인이 켜졌고, 세션 시작 때마다 실행되는 훅이 에이전트 행동 지침을 바꿨습니다. 작성자는 데이터 유출은 주장하지 않았고, 동의 없이 지시문이 바뀐 것을 핵심 문제로 꼽았습니다.",
+      "hype": 3,
+      "meterNote": "플러그인·훅 배포는 이미 널리 쓰이는 구조이고, 이번 문제는 그 경로가 동의 없이 쓰였다는 점",
+      "reality": "HN 제목의 '모든 API 데이터를 공유하려 한다'는 표현은 이슈 본문보다 강합니다. 원격 MCP 서버는 인증 오류로 실제 연결되지 않았습니다. 다만 훅 하나로 모든 세션의 지시문을 바꿀 수 있다는 점은 확인됐고, 에이전트 쪽에서 외부 앱이 쓴 훅을 구분해 막는 장치는 아직 부족합니다.",
+      "refs": [
+        {
+          "src": "GitHub · 10/25",
+          "title": "Postman이 동의 없이 Claude Code·Codex 플러그인과 훅을 설치했다는 이슈",
+          "url": "https://github.com/postmanlabs/postman-app-support/issues/14370"
+        },
+        {
+          "src": "Hacker News · 11/3",
+          "title": "Hacker News 토론: Postman 자동 설치와 대체 도구(Bruno 등)",
+          "url": "https://news.ycombinator.com/item?id=50354960"
+        }
+      ],
+      "stages": [
+        {
+          "label": "실제 사례",
+          "tone": "live"
+        },
+        {
+          "label": "동의·보안 문제",
+          "tone": "issue"
+        }
+      ],
+      "title": "앱 업데이트가 내 코딩 에이전트에 플러그인과 시작 훅을 심었다: Postman 사례",
+      "tldr": [
+        "10월 25일 올라온 GitHub 이슈에 따르면 Postman 데스크톱 12.33.4는 실행만으로 Claude Code·Codex용 Postman 플러그인, 원격 MCP 서버 설정, CLI를 설치했습니다.",
+        "함께 설치된 SessionStart 훅은 Postman을 언급하지 않은 API 작업에도 Postman 스킬을 먼저 불러오라고 에이전트에 지시하고, 설치기가 이 훅의 신뢰 해시를 스스로 기록했습니다.",
+        "11월 3일 Hacker News 1면에 올라 200점 넘게 받았고, 이 글을 쓰는 시점까지 이슈에 Postman의 공식 답변은 없습니다."
+      ],
+      "topic": "agent-config-hijack",
+      "use": 3,
+      "what": "Claude Code·Codex 같은 코딩 에이전트는 플러그인, 스킬, 훅, MCP 서버로 기능과 지시문을 덧붙입니다. 이 설정 파일들은 사용자 홈 디렉터리에 있어서, 같은 컴퓨터의 다른 앱도 고칠 수 있습니다. 에이전트 플러그인 공급망은 이렇게 '에이전트가 매 세션 읽는 지시문'이 어디서 들어오는지의 문제입니다.",
+      "why": "스킬·훅·플러그인이 에이전트 확장의 표준 방식이 되면서, 툴 벤더가 사용자의 에이전트에 자기 제품을 먼저 쓰라는 지시를 넣을 유인이 생겼습니다. 10/31 호의 Claude Code 확장 변조가 공격자가 배포 경로를 탈취한 사건이었다면, 이번엔 정상 벤더가 동의 없이 같은 경로를 쓴 경우입니다."
+    },
+    {
+      "category": "모델 아키텍처",
+      "domains": [
+        "huggingface.co",
+        "alphaxiv.org"
+      ],
+      "flow": [
+        "모든 토큰을 보는 전체 어텐션",
+        "최근 토큰만 보는 슬라이딩 윈도우 + 어텐션 싱크",
+        "윈도우와 선형 상태를 섞은 하이브리드 층"
+      ],
+      "how": "Bifocal은 층마다 448토큰 윈도우와 KV 헤드별 mLSTM 상태를 두고, 헤드별 게이트로 두 출력을 섞습니다. 저자의 H100 vLLM 측정에서 윈도우·Bifocal 모델은 프롬프트 1K~128K 구간 내내 초당 약 195토큰을 냈고, 전체 어텐션은 200에서 92로 떨어졌습니다. Qwen3.5의 기본 구조(GDN 3층마다 전체 어텐션 1층)는 187에서 146으로 내려갔습니다.",
+      "hype": 2,
+      "meterNote": "Qwen3.5 등 하이브리드 구조는 이미 배포 중이지만, 이번 비교는 소규모 개인 실험",
+      "reality": "수학 평가는 120문제뿐이고, Bifocal의 평균 이득은 95% 신뢰구간이 0.0~3.4점이라 통계적으로 아슬아슬합니다. 윈도우를 64토큰으로 줄이고 상태만 키우면 수학 4.2점으로 무너져, 최근 토큰을 정확히 보는 능력은 여전히 필수입니다. 프리필은 128K 프롬프트에서 1.8초로 윈도우(1.5초)보다 느렸고, 속도 측정은 합성 가중치·배치 1 조건입니다. 원 논문도 윈도우가 전체 어텐션에는 크게 못 미친다고 밝힙니다(S-NIAH-3 4K에서 19.6% 대 99.8%).",
+      "refs": [
+        {
+          "src": "Hugging Face 블로그 · 11/2",
+          "title": "슬라이딩 윈도우는 짧은 답에서만 선형 어텐션을 이긴다: Bifocal 증류 실험",
+          "url": "https://huggingface.co/blog/sirluk/sliding-window-beats-linear-attention"
+        },
+        {
+          "src": "alphaXiv 2608.28444 · v2 10/4",
+          "title": "논문: 싱크를 남긴 슬라이딩 윈도우가 선형 어텐션 변환보다 낫다",
+          "url": "https://www.alphaxiv.org/abs/2608.28444"
+        }
+      ],
+      "stages": [
+        {
+          "label": "연구 공개",
+          "tone": "preview"
+        }
+      ],
+      "title": "슬라이딩 윈도우냐 선형 어텐션이냐: 답이 길어질 때 갈린다",
+      "tldr": [
+        "Microsoft 연구진 등은 arXiv 2608.28444에서 슬라이딩 윈도우 어텐션에 '어텐션 싱크' 토큰만 남겨도 추가 학습 없이 기존 선형 어텐션 변환 모델과 같거나 낫다고 주장했습니다.",
+        "Lukas(sirluk)는 11월 2일 Hugging Face 블로그에서 Qwen3-4B를 같은 메모리 예산(층당 토큰 576개분)의 학생 모델로 증류해 반박 실험을 올렸습니다. GSM8K는 윈도우 92.3 대 하이브리드 90.8로 윈도우가 앞섰습니다.",
+        "답이 긴 수학 문제 96개에서는 하이브리드(Bifocal)가 4.4%, 윈도우가 2.5%를 풀어 약 1.8배 차이가 났습니다. 저자 자체 측정입니다."
+      ],
+      "topic": "hybrid-attention",
+      "use": 3,
+      "what": "전체 어텐션은 문맥이 길어질수록 KV 캐시와 계산이 늘어납니다. 슬라이딩 윈도우는 최근 토큰 일정 개수만 보고, 선형 어텐션(mLSTM·Mamba·Gated DeltaNet 등)은 지난 내용을 고정 크기 상태로 압축합니다. 어텐션 싱크는 맨 앞 몇 토큰을 계속 남겨 윈도우가 밀려도 계산이 무너지지 않게 하는 장치입니다.",
+      "why": "추론 모델은 답이 수만 토큰까지 길어져 긴 생성 중 디코딩 속도와 메모리가 비용을 좌우합니다. '싱크 달린 윈도우면 충분하다'는 논문과 '답이 길면 압축 상태가 필요하다'는 반론이 맞서며, 어느 쪽 층을 몇 개 섞을지가 하이브리드 모델 설계의 쟁점이 됐습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Robert Haas 블로그",
+      "text": "PostgreSQL 19 정식 출시 예정. LLM이 찾은 버그 처리로 늦어진 일정이 더 밀릴지 확인",
+      "url": "http://rhaas.blogspot.com/2026/10/postgres-19-is-late-and-its-ais-fault.html",
+      "when": "11월"
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-31",
+  "headline": "이번 주는 에이전트를 '얼마나 믿고 풀어 둘 것인가'가 화두였다. 공식 AI 코딩 확장이 변조돼 개발자 PC에 백도어를 심은 사이, 다른 쪽에선 에이전트 수십 개를 한 세계에 풀어 놓고 스스로 조직을 꾸리게 하는 실험이 공개됐다.",
+  "issueNo": 11,
+  "period": "10월 24일~31일",
+  "radar": [
+    {
+      "note": "10/23 LiteLLM 원인 분석 이후 잠잠 → 10/29 공식 Claude Code 확장 변조로 재부상. 공격 대상이 패키지에서 편집기 확장으로 넓어짐.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 개발 도구 공급망 공격",
+      "topic": "ai-supply-chain",
+      "trend": "rising"
+    },
+    {
+      "note": "YC 랩스의 게임 속 에이전트 스웜 실험(HN 337점)과 메인 에이전트가 하위 에이전트 워크플로를 코드로 짜는 DynaFlow 논문(HF 143표)이 같은 주에 등장. 처음 포착.",
+      "since": "",
+      "tech": "다중 에이전트 스웜 · 오케스트레이션",
+      "topic": "multi-agent-swarm",
+      "trend": "new"
+    },
+    {
+      "note": "10/29까지 부상 → 텐센트 8B Hy-Nomas 가중치 공개, 라즈베리파이 피코용 13만 파라미터 tinyworldformer(HN 245점), HF 트렌딩 1위 벤치마크 StreamEval까지 겹쳐 확산.",
+      "since": "첫 포착 10/23",
+      "tech": "프로그램을 흉내 내는 소형 월드 모델",
+      "topic": "neural-world-model",
+      "trend": "spreading"
+    },
+    {
+      "note": "10/30 Qwenputer에 이어, 학습한 신경망을 DOOM 맵으로 컴파일해 게임 엔진이 계산하게 만든 doomformer가 Show HN에 올라 같은 발상이 이어짐.",
+      "since": "첫 포착 10/30",
+      "tech": "가중치에 컴파일한 컴퓨터",
+      "topic": "compiled-weights",
+      "trend": "rising"
+    },
+    {
+      "note": "정점 유지. GeekNews에서 '메모리 도구를 왜 안 쓰나' 질문에 댓글 13개가 달렸고, 신뢰·보안과 투명성 부족, 마크다운 파일 직접 관리 선호가 주된 이유로 꼽힘.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 메모리",
+      "topic": "agent-memory",
+      "trend": "peak"
+    }
+  ],
+  "readMinutes": 4,
+  "stories": [
+    {
+      "category": "AI 개발 도구 보안",
+      "domains": [
+        "phorion.io",
+        "stepsecurity.io",
+        "thehackernews.com"
+      ],
+      "flow": [
+        "npm 패키지 타이포스쿼팅",
+        "가짜 이름의 악성 VS Code 확장",
+        "정식 게시자 이름으로 올라온 AI 코딩 확장 변조"
+      ],
+      "how": "Phorion 분석에 따르면 축소된 extension.js 맨 앞에 코드 묶음이 덧붙어 있었습니다. 이 코드는 ~/.ssh/authorized_keys에 'svc-telemetry'라는 공격자 키를 넣고, 134.209.82.225로 역방향 SSH 터널을 60초마다 다시 엽니다. macOS는 LaunchAgent, 리눅스는 크론, 윈도는 예약 작업으로 상주합니다. 호스트 이름, Git 이메일, KEY·TOKEN·SECRET이 들어간 환경 변수 이름 최대 40개를 평문 HTTP로 보냈지만 변수 값은 보내지 않았습니다. 대응 지침은 확장 삭제만으로 끝내지 말고, 해당 키와 상주 파일을 지운 뒤 깨끗한 PC에서 자격 증명을 바꾸라는 것입니다.",
+      "hype": 5,
+      "meterNote": "실제 개발자 PC에 배포된 공격이며, 대응 지침과 침해 지표가 이미 공개됨",
+      "reality": "어떻게 게시 권한을 얻었는지는 아직 밝혀지지 않았습니다. 유입 지점도 출처마다 다릅니다. StepSecurity와 Phorion은 Open VSX를 거쳐 Cursor로 동기화됐다고 봤고, The Hacker News는 Cursor 마켓플레이스에서만 확인됐다고 정정했습니다. macOS에서는 관리자 권한 없이 원격 로그인을 켜는 단계가 실패하는 버그가 있어 실제 원격 접속 피해는 이미 SSH를 켜 둔 PC로 한정될 가능성이 큽니다. 다만 키와 상주 장치는 그대로 설치됩니다.",
+      "refs": [
+        {
+          "src": "Phorion · 10/30",
+          "title": "Phorion: 변조된 Claude Code 확장의 단계별 동작과 침해 지표",
+          "url": "https://phorion.io/blog/offical-claude-code-vsx-compromise/"
+        },
+        {
+          "src": "StepSecurity · 10/30",
+          "title": "StepSecurity: UTC 기준 공격 타임라인과 정리 절차",
+          "url": "https://www.stepsecurity.io/blog/claude-code-extension-trojanized"
+        },
+        {
+          "src": "The Hacker News · 10/30",
+          "title": "Cursor 마켓플레이스에서 변조 확장 확인, 최대 5,000명 영향",
+          "url": "https://thehackernews.com/2026/10/official-claude-code-vs-code-extension.html"
+        },
+        {
+          "src": "Unite.AI · 10/30",
+          "title": "Cursor 공지 정리: 마켓플레이스 중단과 키 교체",
+          "url": "https://www.unite.ai/cursor-discloses-ssh-backdoor-attempt-in-malicious-claude-code-extension/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "10/29 실제 공격",
+          "tone": "issue"
+        },
+        {
+          "label": "유입 경로 미확인",
+          "tone": "preview"
+        }
+      ],
+      "title": "공식 Claude Code 확장에 SSH 백도어가 심겨 11시간 동안 배포됐다",
+      "tldr": [
+        "10월 29일 Anthropic 게시자 이름을 단 Claude Code 확장 2.1.313이 Cursor 마켓플레이스에 올라왔습니다. 태평양시간 오전 2시 27분부터 오후 1시 35분까지 약 11시간 노출됐습니다.",
+        "Cursor는 이 버전이 Anthropic이 만든 것이 아니며 최대 5,000명이 받았다고 밝혔습니다. 마켓플레이스를 통째로 내리고 키를 교체한 뒤 다시 열었습니다.",
+        "악성 코드는 편집기가 확장을 불러오는 순간 실행돼 SSH 키 추가, 역방향 터널, 재부팅 후에도 남는 자동 실행 등록까지 했습니다. 깨끗한 2.1.314는 10월 30일 나왔습니다."
+      ],
+      "topic": "ai-supply-chain",
+      "updateOf": {
+        "date": "2026-10-22",
+        "note": "LiteLLM 패키지에 이어 이번엔 Anthropic 게시자 이름을 단 IDE 확장이 변조돼, 키 탈취를 넘어 개발자 PC에 SSH 백도어와 상주 장치를 심었다."
+      },
+      "use": 4,
+      "what": "IDE 확장 공급망 공격은 개발자가 믿고 설치하는 편집기 확장의 업데이트에 악성 코드를 끼워 넣는 수법입니다. AI 코딩 확장은 파일 읽기·쓰기와 셸 실행 권한을 넓게 갖고 자동 업데이트도 켜져 있어, 한 번 뚫리면 개발자 PC로 바로 들어갑니다.",
+      "why": "10월 22일 LiteLLM 패키지 변조에 이어 열흘 새 AI 개발 도구를 노린 두 번째 대형 공급망 공격입니다. 이번엔 Python 라이브러리가 아니라 편집기 확장이었고, Hacker News 1면에 관련 글이 동시에 두 건(570점, 335점) 올랐습니다. Claude Code 확장은 누적 다운로드가 수천만 건 규모라, AI 코딩 도구가 개발 환경에서 가장 넓은 권한을 가진 소프트웨어가 됐다는 점이 드러났습니다. 자동 업데이트를 켠 사용자는 아무것도 누르지 않아도 감염될 수 있었습니다."
+    },
+    {
+      "category": "멀티 에이전트",
+      "domains": [
+        "labs.ycombinator.com",
+        "github.com",
+        "huggingface.co"
+      ],
+      "flow": [
+        "에이전트 하나가 도구 호출",
+        "정해진 역할의 에이전트 파이프라인",
+        "메시지와 공유 파일로 스스로 조직하는 에이전트 스웜"
+      ],
+      "how": "Minecraft 하네스는 Mineflayer 봇 라이브러리 위에 만들어졌고 MIT 라이선스입니다. 에이전트마다 Docker나 E2B 셸이 붙어 메모를 남기고 게임 도구를 부르는 스크립트를 직접 짭니다. 팀 구성은 JSON 파일 하나로 정하고, Claude·GPT·Gemini·OpenRouter를 고를 수 있습니다. 비슷한 시기 NUS 연구진의 DynaFlow는 메인 에이전트가 하위 에이전트를 순차·병렬로 부르는 워크플로를 코드로 직접 쓰게 학습시켜, 6개 벤치마크 평균 88.08%로 가장 강한 비교 대상보다 10.90%p 높았다고 보고했습니다.",
+      "hype": 4,
+      "meterNote": "하네스와 환경은 공개됐지만 게임 밖 실무 적용 사례는 아직 없음",
+      "reality": "실패 기록이 더 흥미롭습니다. 뼛가루 하나를 쓸 '전담 비료 담당'을 정하는 데 11분을 썼고, 첫날 밤 이후 에이전트들이 지나치게 몸을 사렸습니다. Claude 팀은 대공 포탑 74개 중 55개에 잘못된 탄약을 넣었다가 6번째 패배 뒤에야 알아챘습니다. 실험은 한 팀이 설계한 환경과 하네스에서 나온 결과라 모델의 일반적 협업 능력으로 넓혀 읽기는 어렵습니다.",
+      "refs": [
+        {
+          "src": "YC Labs · 10월",
+          "title": "YC 랩스: Minecraft·Mindustry 에이전트 스웜 실험 보고",
+          "url": "https://labs.ycombinator.com/projects/games/index.html"
+        },
+        {
+          "src": "GitHub",
+          "title": "Minecraft 에이전트 하네스 저장소",
+          "url": "https://github.com/yc-software/minecraft-agent-harness"
+        },
+        {
+          "src": "Hugging Face Papers · 10/27",
+          "title": "DynaFlow: 메인 에이전트가 하위 에이전트 워크플로를 직접 짜는 학습법",
+          "url": "https://huggingface.co/papers/2610.34467"
+        }
+      ],
+      "stages": [
+        {
+          "label": "하네스 오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "실험 단계",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트 50개를 한 세계에 풀었더니 리더와 관료제가 생겼다",
+      "tldr": [
+        "YC 랩스와 Olam Labs가 Minecraft와 Mindustry에서 에이전트 수십 개를 동시에 돌린 실험 결과와 하네스를 공개했습니다. Hacker News에서 337점을 받았습니다.",
+        "GPT-6.1 Sol 에이전트 50개를 3시간 동안 풀자 메시지 약 5,900건이 오갔고, 디렉터리 맨 앞의 에이전트가 616건의 DM을 받는 사실상의 리더가 됐습니다.",
+        "팀 대결에서는 GPT-6.1 Sol이 Claude Opus 5.5를 Bed Wars 6대 3, Mindustry 6대 1로 이겼습니다. 이긴 쪽은 메시지를 5~30배 더 보냈습니다."
+      ],
+      "topic": "multi-agent-swarm",
+      "use": 2,
+      "what": "에이전트 스웜은 여러 에이전트에게 공동 목표만 주고, 역할 분담과 조율은 메시지와 공유 파일로 스스로 하게 두는 방식입니다. 사람이 미리 짠 파이프라인 대신 조직 구조가 실행 중에 생겨납니다.",
+      "why": "코딩 에이전트를 여러 개 동시에 돌리는 사용이 늘면서, 에이전트끼리 어떻게 일을 나누고 실패하는지가 실무 질문이 됐습니다. 게임은 결과가 승패로 바로 측정되고 실패가 눈에 보여, 조율 방식을 비교하기 좋은 시험장입니다."
+    }
+  ],
+  "watch": []
+}

@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-26",
+  "headline": "이번 호의 두 기술은 모두 '모델을 어디서 돌리나'의 문제다. 구글은 에이전트마다 격리된 microVM을 주는 설계를 공개했고, 개인 개발자들은 잠긴 GPU 성능과 SSD까지 끌어 써서 큰 모델을 집에서 돌린다.",
+  "issueNo": 6,
+  "period": "10월 19일~25일",
+  "radar": [
+    {
+      "note": "레이더 첫 등장. RTX 30 BF16 제한 해제 모듈이 HN 331점, SSD에서 35B MoE를 돌리는 Edge0 논문이 HF 트렌딩에 오름.",
+      "since": "",
+      "tech": "소비자 GPU · 로컬 추론 최적화",
+      "topic": "local-inference-hacks",
+      "trend": "new"
+    },
+    {
+      "note": "닷새째 확산 → NVIDIA OpenShell(10/24)에 이어 구글 ACE 설계 공개로 대형 벤더 경쟁이 붙으며 부상으로 상향.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "rising"
+    },
+    {
+      "note": "10/25 확산 전환 이후 유지. Harness²가 HF 트렌딩 논문 1위(122표)에 계속 머무름.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "spreading"
+    },
+    {
+      "note": "10/21 DeepInfer로 첫 등장 → Cerebras가 3T 모델을 웨이퍼 59장에 나눠 올리는 설계를 공개(HN 303점)해 서빙 설계 공개가 이어짐.",
+      "since": "첫 포착 10/21",
+      "tech": "오픈소스 프로덕션 추론 엔진",
+      "topic": "open-inference-engine",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. 한국어 문서의 AI 말투를 걷어내는 Claude Code 플러그인 stop-slop-ko(10/24)처럼 개인이 만든 스킬 공개가 이어짐.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 스킬 · 마크다운 컨텍스트",
+      "topic": "agent-skills-context",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "로컬 추론",
+      "domains": [
+        "github.com",
+        "news.ycombinator.com",
+        "huggingface.co"
+      ],
+      "flow": [
+        "작은 모델만 로컬 실행",
+        "양자화·CPU 오프로딩",
+        "하드웨어 제한 해제와 SSD 전문가 스트리밍"
+      ],
+      "how": "gpu-unlock은 엔비디아 드라이버가 카드를 잡기 전에 부팅 단계에서 펌웨어 설정을 바꾸고 카드를 리셋합니다. 커널 명령줄에 대상 카드를 지정하는 옵트인 방식이며, 사용자 보고로 3060·3070·3080·3090 계열에서 동작했습니다. Edge0는 MoE 모델의 전문가 가중치를 SSD에 두고, 층마다 붙인 작은 예측 헤드가 고른 전문가를 미리 불러옵니다. 예측과 실제 라우팅이 어긋나는 손실은 별도 LoRA 어댑터로 메웁니다. 모델과 어댑터는 Hugging Face에 공개됐습니다.",
+      "hype": 4,
+      "meterNote": "코드는 공개됐지만 커널 모듈 빌드와 전력 설정이 필요하고, Edge0 체크포인트는 프리뷰",
+      "reality": "gpu-unlock은 펌웨어 부트로더의 버퍼 오버플로를 이용하므로 위험을 감수해야 합니다. 가장 큰 개선은 전력 한도를 450W로 올려야 나오고, 순정 쿨러의 설계 범위를 넘을 수 있다는 경고가 있습니다. 수치는 모두 작성자와 사용자 보고이며 독립 검증 전입니다. Edge0도 원본 대비 평균 몇 점 낮은 품질이고, 지연 분포나 CUDA 지원은 공개되지 않았습니다.",
+      "refs": [
+        {
+          "src": "GitHub",
+          "title": "gpu-unlock: RTX 30 시리즈 FP16·BF16 제한 해제 커널 모듈",
+          "url": "https://github.com/Zagitta/gpu-unlock"
+        },
+        {
+          "src": "Hacker News · 10/25",
+          "title": "Hacker News 토론: 실사용 개선 폭과 펌웨어 위험",
+          "url": "https://news.ycombinator.com/item?id=50219700"
+        },
+        {
+          "src": "Hugging Face Papers · 9/17",
+          "title": "Edge0: 라우팅 예측으로 35B MoE를 SSD에서 서빙",
+          "url": "https://huggingface.co/papers/2609.18063"
+        }
+      ],
+      "stages": [
+        {
+          "label": "오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "펌웨어 취약점 이용",
+          "tone": "issue"
+        }
+      ],
+      "title": "RTX 3090의 잠긴 BF16 풀고, 35B 모델은 SSD에서: 소비자 하드웨어 쥐어짜기",
+      "tldr": [
+        "RTX 30 시리즈의 FP16·BF16·TF32 명령 발행 속도 제한을 푸는 리눅스 커널 모듈 gpu-unlock이 Hacker News에서 331점을 받았습니다.",
+        "작성자 측정으로 RTX 3090 Ti의 BF16 행렬곱이 87.5에서 157.4 TFLOPS로 약 80% 올랐습니다. 다만 LLM 프리필은 14~36% 개선에 그치고, 메모리가 병목인 디코드는 거의 그대로입니다.",
+        "같은 주 Hugging Face 트렌딩에 오른 Edge0 논문은 다음 층의 전문가 선택을 한 토큰 앞서 예측해 SSD에서 미리 읽어 오는 방식으로, 35B MoE를 약 3GiB 메모리로 초당 약 20토큰 돌렸다고 밝혔습니다(자체 측정)."
+      ],
+      "topic": "local-inference-hacks",
+      "use": 2,
+      "what": "로컬 추론은 클라우드 API 대신 자기 PC의 GPU나 노트북에서 모델을 돌리는 것입니다. 걸림돌은 두 가지입니다. 소비자용 GPU는 같은 칩이라도 일부 연산 속도가 업무용 카드보다 낮게 묶여 있고, 큰 모델은 메모리에 다 올라가지 않습니다.",
+      "why": "중고 RTX 3090은 24GB 메모리 덕에 로컬 LLM 커뮤니티의 표준 카드인데, 같은 칩의 업무용 카드만큼 빨라질 수 있다는 점이 컸습니다. HN 댓글에선 4장 구성 vLLM에서 실사용 개선이 7~8%였다는 보고부터 40~50%까지 다양한 측정이 공유됐습니다. 한편 MoE 모델이 늘면서 '계산은 적은데 메모리는 많이 드는' 구조를 SSD로 푸는 연구가 주목받고 있습니다."
+    },
+    {
+      "category": "에이전트 인프라",
+      "domains": [
+        "cloud.google.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "공유 서버에서 도구 실행",
+        "컨테이너 샌드박스",
+        "에이전트별 microVM과 게이트웨이"
+      ],
+      "how": "ACE에서 하네스(두뇌)는 샌드박스 밖에서 모델을 돌리고, 샌드박스(손)는 하네스가 보낸 명령만 실행해 결과를 돌려줍니다. microVM에는 일반 네트워크 카드가 없고, 모든 트래픽은 로컬 프록시를 거쳐 게이트웨이로 나갑니다. 에이전트가 쉬는 동안엔 상태를 체크포인트로 저장하고 자원을 반납합니다. 같은 기본 이미지는 Copy-on-Write로 메모리를 공유해, 평가·강화학습에서는 환경 하나를 스냅샷한 뒤 수천 개로 복제해 돌립니다.",
+      "hype": 4,
+      "meterNote": "구글 내부 서비스에서 쓰이지만 외부 개발자는 아직 쓸 수 없음",
+      "reality": "공개된 건 설계 글뿐이고 기동 지연, 서버당 밀도, 가격 같은 숫자는 없습니다. '수억 개 에이전트'는 설계 목표입니다. 비밀을 빼도 에이전트가 허용된 권한 안에서 잘못된 일을 하는 문제는 게이트웨이 정책에 달려 있어, 프롬프트 인젝션 자체를 막지는 못합니다.",
+      "refs": [
+        {
+          "src": "Google Cloud 블로그 · 10/22",
+          "title": "Agent Compute Engine 내부 구조: 에이전트 시대의 컴퓨팅 기반",
+          "url": "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive?hl=en"
+        },
+        {
+          "src": "GeekNews · 10/24",
+          "title": "구글이 AI 에이전트마다 '컴퓨터 한 대'를 주려는 이유(댓글 측정 포함)",
+          "url": "https://news.hada.io/topic?id=35917"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "구글 내부 사용 중",
+          "tone": "live"
+        },
+        {
+          "label": "클라우드 프리뷰 예정",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트마다 microVM 한 대: 구글이 공개한 '비밀 없는 샌드박스' 설계",
+      "tldr": [
+        "구글이 10월 22일 Agent Compute Engine(ACE) 설계를 공개했습니다. 에이전트 세션마다 하드웨어로 격리된 단일 테넌트 microVM을 하나씩 줍니다.",
+        "샌드박스 안에는 API 키나 OAuth 토큰을 두지 않습니다. 밖의 Agent Gateway가 사용자 위임과 에이전트 신원을 확인한 뒤 통신 중에 자격 증명을 끼워 넣습니다.",
+        "Gemini, Antigravity, 내부 평가·강화학습에 이미 쓰고 있으며, Google Cloud 프리뷰는 수개월 안을 목표로 합니다. 가격과 기동 시간 수치는 공개하지 않았습니다."
+      ],
+      "topic": "agent-sandbox-gateway",
+      "updateOf": {
+        "date": "2026-10-24",
+        "note": "NVIDIA OpenShell(10/24)에 이어 구글이 에이전트별 microVM과 자격 증명 없는 샌드박스 설계를 공개해 대형 클라우드가 직접 뛰어들었다."
+      },
+      "use": 3,
+      "what": "에이전트 샌드박스는 AI가 만든 코드와 명령을 실제 시스템과 떼어 놓고 실행하는 격리 환경입니다. 컨테이너는 빠르지만 커널을 공유하고, 일반 VM은 안전하지만 켜고 끄는 데 오래 걸립니다. microVM은 그 사이를 노리는 가벼운 가상 머신입니다.",
+      "why": "에이전트는 일하는 시간보다 모델 응답과 사용자 승인을 기다리는 시간이 깁니다. GeekNews 댓글에선 ChatGPT 에이전트 작업 4분 29초 중 도구가 실제로 일한 시간은 20~40%였다는 측정이 공유됐습니다. 대기 중 비용을 줄이고, 악성 메일이 '키를 빼내라'고 시켜도 훔칠 키가 없게 만드는 것이 이번 설계의 요점입니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Google Cloud 블로그",
+      "text": "구글 Agent Compute Engine의 Google Cloud 프리뷰. 기동 시간과 가격 공개 여부",
+      "url": "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive?hl=en",
+      "when": "수개월 내"
+    }
+  ]
+}

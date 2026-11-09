@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "model cascade",
+    "LLM routing",
+    "confidence escalation",
+    "Jev",
+    "decision model",
+    "GPT-6 Luna",
+    "calibration",
+    "Hightouch"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Hightouch Jev + Claude Opus 5.5 하이브리드",
+        "GPT-6 Luna 비교"
+      ],
+      "date": "2026-11-08",
+      "title": "싼 모델이 '모르겠다' 싶을 때만 Opus를 부른다: 신뢰도 기반 캐스케이드",
+      "urls": [
+        "https://hightouch.com/blog/llm-judges-identity-resolution",
+        "https://news.hada.io/topic?id=36725",
+        "https://news.ycombinator.com/item?id=50397429"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-08",
+  "lastSeen": "2026-11-08",
+  "lastTrend": "new",
+  "name": "신뢰도 기반 모델 캐스케이드",
+  "radar": [
+    {
+      "date": "2026-11-08",
+      "trend": "new"
+    }
+  ]
+}

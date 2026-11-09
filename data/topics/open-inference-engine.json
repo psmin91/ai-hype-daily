@@ -6,7 +6,12 @@
     "TorchTPU",
     "vLLM",
     "SGLang",
-    "speculative decoding"
+    "speculative decoding",
+    "Cerebras wafer pipeline",
+    "Kimi K3 on Cerebras",
+    "SpecPilot",
+    "autonomous serving optimization",
+    "lossless 12-bit weights"
   ],
   "featured": [
     {
@@ -19,16 +24,40 @@
       "urls": [
         "https://thenewstack.io/deepseek-deepinfer-huawei-nvidia/"
       ]
+    },
+    {
+      "cases": [
+        "UC Berkeley SpecPilot"
+      ],
+      "date": "2026-11-07",
+      "title": "에이전트가 추측 디코딩 엔진을 직접 튜닝했다: SpecPilot, 단일 요청 속도 10.87배",
+      "urls": [
+        "https://huggingface.co/papers/2611.02501",
+        "https://github.com/StargazerX0/SpecPilot",
+        "https://huggingface.co/papers/trending"
+      ]
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-21",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-07",
+  "lastTrend": "rising",
   "name": "오픈소스 프로덕션 추론 엔진",
   "radar": [
     {
       "date": "2026-10-21",
       "trend": "new"
+    },
+    {
+      "date": "2026-10-26",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-28",
+      "trend": "cooling"
+    },
+    {
+      "date": "2026-11-07",
+      "trend": "rising"
     }
   ]
 }

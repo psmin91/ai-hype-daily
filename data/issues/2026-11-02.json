@@ -1,0 +1,169 @@
+{
+  "date": "2026-11-02",
+  "headline": "이번 주 화제는 모델보다 모델을 감싸는 틀이었다. 하네스만 바꿔 27B 모델을 프런티어와 동률까지 끌어올렸다는 실험, 프레임워크에 따라 에이전트 비용이 두 배 가까이 갈린다는 측정이 나왔고, 둘 다 곧바로 표본 크기 논쟁이 붙었다.",
+  "issueNo": 13,
+  "period": "10월 26일~11월 2일",
+  "radar": [
+    {
+      "note": "정점 유지. Memdoor 팀 풀이가 HN 329점을 받았지만 곧 '통계적 동률' 반론이 붙어, 화제가 효과 주장에서 검증 방법으로 옮겨 가는 중.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "peak"
+    },
+    {
+      "note": "Nolan Lawson이 프레임워크 12종을 에이전트로 각 5회씩 만들어 비교(HN 170점). '에이전트에 좋은 스택' 주장을 숫자로 따지기 시작.",
+      "since": "",
+      "tech": "에이전트 친화 스택 · 프레임워크 비용 측정",
+      "topic": "agent-friendly-stack",
+      "trend": "new"
+    },
+    {
+      "note": "10/27 첫 포착 → Will Larson이 PR마다 검증 파일을 남기는 운영기를 공개하고, HN 'AI 피로' 스레드(댓글 142개)에서 리뷰 부담이 쟁점이 되며 부상.",
+      "since": "첫 포착 10/27",
+      "tech": "eval 기반 코드 리뷰 · 검증 기록",
+      "topic": "agent-code-review-evals",
+      "trend": "rising"
+    },
+    {
+      "note": "부상 유지. 데몬 없는 루트리스 런타임 kern이 MCP 서버를 붙여 코딩 에이전트용 격리 실행을 내세우며 GeekNews에 올라옴.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 샌드박스 · AI 게이트웨이",
+      "topic": "agent-sandbox-gateway",
+      "trend": "rising"
+    },
+    {
+      "note": "정점 유지. GeekNews에 '메모리 도구를 왜 안 쓰나' 같은 사용 경험 질문과 한국어 기억 검색 플러그인이 이어지며, 새 기법보다 실제 쓰임을 묻는 단계.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 메모리",
+      "topic": "agent-memory",
+      "trend": "peak"
+    },
+    {
+      "note": "확산 유지. 새 대형 사례는 없지만, 소송 서면에 흰 글씨 지시문을 넣은 법무법인을 브라질 법원이 제재한 5월 사례가 HN 207점으로 재조명.",
+      "since": "첫 포착 10/21",
+      "tech": "숨은 지시문 · 간접 프롬프트 인젝션",
+      "topic": "indirect-prompt-injection",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 4,
+  "stories": [
+    {
+      "category": "하네스 엔지니어링",
+      "domains": [
+        "github.com",
+        "aiweekly.co",
+        "startupfortune.com"
+      ],
+      "flow": [
+        "큰 모델 한 번 호출",
+        "같은 모델 여러 번 샘플링",
+        "역할 나눈 소형 모델 팀과 수리 루프"
+      ],
+      "how": "team-solve에서 각 역할은 매번 빈 컨텍스트로 시작하고, 대화가 아니라 디스크의 파일(계획 파일, solution.py, 테스트 로그)로만 주고받습니다. 그 위에 수리 담당이 붙어 실패한 코드를 고칩니다. 워크플로는 모델 이름을 박지 않은 YAML이라 Ollama·vLLM 같은 로컬 모델에도 연결할 수 있고, 50회 실행의 요청·응답·채점 결과가 모두 공개돼 있습니다.",
+      "hype": 4,
+      "meterNote": "워크플로와 실행 기록은 전부 공개, 실무 도입 사례는 아직 없음",
+      "reality": "10문제는 표본이 너무 작고, 문제가 2025년 3~4월 대회라 학습 데이터 오염을 배제할 수 없다고 저자들도 밝혔습니다. 원 논문 수치는 개정 때마다 크게 바뀌었고(92.4% → 86.4%), 27B 기준 100문제 비용은 51.75달러로 Fable 5(61.11달러)의 약 85%라 '훨씬 싸다'는 말도 과장입니다. Startup Fortune은 Qwen3.6-35B처럼 효과가 없거나 오히려 떨어진 모델도 있다고 짚었습니다.",
+      "refs": [
+        {
+          "src": "GitHub",
+          "title": "Memdoor 저장소 README: team-solve 워크플로와 벤치마크 표",
+          "url": "https://github.com/guregodevo/memdoor/blob/main/README.md"
+        },
+        {
+          "src": "AI Weekly · 11/1",
+          "title": "Qwen3.8-27B 다섯 개 팀이 LiveCodeBench에서 Fable 5를 앞선 과정",
+          "url": "https://aiweekly.co/alerts/memdoors-five-qwen38-27b-team-beats-fable-5-at-livecodebench"
+        },
+        {
+          "src": "Startup Fortune · 11/1",
+          "title": "소형 모델 '승리'를 재계산하면 통계적 동률이라는 반론",
+          "url": "https://startupfortune.com/small-open-models-match-fable-5-on-coding-but-the-win-is-a-myth/"
+        },
+        {
+          "src": "Hacker News · 11/2",
+          "title": "Hacker News 1면: Memdoor 팀 풀이 (329점)",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "HN 329점",
+          "tone": "live"
+        },
+        {
+          "label": "재계산하니 동률",
+          "tone": "issue"
+        }
+      ],
+      "title": "하네스만 바꿔 27B 모델 5개로 프런티어와 겨루다: Memdoor 팀 풀이와 '동률' 반론",
+      "tldr": [
+        "코딩 에이전트 Memdoor가 Qwen3.8-27B 5개를 계획·아이디어·풀이·관리 역할로 나눈 team-solve 워크플로를 공개했습니다. LiveCodeBench Hard 앞 10문제에서 평균 9.8점으로, Fable 5 단일 호출(8.0점)보다 높았다고 밝혔습니다(자체 측정).",
+        "50회 실행에 출력 토큰 1,530만 개, 비용 35.79달러가 들었고, 한 번 실행의 중앙값은 40분·0.39달러였습니다.",
+        "11월 1일 Startup Fortune은 원 논문(GVS5H) 최신 개정판 기준 100문제에서 오케스트레이션 86.4%, Fable 5 87.4%로 통계적 차이가 없다고 재계산했습니다."
+      ],
+      "topic": "harness-engineering",
+      "updateOf": {
+        "date": "2026-10-22",
+        "note": "하네스 개선 효과가 처음으로 공개 실행 기록과 함께 측정됐고, 같은 날 통계적으로는 차이가 없다는 반박 재계산이 나왔습니다."
+      },
+      "use": 2,
+      "what": "오케스트레이션 하네스는 같은 모델을 여러 역할로 나눠 돌리고, 테스트 결과를 보고 코드를 고치게 하는 실행 틀입니다. 모델을 바꾸지 않고 추론 시점에 계산을 더 써서 성능을 끌어올리는 '테스트 타임 컴퓨트' 기법의 한 형태입니다.",
+      "why": "'작은 오픈 모델이 프런티어 모델을 이겼다'는 제목이 HN 1면에서 329점, 댓글 160개를 모았습니다. 원 연구가 GVS5H 저자들의 프롬프트를 그대로 쓰고 Memdoor가 이를 재현했다는 점에서, 프롬프트 요령이 아니라 구조의 효과를 본다는 주장이 관심을 끌었습니다."
+    },
+    {
+      "category": "프런트엔드 · 에이전트 비용",
+      "domains": [
+        "nolanlawson.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "취향으로 프레임워크 선택",
+        "'AI가 잘 아는 스택' 주장",
+        "에이전트 토큰 비용을 직접 측정"
+      ],
+      "how": "각 에이전트는 최신 프레임워크 버전과, 있으면 공식 MCP·스킬을 썼습니다. 결과물은 접근성 트리 기반 적합성 테스트로 검증했고, 정적 사전 생성은 금지했습니다. 성능은 Lighthouse 모바일(CPU 4배 감속, Slow 4G)로 쟀습니다. SvelteKit의 높은 비용은 모델이 학습하지 못한 새 마이그레이션 가이드를 에이전트가 읽느라 생긴 것으로 저자는 봤습니다.",
+      "hype": 3,
+      "meterNote": "재현 가능한 벤치마크지만 앱 1종·모델 1종 결과",
+      "reality": "콘텐츠 위주 앱 하나라 상호작용이 많은 앱에서는 결과가 다를 수 있고, Lighthouse 지표 자체가 MPA에 유리합니다. 표본은 프레임워크당 5회(Angular 성능 지표는 3회)이고, 같은 조건에서도 실행마다 편차가 컸습니다. 비용은 실제 지출이 아닌 API 환산치이며, MCP·스킬을 쓰는지도 실행마다 달라 '에이전트가 도구를 찾는 능력'이 섞여 있습니다.",
+      "refs": [
+        {
+          "src": "Nolan Lawson · 10/28",
+          "title": "JavaScript 프레임워크의 AI 비용: 12종 비교 벤치마크",
+          "url": "https://nolanlawson.com/2026/10/28/the-ai-cost-of-javascript-frameworks/"
+        },
+        {
+          "src": "Hacker News · 11/2",
+          "title": "Hacker News 1면: The AI cost of JavaScript frameworks (170점)",
+          "url": "https://news.ycombinator.com/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "HN 170점",
+          "tone": "live"
+        },
+        {
+          "label": "앱 1종 · 5회 반복",
+          "tone": "preview"
+        }
+      ],
+      "title": "같은 앱을 프레임워크 12종으로 에이전트에게 시켜 보니, 비용이 최대 1.9배 갈렸다",
+      "tldr": [
+        "Nolan Lawson이 10월 28일 포켓몬 검색 앱을 Claude Code(Claude Opus 5.5)로 프레임워크 12종에서 각 5회씩 만들게 하고, 토큰·시간·성능을 비교한 결과를 공개했습니다.",
+        "빌드당 API 환산 비용 중앙값은 Hono+htmx 2.67달러가 가장 낮았고 Angular 4.97달러가 가장 높았습니다. 토큰은 Nuxt 385만 개부터 Angular 976만 개까지 벌어졌습니다.",
+        "시간은 Astro가 8.2분으로 가장 짧았고 Angular는 17.2분이었습니다. 접근성 점수는 12종 모두 100점이었습니다."
+      ],
+      "topic": "agent-friendly-stack",
+      "use": 3,
+      "what": "에이전트 친화 스택은 '사람이 쓰기 편한가'뿐 아니라 '에이전트가 적은 토큰으로 맞는 코드를 내는가'로 도구를 고르자는 관점입니다. 에이전트가 문서를 읽고 헤매는 만큼 토큰과 시간이 비용으로 바로 잡히기 때문에 측정이 가능해졌습니다.",
+      "why": "프런트엔드 재작성을 '에이전트에 더 좋다'는 이유로 정당화하는 사례가 늘었지만 근거는 거의 없었습니다. 이 글은 그 주장을 처음으로 같은 조건에서 숫자로 비교했고, 아무 프레임워크도 쓰지 않은 Vanilla가 오히려 매번 SPA를 만들어 성능이 처졌다는 점도 화제가 됐습니다."
+    }
+  ],
+  "watch": []
+}

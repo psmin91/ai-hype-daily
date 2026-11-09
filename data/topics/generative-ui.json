@@ -1,0 +1,56 @@
+{
+  "aliases": [
+    "generative UI",
+    "Intelligent UI",
+    "OpenIntelligentUI",
+    "A2UI",
+    "AG-UI",
+    "CopilotKit",
+    "interactive answers",
+    "MathLive",
+    "HTML Preview",
+    "postMessage XSS",
+    "ChatGPT share link takeover"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "ChatGPT Intelligent UI",
+        "CopilotKit OpenIntelligentUI"
+      ],
+      "date": "2026-10-23",
+      "title": "답을 글 대신 '화면'으로: 생성형 UI가 ChatGPT에서 오픈소스로 번지다",
+      "urls": [
+        "https://techcrunch.com/2026/10/07/chatgpt-is-getting-a-lot-more-visual-with-the-launch-of-a-new-interface/",
+        "https://github.com/CopilotKit/OpenIntelligentUI",
+        "https://news.hada.io/topic?id=35735"
+      ]
+    },
+    {
+      "cases": [
+        "ChatGPT 공유 링크 계정 탈취(Parameter)",
+        "MathLive postMessage 수신기"
+      ],
+      "date": "2026-11-01",
+      "title": "공유 링크 한 번 열면 계정이 넘어갔다: ChatGPT 대화 속 그래프·HTML 미리보기를 엮은 공격",
+      "urls": [
+        "https://www.parameter.ai/labs/we-found-a-gap-at-openai",
+        "https://news.ycombinator.com/item?id=50314699"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-23",
+  "lastSeen": "2026-11-01",
+  "lastTrend": "spreading",
+  "name": "생성형 UI",
+  "radar": [
+    {
+      "date": "2026-10-23",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-01",
+      "trend": "spreading"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "aliases": [
+    "pass^k",
+    "run-to-run consistency",
+    "BFCL v4",
+    "tool-call reliability",
+    "repeat runs"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "BFCL v4 5회 반복(gemma4 26B vs Claude Sonnet 5.5)"
+      ],
+      "date": "2026-11-06",
+      "title": "평균 정답률 말고 '다섯 번 다 성공': 에이전트 도구 호출을 반복 실행으로 재는 법",
+      "urls": [
+        "https://bric.pe.kr/blog/local-llm-tool-use-five-runs-bfcl-claude",
+        "https://www.thoughtworks.com/radar"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-06",
+  "lastSeen": "2026-11-06",
+  "lastTrend": "new",
+  "name": "에이전트 반복 실행 신뢰도 평가",
+  "radar": [
+    {
+      "date": "2026-11-06",
+      "trend": "new"
+    }
+  ]
+}

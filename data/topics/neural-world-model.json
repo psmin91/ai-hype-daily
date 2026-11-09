@@ -1,0 +1,54 @@
+{
+  "aliases": [
+    "world model",
+    "WorldTUI",
+    "neural terminal",
+    "neural emulation",
+    "learned simulator",
+    "Qwen2.5-Coder world model",
+    "Genie 4",
+    "Project Genie",
+    "HY-World 2.0",
+    "real-time world model",
+    "Hy-Nomas",
+    "tinyworldformer",
+    "StreamEval",
+    "interactive world model",
+    "GameNGen"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "WorldTUI"
+      ],
+      "date": "2026-10-23",
+      "title": "쉘 없이 키 입력만으로 화면을 예측하는 360M '터미널 월드 모델'",
+      "urls": [
+        "https://simedw.com/2026/10/21/world-model-terminal/",
+        "https://news.ycombinator.com/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-10-23",
+  "lastSeen": "2026-10-31",
+  "lastTrend": "spreading",
+  "name": "프로그램을 흉내 내는 소형 월드 모델",
+  "radar": [
+    {
+      "date": "2026-10-23",
+      "trend": "new"
+    },
+    {
+      "date": "2026-10-24",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-29",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-10-31",
+      "trend": "spreading"
+    }
+  ]
+}

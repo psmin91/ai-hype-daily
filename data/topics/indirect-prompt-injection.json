@@ -5,7 +5,16 @@
     "LLM SEO poisoning",
     "GEO poisoning",
     "NXDirection",
-    "BIPIA"
+    "BIPIA",
+    "fake statistics citation",
+    "stateglobe",
+    "AI citation poisoning",
+    "anti-LLM obfuscation",
+    "Unicode tag characters",
+    "refusal-trigger decoy",
+    "servicepipe fingerprinting script",
+    "Brazil court prompt injection",
+    "white text injection"
   ],
   "featured": [
     {
@@ -19,16 +28,38 @@
         "https://redact.dev/blog/whatsapp-help-pages-hidden-ai-instructions",
         "https://aiweekly.co/ai-news-today/edition/2026-10-15"
       ]
+    },
+    {
+      "cases": [
+        "servicepipe 지문 수집 스크립트의 AI 거부 유발 미끼(nullpt.rs)"
+      ],
+      "date": "2026-10-30",
+      "title": "모델의 안전장치를 방패로: AI가 분석을 거부하게 만드는 난독화 스크립트",
+      "urls": [
+        "https://nullpt.rs/fingerprinting-bioweapons"
+      ]
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-21",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-02",
+  "lastTrend": "spreading",
   "name": "숨은 지시문 · 간접 프롬프트 인젝션",
   "radar": [
     {
       "date": "2026-10-21",
       "trend": "rising"
+    },
+    {
+      "date": "2026-10-23",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-10-30",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-02",
+      "trend": "spreading"
     }
   ]
 }

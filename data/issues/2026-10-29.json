@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-29",
+  "headline": "이번 주 개발자들이 붙잡은 질문은 '누가, 무엇으로 확인하나'였다. 에이전트가 쓴 4,310만 줄 수학 증명은 Lean 커널이 확인하고, 에이전트가 쓴 코드는 사람이 이해했는지 푸시 전에 시험받고, 검색 결과는 리랭커가 구절 단위로 골라 넘기기 시작했다.",
+  "issueNo": 9,
+  "period": "10월 21일~29일",
+  "radar": [
+    {
+      "note": "10/24엔 코드의 무충돌 증명 → 이번 주 Axiom이 수학 정리 전체를 Lean으로 옮기며 범위가 넓어짐. HN 1면 230점.",
+      "since": "첫 포착 10/24",
+      "tech": "LLM 기반 형식 검증",
+      "topic": "ai-formal-verification",
+      "trend": "spreading"
+    },
+    {
+      "note": "10/23 360M 터미널 월드 모델 → 10/27 DeepMind Genie 4가 영상·소리·대화를 실시간 생성, HN 961점·댓글 550개. 객체 영속성 비판도 함께 커짐.",
+      "since": "첫 포착 10/23",
+      "tech": "월드 모델",
+      "topic": "neural-world-model",
+      "trend": "rising"
+    },
+    {
+      "note": "AI가 쓴 코드를 푸시 전에 퀴즈로 확인하는 Git 훅 Sphinx가 GeekNews에 소개됨. 효용을 두고 댓글 논쟁.",
+      "since": "",
+      "tech": "이해 부채 · 사람 쪽 검증",
+      "topic": "comprehension-debt",
+      "trend": "new"
+    },
+    {
+      "note": "어제 다룬 '컨텍스트 비우기'가 10/28 Hermes Agent /goal 주기적 리셋 기능 제안(이슈 #146112)으로 이어짐.",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 스킬 · 마크다운 컨텍스트",
+      "topic": "agent-skills-context",
+      "trend": "rising"
+    },
+    {
+      "note": "10/26 하드웨어 쥐어짜기 → 이번 주엔 4비트 약 1GB 텍스트 모델을 포함한 Liquid AI LFM3(10/27), 오프라인 비서 Survival LLM(HN 500점대)으로 모델 쪽 선택지가 늘어남.",
+      "since": "첫 포착 10/26",
+      "tech": "소비자 하드웨어 · 로컬 추론",
+      "topic": "local-inference-hacks",
+      "trend": "rising"
+    },
+    {
+      "note": "5일째 확산 유지. 다만 Cursor Agent SDK 공개 글(HN 30점·댓글 35)에 '도구가 너무 빨리 바뀐다', '복잡한 워크플로가 단순 프롬프트보다 나은지 모르겠다'는 피로감 댓글이 다수.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "peak"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "형식 검증 · AI 수학",
+      "domains": [
+        "axiommath.ai",
+        "github.com",
+        "runtimewire.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사람이 논문으로 쓰고 동료 심사",
+        "사람이 Lean으로 한 줄씩 옮겨 라이브러리 구축",
+        "에이전트 군단이 청사진을 따라 대량 형식화"
+      ],
+      "how": "Axiom 엔지니어들은 기존 Lean 작업과 문헌에서 뽑은 증명 지도로 일을 마일스톤과 약 380개 작은 작업으로 쪼갰습니다. 에이전트는 의존 관계 지도를 보고 빠진 선행 정리를 다른 에이전트에 넘겼고, 리드 에이전트가 진술을 검토했습니다. 사람 수학자는 막힌 지점과 중요한 오류 보고를 조사했고, 최종 진술과 정의가 의도대로인지도 사람이 확인했습니다. 코드는 GitHub AxiomMath/CFSG에 있습니다.",
+      "hype": 4,
+      "meterNote": "저장소와 빌드 파일은 공개됐지만 외부 재현 전이고, 같은 방식을 쓴 다른 사례는 아직 없음",
+      "reality": "Lean이 추론 단계를 보장해도 정의를 잘못 옮겼다면 엉뚱한 정리를 증명한 셈이라, 정의 검토는 여전히 사람 몫입니다. 쓰인 모델 이름, 정확한 에이전트 수, 연산 비용은 공개되지 않았습니다. Hacker News에서는 기계가 쏟아낸 4,310만 줄이 재사용 가능한 수학 라이브러리가 되기는 어렵다는 지적이 나왔고, Axiom은 34곳의 불일치가 정리 자체를 뒤집지는 않는다고 설명합니다.",
+      "refs": [
+        {
+          "src": "Axiom · 10/26",
+          "title": "Axiom 연구 글: 거대한 정리를 형식화하다(에이전트 수십 개, 24일, 불일치 34곳)",
+          "url": "https://axiommath.ai/research/the-enormous-theorem-formalized/"
+        },
+        {
+          "src": "Axiom · 10/26",
+          "title": "프로젝트 사이트: 4,310만 줄 규모와 증명 지도, 정오표",
+          "url": "https://cfsg.axiommath.ai/"
+        },
+        {
+          "src": "RuntimeWire · 10/27",
+          "title": "Axiom CEO '아직 외부에서 재현한 곳은 없다'",
+          "url": "https://runtimewire.com/article/axiom-s-ceo-says-no-one-outside-the-company-has-rebuilt-its-43-million-line-proo"
+        },
+        {
+          "src": "Hacker News · 10/28",
+          "title": "Hacker News 토론: 기계 형식화의 유용성과 신뢰성",
+          "url": "https://news.ycombinator.com/item?id=50261647"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "코드 공개",
+          "tone": "live"
+        },
+        {
+          "label": "외부 재현 전",
+          "tone": "issue"
+        }
+      ],
+      "title": "에이전트 수십 개가 24일 동안 4,310만 줄짜리 Lean 증명을 썼다",
+      "tldr": [
+        "Axiom은 10월 26일 유한 단순군 분류 정리의 1세대 증명을 Lean으로 형식화했다고 발표했습니다. 약 4,310만 줄, 선언 205만 개 규모입니다.",
+        "작업은 에이전트 수십 개가 24일 동안 했습니다. 출판된 문헌과 어긋나는 지점 34곳을 기록했고, 가장 큰 것은 Unbalanced Group Theorem 증명 속 한 주장에 대한 반례였습니다.",
+        "Hacker News 1면에서 230점을 받았습니다. 다만 10월 27일 기준 회사 밖에서 이 증명을 직접 빌드해 확인한 곳은 아직 없다고 CEO가 밝혔습니다."
+      ],
+      "topic": "ai-formal-verification",
+      "updateOf": {
+        "date": "2026-10-24",
+        "note": "10/24엔 LLM이 코드의 무충돌을 증명한 사례였고, 이번엔 에이전트 수십 개가 수학 정리 전체를 4,310만 줄 Lean 증명으로 옮겼습니다."
+      },
+      "use": 2,
+      "what": "자동 형식화는 사람이 자연어로 쓴 증명을 Lean 같은 증명 검증 언어로 옮기는 일입니다. Lean 커널이 모든 추론 단계를 기계적으로 확인하므로, 옮기기만 끝나면 증명이 맞는지는 사람이 아니라 컴퓨터가 판정합니다.",
+      "why": "수십 년 동안 수백 편의 논문에 흩어진 증명을 한 번에 기계 검증 가능한 형태로 만든 규모 때문입니다. 개발자들에게는 '정답을 기계가 판정해 주는 일이면 에이전트 수십 개를 몇 주씩 돌릴 수 있다'는 장기 작업 사례로 읽혔습니다."
+    },
+    {
+      "category": "개발 워크플로",
+      "domains": [
+        "github.com",
+        "news.hada.io",
+        "oreilly.com"
+      ],
+      "flow": [
+        "사람이 쓰고 사람이 리뷰",
+        "AI가 쓰고 테스트 통과로 확인",
+        "AI가 쓰고 사람의 이해도를 따로 확인"
+      ],
+      "how": "npm install -g sphinx-understand 후 sphinx install로 전역 Git 훅을 겁니다. 저장소의 .sphinxconfig에서 대상 브랜치, 검사 시점(pre-push 또는 pre-commit), 난이도(relaxed·standard·thorough)를 정합니다. 리뷰 모델은 읽기 전용 Git 도구로 커밋만 보고 코드를 만든 대화는 보지 못합니다. 틀리면 설명과 새 시나리오가 나오고, 통과는 24시간 유효합니다. 리뷰 모델은 로그인된 Claude Code·Codex CLI나 OpenRouter 등을 쓰므로 모델 비용이 듭니다.",
+      "hype": 3,
+      "meterNote": "npm 한 줄로 설치되지만 사용자는 아직 초기 단계(별 429개)이고, 효과를 잰 자료는 없음",
+      "reality": "GeekNews 댓글에서는 오픈북 방식이라 다른 모델을 한 번 더 부르면 퀴즈를 통과할 수 있고, 기록에는 통과·건너뜀만 남아 사람이 풀었는지 증명하지 못한다는 지적이 나왔습니다. 매 푸시마다 퀴즈는 번거롭다는 반응도 있습니다. 개발자 스스로 보안 게이트가 아니라 연습 도구라고 밝히며, 푸시는 최대 25분까지 대기할 수 있습니다. 퀴즈가 실제 이해도를 높이는지는 측정된 적이 없습니다.",
+      "refs": [
+        {
+          "src": "GitHub · 10/29 확인",
+          "title": "Sphinx 저장소: 푸시 전 이해도 퀴즈 Git 훅(설치·설정 방법)",
+          "url": "https://github.com/parthh01/sphinx"
+        },
+        {
+          "src": "GeekNews · 10/25",
+          "title": "GeekNews 소개와 댓글: 오픈북 퀴즈가 이해를 증명할 수 있나",
+          "url": "https://news.hada.io/topic?id=35945"
+        },
+        {
+          "src": "O'Reilly Radar · 4/13",
+          "title": "이해 부채: AI가 만든 코드의 숨은 비용(Addy Osmani)",
+          "url": "https://www.oreilly.com/radar/comprehension-debt-the-hidden-cost-of-ai-generated-code/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "오픈소스 공개",
+          "tone": "live"
+        },
+        {
+          "label": "효용 논쟁 중",
+          "tone": "issue"
+        }
+      ],
+      "title": "AI가 쓴 코드를 '이해했는지' 푸시 전에 시험 보는 Git 훅이 나왔다",
+      "tldr": [
+        "10월 25일 GeekNews에 소개된 오픈소스 Sphinx는 git push를 잠시 멈추고, 코드를 쓰지 않은 별도 리뷰 모델이 낸 퀴즈를 통과해야 푸시를 이어가게 하는 Git 훅입니다.",
+        "질문은 함수 이름이 아니라 동작, 실패 경우, 지켜야 할 조건을 묻습니다. Claude Code·Codex·Cursor·OpenCode·Pi와 함께 쓰며, MIT 라이선스에 GitHub 별 429개입니다.",
+        "배경은 '이해 부채'입니다. Addy Osmani가 소개한 Anthropic 무작위 대조 실험에서 AI를 쓴 개발자 그룹의 이해도 퀴즈 점수는 50%로, 쓰지 않은 그룹(67%)보다 17%p 낮았습니다."
+      ],
+      "topic": "comprehension-debt",
+      "use": 2,
+      "what": "이해 부채(comprehension debt)는 코드베이스에 쌓인 코드 양과 사람이 실제로 이해하는 양 사이의 차이를 말합니다. 기술 부채와 달리 당장 불편이 드러나지 않아, 테스트가 통과하는 동안에는 쌓이는 줄 모르기 쉽습니다. Sphinx는 이 차이를 푸시 시점에 확인하려는 도구입니다.",
+      "why": "코딩 에이전트가 커밋 대부분을 쓰는 팀이 늘면서 '테스트 통과'와 '사람이 이해함'이 따로 논다는 문제의식이 커졌습니다. 10/27 호에서 다룬 'eval 점수로 머지하는' 흐름이 기계 쪽 확인을 늘린다면, Sphinx는 반대로 사람 쪽 확인을 되살리려는 시도입니다."
+    },
+    {
+      "category": "검색 · RAG",
+      "domains": [
+        "cohere.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "검색 상위 문서를 통째로 넣기",
+        "리랭커로 문서 순서만 재정렬",
+        "문서 속 구절까지 점수 매겨 필요한 부분만 넣기"
+      ],
+      "how": "키워드·벡터·하이브리드 검색 뒤에 그대로 붙이고, 임계값(Cohere 평가에선 0.4)을 넘은 구절만 LLM에 넣습니다. 점수가 모두 낮으면 검색을 다시 돌리는 신호로 씁니다. Cohere API, Microsoft Foundry, Amazon SageMaker에서 쓸 수 있고, VPC·온프레미스 배포는 영업 문의로 열려 있습니다.",
+      "hype": 2,
+      "meterNote": "기존 검색 뒤에 재색인 없이 API로 붙일 수 있지만, 구절 추출 성능은 아직 벤더 수치뿐",
+      "reality": "수치는 모두 Cohere 자체 측정이고, 품질 지표도 Cohere가 만든 RCP-nDCG@10입니다. 토큰 35% 감소와 정확도 개선은 BM25 단독과 비교한 값이라, 다른 리랭커를 이미 쓰는 팀에게 얼마나 차이가 날지는 따로 확인해야 합니다. 구절만 넘기면 앞 문단의 정의나 표 머리글 같은 주변 맥락이 빠질 수 있다는 점도 실사용에서 확인할 부분입니다.",
+      "refs": [
+        {
+          "src": "Cohere · 10/21",
+          "title": "Rerank 5 발표: Context Focus와 자체 평가 결과, 가격",
+          "url": "https://cohere.com/blog/rerank-5"
+        },
+        {
+          "src": "GeekNews · 10/25",
+          "title": "GeekNews 소개: 검색 결과 재정렬부터 핵심 구절 추출까지",
+          "url": "https://news.hada.io/topic?id=35959"
+        }
+      ],
+      "stages": [
+        {
+          "label": "API 출시",
+          "tone": "live"
+        }
+      ],
+      "title": "리랭커가 문서 대신 '답이 든 구절'을 고른다: Cohere Rerank 5의 Context Focus",
+      "tldr": [
+        "Cohere가 10월 21일 Rerank 5(Pro·Fast)를 내놓으며, 문서 점수와 함께 문서 속 구절별 점수를 돌려주는 Context Focus 기능을 붙였습니다.",
+        "Cohere 자체 측정에서 검색된 텍스트의 절반을 덜어내고도 30개 QA 데이터셋에서 답변 품질의 96%를 유지했습니다.",
+        "검색 에이전트 평가(자체 측정)에서는 BM25만 쓸 때보다 토큰이 35% 줄고 정확도가 46%에서 58%로 올랐습니다. 가격은 100만 토큰당 Pro 0.05달러, Fast 0.02달러입니다."
+      ],
+      "topic": "passage-level-rerank",
+      "use": 3,
+      "what": "리랭커는 1차 검색 결과를 질문과 함께 다시 읽고 관련도 순으로 줄 세우는 모델입니다. Context Focus는 한 단계 더 나가 문서 안에서 답이 든 구간을 점수와 함께 잘라 줍니다. 점수는 '이 내용이 쓸모 있을 확률'에 가깝게 보정돼 있어 임계값으로 거를 수 있습니다.",
+      "why": "에이전트가 검색을 여러 번 돌리면 결과가 그대로 컨텍스트에 쌓여 비용과 성능이 함께 나빠집니다. 그래서 '무엇을 덜 넣을까'가 컨텍스트 엔지니어링의 주요 수단이 됐고, 그 판단을 검색 단계에서 구절 단위로 해 주는 기능이 나온 것입니다. GeekNews에도 10/25 소개됐습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Google Cloud · 10/22",
+      "text": "구글 Agent Compute Engine, 에이전트별 microVM 샌드박스를 Google Cloud 프리뷰로 공개 예정",
+      "url": "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive?hl=en",
+      "when": "향후 수개월"
+    },
+    {
+      "src": "Google DeepMind · 10/27",
+      "text": "Genie 4, 신뢰 테스터 프리뷰에서 Google AI Ultra 구독자와 Gemini API 초기 파트너로 확대",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "when": "일정 미정"
+    }
+  ]
+}

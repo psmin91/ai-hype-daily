@@ -1,0 +1,43 @@
+{
+  "aliases": [
+    "semantic layer for agents",
+    "certified metrics",
+    "sutura",
+    "governed data access",
+    "metrics MCP",
+    "agentic data platform",
+    "Spotter Semantics",
+    "Foursquare DataHub"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "telekom sutura",
+        "Foursquare 에이전트 데이터 플랫폼",
+        "ThoughtSpot Spotter Semantics"
+      ],
+      "date": "2026-11-07",
+      "title": "에이전트가 매출을 '추측'하지 못하게: 인증된 지표 정의로만 질의하는 시맨틱 레이어",
+      "urls": [
+        "https://news.hada.io/topic?id=36620",
+        "https://github.com/telekom/sutura",
+        "https://news.hada.io/topic?id=36622",
+        "https://www.techzine.eu/news/analytics/139528/thoughtspot-launches-spotter-semantics-for-ai-agents"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-06",
+  "lastSeen": "2026-11-07",
+  "lastTrend": "rising",
+  "name": "에이전트용 인증 지표 레이어",
+  "radar": [
+    {
+      "date": "2026-11-06",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-07",
+      "trend": "rising"
+    }
+  ]
+}

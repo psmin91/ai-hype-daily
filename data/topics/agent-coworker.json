@@ -3,7 +3,12 @@
     "Gemini agent",
     "universal agent",
     "AI coworker",
-    "persistent agents"
+    "persistent agents",
+    "Claude Duet",
+    "nanoMuse",
+    "proactive agent",
+    "Perplexity agents for work",
+    "CoworkOS"
   ],
   "featured": [
     {
@@ -19,8 +24,17 @@
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-21",
+  "lastSeen": "2026-11-07",
   "lastTrend": "spreading",
   "name": "계정을 가진 업무 에이전트",
-  "radar": []
+  "radar": [
+    {
+      "date": "2026-10-23",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-07",
+      "trend": "spreading"
+    }
+  ]
 }

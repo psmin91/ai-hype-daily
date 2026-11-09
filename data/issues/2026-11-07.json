@@ -1,0 +1,214 @@
+{
+  "date": "2026-11-07",
+  "headline": "오늘 고른 세 기술은 모두 모델 바깥에 있다. 숫자는 인증된 지표 정의로만 묻게 하고, 기억은 글 대신 압축된 토큰으로 넣고, 서빙 엔진은 에이전트가 직접 튜닝한다.",
+  "issueNo": 18,
+  "period": "10월 31일~11월 7일",
+  "radar": [
+    {
+      "note": "어제 sutura로 첫 포착 → 포스퀘어의 에이전트 데이터 플랫폼 설계 글이 더해지며 부상.",
+      "since": "첫 포착 11/6",
+      "tech": "에이전트용 인증 지표 레이어",
+      "topic": "agent-semantic-layer",
+      "trend": "rising"
+    },
+    {
+      "note": "정점 유지. 논쟁의 축이 '무엇을 기억하나'에서 '어떤 형태로 넣나'로 옮겨감(Memorilla HN 69점).",
+      "since": "첫 포착 10/21",
+      "tech": "에이전트 메모리",
+      "topic": "agent-memory",
+      "trend": "peak"
+    },
+    {
+      "note": "10/28 식는 중 → SpecPilot처럼 에이전트가 서빙 엔진을 직접 튜닝하는 연구가 트렌딩에 오르며 다시 부상.",
+      "since": "첫 포착 10/21",
+      "tech": "오픈소스 프로덕션 추론 엔진",
+      "topic": "open-inference-engine",
+      "trend": "rising"
+    },
+    {
+      "note": "정점 유지. 커널 948건 토론이 이어지는 가운데, 키 없이 랜섬웨어 피해 파일 약 65%를 되살린 개인 사례가 GeekNews에 올라 복구 쪽으로도 번짐.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 에이전트 취약점 발굴",
+      "topic": "ai-vuln-discovery",
+      "trend": "peak"
+    },
+    {
+      "note": "정점 유지. Claude Code 팀 단위 하네스 전자책, CoworkOS·TokenEconomizer 논문이 나오며 연구에서 팀 배포 방법으로 무게가 이동.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "peak"
+    },
+    {
+      "note": "10/23 부상 → Perplexity가 장기 업무용 에이전트를 내고(HN 51점), RUC의 CoworkOS 논문이 HF 트렌딩 101표를 받으며 확산.",
+      "since": "첫 포착 10/21",
+      "tech": "계정을 가진 업무 에이전트",
+      "topic": "agent-coworker",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 6,
+  "stories": [
+    {
+      "category": "데이터 · 에이전트",
+      "domains": [
+        "news.hada.io",
+        "github.com",
+        "techzine.eu"
+      ],
+      "flow": [
+        "에이전트가 직접 SQL 작성(text-to-SQL)",
+        "BI 시맨틱 레이어를 MCP로 연결",
+        "지표·신선도·권한을 함께 묶은 에이전트용 데이터 계층"
+      ],
+      "how": "sutura는 DataHub·OpenMetadata·마크다운 파일에서 지표 정의와 조인 관계를 읽고, Cube에 정의된 지표도 다시 씁니다. 허용되지 않은 분류 기준이나 권한 없는 요청은 이유와 함께 거절합니다. BigQuery·ClickHouse에서는 요청자 본인 신원으로 쿼리를 돌리고, 결과 캐시를 두지 않아 다른 사람의 결과가 섞이지 않습니다. 포스퀘어는 Airflow와 DataHub를 중심으로 로그·계보·권한을 묶어, 주요 파이프라인의 Spark 장애 진단·해결 시간을 최대 90% 줄였다고 밝혔습니다(자체 수치).",
+      "hype": 2,
+      "meterNote": "상용 시맨틱 레이어의 MCP 연결은 이미 쓰이지만, sutura 자체는 GitHub 별 5개의 초기 프로젝트",
+      "reality": "sutura는 GitHub 별 5개, 릴리스 없음 단계라 실전 검증 전입니다. GeekNews 댓글은 여러 소스를 합칠 때 한쪽은 요청자 신원, 다른 쪽은 운영자 신원으로 읽힐 수 있어, 행 단위 정책이 한 결과 안에서 서로 어긋날 수 있다고 지적했습니다. 지표 정의를 누가 인증하고 관리할지라는 조직의 부담도 그대로 남습니다.",
+      "refs": [
+        {
+          "src": "GeekNews · 11/5",
+          "title": "GeekNews: sutura, 회사의 지표 정의로 에이전트가 데이터를 조회하게 하는 쿼리 엔진",
+          "url": "https://news.hada.io/topic?id=36620"
+        },
+        {
+          "src": "GitHub",
+          "title": "sutura 공식 저장소",
+          "url": "https://github.com/telekom/sutura"
+        },
+        {
+          "src": "GeekNews · 11/5",
+          "title": "GeekNews: 자율 에이전트를 위한 데이터 플랫폼 구축 (포스퀘어 사례)",
+          "url": "https://news.hada.io/topic?id=36622"
+        },
+        {
+          "src": "Techzine · 3/12",
+          "title": "ThoughtSpot, AI 에이전트용 시맨틱 레이어 Spotter Semantics 출시",
+          "url": "https://www.techzine.eu/news/analytics/139528/thoughtspot-launches-spotter-semantics-for-ai-agents"
+        }
+      ],
+      "stages": [
+        {
+          "label": "오픈소스 초기",
+          "tone": "preview"
+        },
+        {
+          "label": "권한 처리 논쟁",
+          "tone": "issue"
+        }
+      ],
+      "title": "에이전트가 매출을 '추측'하지 못하게: 인증된 지표 정의로만 질의하는 시맨틱 레이어",
+      "tldr": [
+        "GitHub의 telekom 조직이 공개한 sutura는 에이전트가 SQL 대신 '지표·분류 기준·기간·집계 단위'만 요청하게 하는 Rust 쿼리 엔진입니다. HTTP와 MCP로 붙고 라이선스는 Apache-2.0입니다.",
+        "PostgreSQL·BigQuery·ClickHouse·Oracle·DuckDB를 지원하고, 결과마다 어떤 지표 정의 버전으로 계산했는지 해시를 붙입니다.",
+        "같은 11월 5일 GeekNews에 오른 설계 글은 포스퀘어 사례를 들어, 에이전트가 지표 정의뿐 아니라 데이터 신선도와 파이프라인 실행 상태까지 확인해야 한다고 주장했습니다."
+      ],
+      "topic": "agent-semantic-layer",
+      "use": 3,
+      "what": "시맨틱 레이어는 '매출', '활성 사용자' 같은 지표를 어떻게 계산하는지 한곳에 정의해 둔 계층입니다. 에이전트용 시맨틱 레이어는 에이전트가 임의 SQL을 짜지 못하게 막고, 이 정의를 거쳐서만 숫자를 묻게 합니다. 그래서 대시보드와 에이전트가 같은 질문에 같은 숫자를 내놓습니다.",
+      "why": "에이전트가 사내 데이터에 붙으면서 가장 흔한 사고는 '그럴듯하지만 틀린 숫자'입니다. 수집 장애로 비어 있는 데이터를 보고 매출이 줄었다고 보고하는 식입니다. ThoughtSpot이 올해 3월 MCP 서버를 갖춘 Spotter Semantics를 내놓는 등 상용 도구가 먼저 움직였고, 이번 주에는 오픈소스 구현과 실무 설계 글이 같은 날 나란히 올라왔습니다."
+    },
+    {
+      "category": "에이전트 메모리",
+      "domains": [
+        "arxiv.org",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "대화 기록을 통째로 프롬프트에",
+        "관련 문서를 검색해 글로 붙이기(RAG·Mem0)",
+        "문서를 임베딩으로 압축해 모델 입력에 직접 주입"
+      ],
+      "how": "사용자 대화나 책 챕터 같은 문서를 먼저 재사용 가능한 임베딩으로 인코딩합니다. 질문이 들어오면 학습된 중간 모듈이 관련 정보를 골라 16개 토큰 분량의 벡터로 만듭니다. 상위 몇 개 문서만 고르는 리랭킹과 달리, 모든 문서를 관련도에 따라 섞어 담는다는 점이 HN에서 주목받았습니다. TextWorld 에이전트 실험에서는 전체 이력을 넣을 때 18.6%이던 평균 성공률이 24.2%로 올랐고, 이미 가 본 방을 헤매는 일이 줄었습니다.",
+      "hype": 3,
+      "meterNote": "논문 페이지에 코드 공개 언급이 없어 아직 직접 써 볼 수 없음",
+      "reality": "수치는 모두 저자 측정이고 코드 공개 여부가 확인되지 않습니다. 입력 임베딩에 벡터를 직접 넣는 방식이라, 모델 내부에 손댈 수 없는 API 전용 모델에는 그대로 붙이기 어렵습니다. HN에서는 프런티어 모델이 검색어를 직접 짜면 의미 검색과 단어 검색의 차이가 줄어든다는 반론, 정확도보다 토큰 절약을 택한 절충이라는 지적이 나왔습니다. 정확한 문구가 필요한 계약서·코드 같은 기억에는 약할 수 있습니다.",
+      "refs": [
+        {
+          "src": "arXiv · 10/15",
+          "title": "Memorilla: LLM을 위한 잠재 의미 메모리 (arXiv 2610.21375)",
+          "url": "https://arxiv.org/abs/2610.21375"
+        },
+        {
+          "src": "Hacker News · 11/7",
+          "title": "Hacker News 토론: 잠재 메모리의 장단점과 리랭킹 비교",
+          "url": "https://news.ycombinator.com/item?id=50395919"
+        }
+      ],
+      "stages": [
+        {
+          "label": "논문 공개",
+          "tone": "preview"
+        },
+        {
+          "label": "코드 미공개",
+          "tone": "issue"
+        }
+      ],
+      "title": "기억을 글 대신 '토큰 16개'로 넣는다: 잠재 메모리 Memorilla",
+      "tldr": [
+        "Jure Leskovec 등 연구진이 10월 15일 arXiv에 낸 Memorilla는 문서를 한 번 임베딩해 두고, 질문마다 관련 정보를 고정된 16개 '메모리 토큰'으로 바꿔 얼린 LLM의 입력에 넣습니다.",
+        "저자 측정으로 개인화·긴 문서 QA·지식 QA 8개 벤치마크 중 5개에서 Mem0와 MemoRAG를 앞섰고, FactKG에서는 전체 문맥을 넣은 경우(80.43%)보다 높은 84.33%를 108분의 1 토큰으로 냈습니다.",
+        "11월 7일 Hacker News에 올라 69점을 받았고, 댓글에서는 '개념에는 강하지만 정확한 인용에는 약하다'는 평가가 나왔습니다."
+      ],
+      "topic": "agent-memory",
+      "use": 1,
+      "what": "지금 에이전트 메모리는 대부분 텍스트입니다. 기억할 내용을 글로 저장해 두었다가 검색해서 프롬프트에 붙입니다. Memorilla는 이 단계를 건너뛰고, 기억을 모델이 읽는 입력 임베딩 공간의 벡터 몇 개로 압축해 바로 넣습니다. 모델 가중치는 바꾸지 않고 옆에 붙는 장치입니다.",
+      "why": "에이전트 메모리는 10월 내내 레이더 정점에 있던 주제입니다. 그동안 논쟁은 '무엇을 기억할지'였는데, 이 논문은 '어떤 형태로 넣을지'라는 다른 축을 꺼냈습니다. 긴 작업에서 토큰 비용이 커지는 상황이라 108배 압축이라는 숫자가 눈길을 끌었습니다."
+    },
+    {
+      "category": "추론 · 서빙",
+      "domains": [
+        "huggingface.co",
+        "github.com"
+      ],
+      "flow": [
+        "사람이 커널·배치 설정을 손으로 튜닝",
+        "정해진 추측 디코딩(EAGLE·DFlash 등) 적용",
+        "에이전트가 배포 환경마다 최적화를 찾아 검증"
+      ],
+      "how": "비용 모델이 현재 시스템과 이론상 한계 사이의 가장 큰 격차를 짚으면, 여러 탐색 에이전트가 병렬로 방향을 시험하고 효과가 확인된 것만 합칩니다. 출력이 원래 엔진과 똑같은지 토큰 단위로 강제 비교해, 점수만 올리고 결과를 바꾸는 '보상 해킹'을 걸러냅니다. 검증된 기법은 구조화된 메모리에 남겨 다음 회차로 넘깁니다. 이 과정에서 무손실 12비트 가중치 형식, 순환 구조가 섞인 모델용 트리 검증, 두 단계 검증, 배치 기법 3가지를 찾았다고 합니다.",
+      "hype": 3,
+      "meterNote": "엔진은 공개됐지만 GitHub 별 8개, 정해진 6개 모델·GPU 조합에서만 검증",
+      "reality": "속도 수치는 저자 측정이며, 최적화 결과가 모델·초안 모델·GPU 조합마다 따로 나옵니다. 내 환경에 쓰려면 루프를 다시 돌려야 하는데, 어떤 에이전트로 돌렸는지와 탐색 비용·시간은 저장소에 나와 있지 않습니다. RTX PRO 6000용 커널은 sm_120a 전용이라 다른 GPU로 바로 옮길 수 없습니다. 출력 동일성 검증은 장점이지만, 에이전트가 만든 CUDA·Triton 커널을 운영 환경에 올리기 전 사람이 검토해야 하는 부담은 남습니다.",
+      "refs": [
+        {
+          "src": "Hugging Face Papers · 11/4",
+          "title": "SpecPilot: 추측 디코딩을 위한 자율 알고리즘 탐색과 시스템 최적화 (UC 버클리)",
+          "url": "https://huggingface.co/papers/2611.02501"
+        },
+        {
+          "src": "GitHub",
+          "title": "SpecPilot 공식 저장소: 6개 배포 설정별 최종 엔진과 검증 스크립트",
+          "url": "https://github.com/StargazerX0/SpecPilot"
+        },
+        {
+          "src": "Hugging Face · 11/7",
+          "title": "Hugging Face 트렌딩 논문 목록",
+          "url": "https://huggingface.co/papers/trending"
+        }
+      ],
+      "stages": [
+        {
+          "label": "코드 공개",
+          "tone": "live"
+        },
+        {
+          "label": "저자 측정",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트가 추측 디코딩 엔진을 직접 튜닝했다: SpecPilot, 단일 요청 속도 10.87배",
+      "tldr": [
+        "UC 버클리 연구진이 11월 2일 공개한 SpecPilot은 추측 디코딩 서빙을 배포 환경마다 에이전트가 최적화하는 루프입니다. Hugging Face 트렌딩 논문 목록에 올랐습니다.",
+        "저자 측정으로 출력 품질 손실 없이 자기회귀 대비 속도를 단일 요청 4.46배에서 10.87배로, 배치에서는 1.94배에서 3.93배로 끌어올렸습니다.",
+        "SGLang 기반으로, Qwen3.8-27B·Muse-Glimmer-30B를 H100과 RTX PRO 6000에서 돌리는 6개 설정의 최종 엔진을 Apache-2.0으로 공개했습니다."
+      ],
+      "topic": "open-inference-engine",
+      "use": 2,
+      "what": "추측 디코딩은 작은 초안 모델이 여러 토큰을 미리 써 두고, 큰 모델이 한 번에 맞는지 확인해 속도를 올리는 기법입니다. 결과가 큰 모델 혼자 쓴 것과 같아 '무손실'이라고 부릅니다. SpecPilot은 이 엔진의 세부 설계와 커널을 사람 대신 에이전트가 찾게 합니다.",
+      "why": "서빙 비용이 AI 서비스의 큰 몫을 차지하면서, 모델이 아니라 엔진에서 속도를 짜내는 일이 계속 주목받습니다. 여기에 에이전트가 시스템 연구 자체를 맡는 흐름이 겹쳤습니다. 같은 주 트렌딩 목록에는 SSD에서 MoE를 돌리는 연구, 엣지 MoE 서빙 FreeToken도 함께 올랐습니다."
+    }
+  ],
+  "watch": []
+}

@@ -1,0 +1,60 @@
+{
+  "aliases": [
+    "weight-space programming",
+    "GPT-6 Astra",
+    "LLM weight editing",
+    "model surgery",
+    "mechanistic interpretability",
+    "Honnibal rebuttal",
+    "Sparks of Weight-Space Programming"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "GPT-6 Astra × Qwen3.5-0.8B 반복 제거",
+        "MinAtar 정책망 직접 작성"
+      ],
+      "date": "2026-11-03",
+      "title": "학습 없이, LLM이 신경망 가중치를 직접 읽고 고쳐 쓴다",
+      "urls": [
+        "https://rikiyat.github.io/blog/weight-space-programming/"
+      ]
+    },
+    {
+      "cases": [
+        "Honnibal 반박(HN 724점)",
+        "Simon Willison Qwen 3.8 27B 로컬 재현"
+      ],
+      "date": "2026-11-04",
+      "title": "'가중치만 보고 고쳤다'는 사실일까: 가중치 공간 프로그래밍에 붙은 반박과 노트북 재현",
+      "urls": [
+        "https://honnibal.dev/blog/astra-read-write-misleading",
+        "https://simonwillison.net/2026/Nov/3/qwen-can-interpret-model-weights/",
+        "https://news.hada.io/topic?id=36478",
+        "https://rikiyat.github.io/blog/weight-space-programming/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-03",
+  "lastSeen": "2026-11-06",
+  "lastTrend": "cooling",
+  "name": "가중치 공간 프로그래밍",
+  "radar": [
+    {
+      "date": "2026-11-03",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-04",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-05",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-06",
+      "trend": "cooling"
+    }
+  ]
+}
