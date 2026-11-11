@@ -1,0 +1,32 @@
+{
+  "aliases": [
+    "modern-web-guidance",
+    "agent platform docs",
+    "web platform skill",
+    "legacy-scan",
+    "Baseline for agents"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "GoogleChrome modern-web-guidance"
+      ],
+      "date": "2026-11-11",
+      "title": "에이전트가 아직도 div와 JS로 모달을 짠다: Chrome 팀이 '최신 웹 지식'을 스킬로 배포했다",
+      "urls": [
+        "https://github.com/GoogleChrome/modern-web-guidance",
+        "https://news.ycombinator.com/item?id=50443812"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-11",
+  "lastSeen": "2026-11-11",
+  "lastTrend": "new",
+  "name": "에이전트용 플랫폼 가이드 스킬",
+  "radar": [
+    {
+      "date": "2026-11-11",
+      "trend": "new"
+    }
+  ]
+}

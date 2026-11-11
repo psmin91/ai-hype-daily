@@ -1,0 +1,38 @@
+{
+  "aliases": [
+    "Next-Concept Modeling",
+    "NCM",
+    "coarse-to-fine text generation",
+    "diffusion language model",
+    "DLM",
+    "MDLM",
+    "DUO",
+    "multiscale residual VQ-VAE",
+    "non-autoregressive generation",
+    "parallel decoding"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Stanford Next-Concept Modeling(NCM)"
+      ],
+      "date": "2026-11-10",
+      "title": "글을 한 토큰씩 말고 '윤곽부터' 쓴다: Next-Concept Modeling, 확산 LM보다 10~31배 빠르게",
+      "urls": [
+        "https://arxiv.org/abs/2610.14162",
+        "https://github.com/HazyResearch/ncm",
+        "https://news.ycombinator.com/item?id=50422168"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-10",
+  "lastSeen": "2026-11-10",
+  "lastTrend": "new",
+  "name": "윤곽부터 쌓는 병렬 텍스트 생성",
+  "radar": [
+    {
+      "date": "2026-11-10",
+      "trend": "new"
+    }
+  ]
+}

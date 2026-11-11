@@ -5,7 +5,13 @@
     "packfile-uri",
     "explicit haves",
     "monorepo scaling for agents",
-    "parallel agents CI load"
+    "parallel agents CI load",
+    "GitHub Rubicon",
+    "Project Rubicon",
+    "Ref-CAS",
+    "LSN repository version",
+    "clone-free agent reads",
+    "atomic multi-file commit API"
   ],
   "featured": [
     {
@@ -18,16 +24,31 @@
         "https://news.hada.io/topic?id=36517",
         "https://dev.classmethod.jp/en/articles/openai-pando-git-backend/"
       ]
+    },
+    {
+      "cases": [
+        "GitHub Project Rubicon(Ref-CAS)"
+      ],
+      "date": "2026-11-10",
+      "title": "저장소 하나에 에이전트 5,000개, 초당 푸시 7,200회: GitHub가 Git 저장 계층을 갈아엎은 Rubicon",
+      "urls": [
+        "https://github.blog/engineering/architecture-optimization/inside-githubs-new-git-storage-architecture/",
+        "https://news.hada.io/topic?id=36751"
+      ]
     }
   ],
   "firstSeen": "2026-11-05",
-  "lastSeen": "2026-11-05",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-10",
+  "lastTrend": "rising",
   "name": "병렬 에이전트용 Git 인프라",
   "radar": [
     {
       "date": "2026-11-05",
       "trend": "new"
+    },
+    {
+      "date": "2026-11-10",
+      "trend": "rising"
     }
   ]
 }

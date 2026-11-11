@@ -7,7 +7,13 @@
     "decision model",
     "GPT-6 Luna",
     "calibration",
-    "Hightouch"
+    "Hightouch",
+    "Strands Decider",
+    "system one model",
+    "Flide",
+    "exact state forking",
+    "JevBench",
+    "/v1/systemone"
   ],
   "featured": [
     {
@@ -22,16 +28,34 @@
         "https://news.hada.io/topic?id=36725",
         "https://news.ycombinator.com/item?id=50397429"
       ]
+    },
+    {
+      "cases": [
+        "Amazon 티켓 분류 Sonnet 4.6 → Strands Decider E4B",
+        "Flide 상태 복제 추론 엔진"
+      ],
+      "date": "2026-11-11",
+      "title": "Sonnet 대신 '고르기만 하는' 결정 모델: Amazon이 티켓 분류 비용을 98% 줄인 방법",
+      "urls": [
+        "https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/",
+        "https://github.com/strands-labs/strands-decider",
+        "https://news.hada.io/topic?id=36894",
+        "https://news.ycombinator.com/item?id=50436640"
+      ]
     }
   ],
   "firstSeen": "2026-11-08",
-  "lastSeen": "2026-11-08",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-11",
+  "lastTrend": "rising",
   "name": "신뢰도 기반 모델 캐스케이드",
   "radar": [
     {
       "date": "2026-11-08",
       "trend": "new"
+    },
+    {
+      "date": "2026-11-11",
+      "trend": "rising"
     }
   ]
 }

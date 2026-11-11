@@ -4,7 +4,9 @@
     "Sphinx",
     "pre-push quiz",
     "AI code understanding",
-    "skill formation"
+    "skill formation",
+    "fragile codebase",
+    "AI usage generates a fragile codebase"
   ],
   "featured": [
     {
@@ -22,13 +24,17 @@
     }
   ],
   "firstSeen": "2026-10-29",
-  "lastSeen": "2026-10-29",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-11",
+  "lastTrend": "rising",
   "name": "이해 부채 · 사람 쪽 검증",
   "radar": [
     {
       "date": "2026-10-29",
       "trend": "new"
+    },
+    {
+      "date": "2026-11-11",
+      "trend": "rising"
     }
   ]
 }

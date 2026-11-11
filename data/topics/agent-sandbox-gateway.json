@@ -20,7 +20,14 @@
     "zero-secrets sandbox",
     "agent egress deny",
     "kern",
-    "rootless sandbox runtime"
+    "rootless sandbox runtime",
+    "Replit sandbox engine",
+    "Cloud Hypervisor",
+    "tinyconfig kernel",
+    "credential broker",
+    "SSH agent forwarding",
+    "codex --forward-ssh-agent",
+    "gVisor"
   ],
   "featured": [
     {
@@ -46,11 +53,24 @@
         "https://cloud.google.com/blog/topics/ai-infrastructure/agent-compute-engine-deep-dive?hl=en",
         "https://news.hada.io/topic?id=35917"
       ]
+    },
+    {
+      "cases": [
+        "Replit microVM 샌드박스 엔진(Cloud Hypervisor·tinyconfig 커널)",
+        "Codex --forward-ssh-agent 지적"
+      ],
+      "date": "2026-11-10",
+      "title": "커널 CVE 6,211건 중 96%를 피했다: Replit이 에이전트 샌드박스를 '최소 커널 microVM'으로 다시 만든 방법",
+      "urls": [
+        "https://frontier.replit.com/sandbox-engine-microvms-part-1/",
+        "https://news.hada.io/topic?id=36828",
+        "https://news.ycombinator.com/item?id=50422628"
+      ]
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-11-02",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-10",
+  "lastTrend": "spreading",
   "name": "에이전트 샌드박스 · AI 게이트웨이",
   "radar": [
     {
@@ -84,6 +104,10 @@
     {
       "date": "2026-11-02",
       "trend": "rising"
+    },
+    {
+      "date": "2026-11-10",
+      "trend": "spreading"
     }
   ]
 }

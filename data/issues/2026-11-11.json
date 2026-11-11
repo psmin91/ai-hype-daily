@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-11",
+  "headline": "이번 주엔 '큰 모델을 덜 쓰는 법'이 실측으로 나왔다. 분류는 2B급 결정 모델에 넘기고, 30B 모델은 10GB로 줄여 맥북에 올리고, 에이전트에게는 웹 플랫폼 지식을 따로 쥐여 준다.",
+  "issueNo": 21,
+  "period": "11월 4일~11일",
+  "radar": [
+    {
+      "note": "11/8 첫 등장 → Amazon의 Sonnet 4.6 교체 사례(HN 635점)와 추론 엔진 Flide 공개로 부상.",
+      "since": "첫 포착 11/8",
+      "tech": "결정 모델 · 신뢰도 기반 캐스케이드",
+      "topic": "llm-cascade-routing",
+      "trend": "rising"
+    },
+    {
+      "note": "Nota가 30B MoE를 터너리 PTQ로 10GB에 담고 원본 대비 89.4% 복원했다고 공개하며 새로 등장.",
+      "since": "",
+      "tech": "초저비트(1.58비트) 사후 양자화",
+      "topic": "ternary-ptq",
+      "trend": "new"
+    },
+    {
+      "note": "Chrome 팀의 modern-web-guidance가 HN Show로 올라오며 등장. '모델이 모르는 최신 API'를 스킬로 채우는 방식.",
+      "since": "",
+      "tech": "에이전트용 웹 플랫폼 가이드 스킬",
+      "topic": "agent-platform-guidance",
+      "trend": "new"
+    },
+    {
+      "note": "10/29 확산 판단 유지. DeepMind AlphaProof Code가 Signal 암호 코드를 기계어 수준까지 증명했다고 발표(HN 484점), 연구 데모에서 실서비스 코드로 범위가 넓어짐.",
+      "since": "첫 포착 10/24",
+      "tech": "LLM 기반 형식 검증",
+      "topic": "ai-formal-verification",
+      "trend": "spreading"
+    },
+    {
+      "note": "정점 유지. Hugging Face 트렌딩 논문에 Harness-S·Harness²가 나란히 올라 있지만 새 기법보다 변형이 많음.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "peak"
+    },
+    {
+      "note": "10/29 첫 등장 → 'AI 사용이 깨지기 쉬운 코드베이스를 만든다' 글이 HN 180점·댓글 233개로 다시 논쟁. 다만 근거는 체감 위주.",
+      "since": "첫 포착 10/29",
+      "tech": "이해 부채 · AI 코드 취약성",
+      "topic": "comprehension-debt",
+      "trend": "rising"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "모델 서빙 · 비용",
+      "domains": [
+        "strandsagents.com",
+        "github.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "범용 LLM에 프롬프트로 분류 요청",
+        "싼 모델 + 불확실할 때만 큰 모델",
+        "보기를 주고 확률만 받는 결정 모델"
+      ],
+      "how": "Amazon 팀은 각 범주를 한두 문장짜리 판정 기준으로 다시 쓰고, '해당 없음'을 더한 객관식 질문 하나로 만들었습니다. 모델은 SageMaker의 A10G 1장(ml.g5.xlarge)에서 약 19GiB를 쓰며 돌아갑니다. 공개 저장소의 strands-decider는 Apache-2.0이고, CLI나 HTTP /v1/systemone 엔드포인트에 state와 질문을 넣으면 답과 신뢰도, 지연 시간을 줍니다. 저장소는 신뢰도 0.9 이상 답은 처음 보는 짧은 분류 과제에서 약 95% 맞았다며, 그 미만이면 사람 확인을 권합니다.",
+      "hype": 4,
+      "meterNote": "Amazon 실운영 전환과 공개 저장소가 있지만, 정확도 수치는 공개되지 않음",
+      "reality": "절감액은 공시 가격으로 계산했고 Lambda 비용은 뺐습니다. 처리 건수가 공개되지 않아 '연 수백만 달러'는 검증할 수 없습니다. 컨텍스트는 4,096토큰이라 긴 티켓은 오래된 댓글부터 잘리고, JSON 키 순서만 바꿔도 확률이 최대 0.19 움직여 키를 정렬해 보낸다고 직접 밝혔습니다. 범주가 매주 바뀌거나 설명 문장이 필요한 일에는 맞지 않는다는 단서도 붙었습니다. HN에서는 SVM 같은 기존 분류기로 돌아가는 것과 무엇이 다르냐는 반론도 나왔습니다.",
+      "refs": [
+        {
+          "src": "Strands Agents 블로그 · 11/9",
+          "title": "Amazon, 티켓 분류를 Sonnet 4.6에서 Strands Decider로 바꾼 과정과 비용 수치",
+          "url": "https://strandsagents.com/blog/amazon-saves-millions-replacing-sonnet-with-strands-decider/"
+        },
+        {
+          "src": "GitHub · 11/11 확인",
+          "title": "Strands Decider 저장소: 모델 크기, 호출 방법, JevBench 결과",
+          "url": "https://github.com/strands-labs/strands-decider"
+        },
+        {
+          "src": "GeekNews · 11/10",
+          "title": "결정 모델을 상태 복제로 최대 9.5배 빠르게 돌리는 Flide 소개",
+          "url": "https://news.hada.io/topic?id=36894"
+        },
+        {
+          "src": "Hacker News · 11/10",
+          "title": "Hacker News 토론: 분류기로의 회귀인가",
+          "url": "https://news.ycombinator.com/item?id=50436640"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "실서비스 적용",
+          "tone": "live"
+        }
+      ],
+      "title": "Sonnet 대신 '고르기만 하는' 결정 모델: Amazon이 티켓 분류 비용을 98% 줄인 방법",
+      "tldr": [
+        "Strands Agents 팀은 11월 9일, Amazon 내부 티켓 20개 범주 분류를 Claude Sonnet 4.6에서 결정 모델 Strands Decider E4B로 바꿨다고 밝혔습니다.",
+        "호출당 평균 시간은 4,215ms에서 897ms로, 티켓당 토큰은 6,724개에서 2,010개로 줄었고, 출력은 170토큰에서 1토큰이 됐습니다.",
+        "공시 가격 기준 티켓 100만 건당 약 22,200달러가 약 500달러로 줄어 98% 절감이라고 했지만, 정확도는 '같은 수준'이라고만 밝혔습니다."
+      ],
+      "topic": "llm-cascade-routing",
+      "updateOf": {
+        "date": "2026-11-08",
+        "note": "신뢰도 캐스케이드 구조 소개에서, 대형 조직이 범용 LLM을 끄고 결정 모델만으로 운영한 지연·토큰·비용 실측으로 바뀌었다."
+      },
+      "use": 4,
+      "what": "결정 모델은 글을 생성하지 않습니다. 상황 설명과 보기 목록을 받아 각 보기의 확률과 신뢰도만 돌려줍니다. 분류, 예·아니오 판단, 등급 매기기처럼 답이 정해진 목록 안에 있는 일을 범용 LLM보다 싸고 빠르게 처리하려는 모델입니다.",
+      "why": "11월 8일 호에서는 Hightouch가 결정 모델 Jev로 거르고 불확실할 때만 Opus를 부르는 구조를 다뤘습니다. 이번엔 대형 조직이 큰 모델을 아예 끄고 결정 모델만 남긴 운영 수치가 나왔습니다. 같은 날 GeekNews에는 공통 입력을 한 번만 계산하고 질문마다 상태를 복제해 결정 모델을 최대 9.5배 빠르게 돌린다는 추론 엔진 Flide도 올라와, 서빙 도구까지 따로 생기고 있습니다."
+    },
+    {
+      "category": "로컬 추론 · 양자화",
+      "domains": [
+        "news.hada.io",
+        "huggingface.co"
+      ],
+      "flow": [
+        "4비트 양자화(30B에 약 16GB)",
+        "처음부터 3값으로 학습(BitNet b1.58)",
+        "기존 모델을 3값으로 변환한 뒤 증류로 복원"
+      ],
+      "how": "묶음마다 평균 절댓값의 절반을 문턱으로 잡아 그보다 작은 가중치는 0으로, 나머지는 부호만 남깁니다. 그다음 원본 BF16 모델을 교사로 두고 증류합니다. 3에폭까지 모든 가중치를 고치면 오히려 점수가 떨어져서, 문턱 ±10% 안에 있던 가중치만 학습하는 경계 마스킹을 썼습니다. 결과물은 mlx_lm.chat이나 OpenAI 호환 mlx_lm.server로 바로 띄울 수 있습니다. MLX에 1.58비트 형식이 없어 2비트 컨테이너에 담았습니다.",
+      "hype": 3,
+      "meterNote": "공개 가중치와 실행 명령은 있지만 프리뷰이고, 속도 수치와 외부 재현이 아직 없음",
+      "reality": "평균은 89.4%지만 과제별 차이가 큽니다. 모델 카드 기준 한국어 지시 따르기(IFEval-ko)는 원본의 약 81.6%, MATH500은 약 83.6%에 그칩니다. 토큰 생성 속도는 밝히지 않았고, 수치는 모두 자체 측정입니다. 용량도 글에서는 9.6GB, Hugging Face 표시는 10.2GB로 다릅니다. 실제 파일은 배율을 함께 저장해 1.58비트보다 크고, 16GB 맥은 GPU 한도를 올려야 해 권장하지 않는다고 했습니다.",
+      "refs": [
+        {
+          "src": "GeekNews · 11/10",
+          "title": "1.58비트 터너리 양자화로 30B 모델을 맥북에서 돌린 과정과 복원 수치",
+          "url": "https://news.hada.io/topic?id=36924"
+        },
+        {
+          "src": "Hugging Face · 11/11 확인",
+          "title": "Nota 터너리 MLX 체크포인트 모델 카드: 벤치마크와 실행 방법",
+          "url": "https://huggingface.co/nota-ai/Nemotron-3.5-Lightning-30B-A3B-Nota-Ternary-MLX-1014"
+        }
+      ],
+      "stages": [
+        {
+          "label": "프리뷰 체크포인트",
+          "tone": "preview"
+        },
+        {
+          "label": "국내 팀 공개",
+          "tone": "live"
+        }
+      ],
+      "title": "30B 모델을 가중치 -1·0·+1로: 재학습 없이 10GB에 담아 맥북에서 돌린 1.58비트 양자화",
+      "tldr": [
+        "Nota AI는 NVIDIA Nemotron 3.5 Lightning 30B-A3B를 가중치 세 값(-1, 0, +1)으로 바꿔 60GB를 약 10GB로 줄였습니다.",
+        "그냥 변환하면 GSM8K와 HumanEval이 0점이었지만, 원본 모델로 증류하고 경계 근처 가중치 약 5.9%만 다시 학습해 7개 벤치마크 평균을 원본의 89.4%까지 되살렸습니다.",
+        "MLX용 체크포인트가 Hugging Face에 공개됐고, 24GB 이상 맥을 권장합니다. 아직 중간 체크포인트입니다."
+      ],
+      "topic": "ternary-ptq",
+      "use": 3,
+      "what": "터너리 양자화는 가중치를 -1, 0, +1 세 값과 묶음별 배율로만 표현하는 방식입니다. 한 가중치에 담기는 정보가 log₂3, 약 1.58비트라 '1.58비트'라고 부릅니다. 보통 이 정도로 줄이려면 처음부터 3값으로 학습해야 했는데, 이번 작업은 이미 학습된 모델을 사후에 변환했습니다(PTQ).",
+      "why": "30B 모델을 4비트로 줄여도 가중치만 약 16GB라 macOS 기본 GPU 메모리 한도에서는 24GB 맥도 빠듯합니다. 이 모델은 어텐션 층이 6개뿐인 Mamba·어텐션 하이브리드라 128K 컨텍스트 KV 캐시도 약 0.8GB이고, 전체 예상 사용량이 약 12.4GB입니다. 10월 26일 호의 SSD 오프로딩처럼 소비자 하드웨어에 큰 모델을 올리려는 흐름에서, 이번엔 '재학습 없는 극단적 압축'이 실측으로 나왔습니다."
+    },
+    {
+      "category": "코딩 에이전트 · 웹",
+      "domains": [
+        "github.com",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "학습 시점 지식으로 코드 작성",
+        "문서를 컨텍스트에 붙여 넣기",
+        "필요할 때 검색하는 플랫폼 가이드 스킬"
+      ],
+      "how": "npx modern-web-guidance@latest install로 설치하거나 npx skills add, Claude Code 플러그인 등으로 넣습니다. 짧은 스킬이 에이전트에게 웹 기능 질문은 CLI로 찾으라고 지시하고, 에이전트는 search로 가장 맞는 가이드를 찾은 뒤 retrieve로 본문을 가져옵니다. 저장소 기준 CSS·HTML·JS 기능 103개와 실제 사용 사례 131개를 다루며, 대화상자 닫기, 앵커 위치 지정 툴팁, 뷰 트랜지션, 스크롤 기반 애니메이션 같은 항목이 있습니다.",
+      "hype": 3,
+      "meterNote": "설치 명령과 평가 하네스가 공개돼 바로 써 볼 수 있지만, 평가는 자체 과제 기준",
+      "reality": "평가 과제와 채점기를 모두 팀이 만들었고, 가이드를 써도 81~92%로 100%는 아닙니다. 작성자는 HN 글에서 1.0과 200개 넘는 가이드, 낡은 패턴을 찾는 legacy-scan을 소개했지만, 확인한 저장소 페이지는 아직 '프리뷰'와 103개 기능으로 표기돼 있어 숫자가 맞지 않습니다. 사용 통계(설치 수, 검색어 등)가 기본으로 수집되며 DISABLE_TELEMETRY=1로 끕니다.",
+      "refs": [
+        {
+          "src": "GitHub · 11/11 확인",
+          "title": "modern-web-guidance 저장소: 구성, 설치 방법, 가이드 유무별 통과율",
+          "url": "https://github.com/GoogleChrome/modern-web-guidance"
+        },
+        {
+          "src": "Hacker News · 11/11",
+          "title": "Show HN: 코딩 에이전트를 2019년식 자바스크립트에서 벗어나게 하기",
+          "url": "https://news.ycombinator.com/item?id=50443812"
+        }
+      ],
+      "stages": [
+        {
+          "label": "프리뷰",
+          "tone": "preview"
+        },
+        {
+          "label": "HN Show 등장",
+          "tone": "issue"
+        }
+      ],
+      "title": "에이전트가 아직도 div와 JS로 모달을 짠다: Chrome 팀이 '최신 웹 지식'을 스킬로 배포했다",
+      "tldr": [
+        "Google Chrome 팀이 Microsoft Edge 팀과 함께 코딩 에이전트에 최신 브라우저 기능을 알려 주는 스킬 modern-web-guidance를 공개했습니다(Apache-2.0).",
+        "저장소에 실린 자체 평가에서 131개 과제 기준 Claude Code(opus-5)는 통과율 57%에서 92%로, Codex CLI는 60%에서 81%로 올랐습니다.",
+        "가이드 검색은 오프라인 TensorFlow.js 모델로 로컬에서 하고, 스킬 본문은 약 234토큰입니다."
+      ],
+      "topic": "agent-platform-guidance",
+      "use": 3,
+      "what": "모델은 학습 시점 이후 나온 웹 기능을 잘 모르고, 아는 것도 오래된 패턴을 더 자주 씁니다. 그래서 dialog나 Popover API를 두고 div와 자바스크립트로 모달을 직접 만듭니다. 이 프로젝트는 최신 브라우저 기능의 사용법과 호환성 정보를 가이드로 묶고, 에이전트가 필요할 때 찾아보게 하는 스킬입니다.",
+      "why": "평가 방식이 눈에 띕니다. 전문가가 가이드를 쓰면 Playwright 채점기와 '틀린 예' 페이지가 함께 만들어지고, 채점기는 정답 페이지는 100% 통과, 틀린 예는 0% 통과해야 채택됩니다. 같은 과제를 가이드 유무로 돌려 차이를 잽니다. 플랫폼을 만드는 쪽이 직접 '에이전트용 문서'와 측정 도구를 배포하기 시작했다는 점이 화제입니다."
+    }
+  ],
+  "watch": []
+}

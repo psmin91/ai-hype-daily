@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "ternary quantization",
+    "1.58-bit",
+    "BitNet b1.58",
+    "post-training quantization",
+    "PTQ",
+    "boundary masking",
+    "Nota AI",
+    "MLX"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Nota Nemotron 3.5 Lightning 30B-A3B 터너리 MLX"
+      ],
+      "date": "2026-11-11",
+      "title": "30B 모델을 가중치 -1·0·+1로: 재학습 없이 10GB에 담아 맥북에서 돌린 1.58비트 양자화",
+      "urls": [
+        "https://news.hada.io/topic?id=36924",
+        "https://huggingface.co/nota-ai/Nemotron-3.5-Lightning-30B-A3B-Nota-Ternary-MLX-1014"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-11",
+  "lastSeen": "2026-11-11",
+  "lastTrend": "new",
+  "name": "초저비트(1.58비트) 사후 양자화",
+  "radar": [
+    {
+      "date": "2026-11-11",
+      "trend": "new"
+    }
+  ]
+}

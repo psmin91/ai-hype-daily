@@ -1,0 +1,22 @@
+{
+  "aliases": [
+    "model drift",
+    "nerf detection",
+    "livenerf",
+    "silent model change",
+    "canary eval",
+    "Opus 5.5 nerfed",
+    "pre-registered eval panel"
+  ],
+  "featured": [],
+  "firstSeen": "2026-11-10",
+  "lastSeen": "2026-11-10",
+  "lastTrend": "new",
+  "name": "호스팅 모델 드리프트 감시",
+  "radar": [
+    {
+      "date": "2026-11-10",
+      "trend": "new"
+    }
+  ]
+}

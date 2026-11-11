@@ -67,7 +67,7 @@
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-11-09",
+  "lastSeen": "2026-11-10",
   "lastTrend": "peak",
   "name": "에이전트 메모리",
   "radar": [
@@ -113,6 +113,10 @@
     },
     {
       "date": "2026-11-09",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-10",
       "trend": "peak"
     }
   ]

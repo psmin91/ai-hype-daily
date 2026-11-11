@@ -26,7 +26,8 @@
     "Claude Code 하네스 전자책",
     "Pi",
     "pi.dev",
-    "minimal harness"
+    "minimal harness",
+    "Harness-S"
   ],
   "featured": [
     {
@@ -60,7 +61,7 @@
     }
   ],
   "firstSeen": "2026-10-22",
-  "lastSeen": "2026-11-09",
+  "lastSeen": "2026-11-11",
   "lastTrend": "peak",
   "name": "하네스 엔지니어링",
   "radar": [
@@ -114,6 +115,10 @@
     },
     {
       "date": "2026-11-09",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-11",
       "trend": "peak"
     }
   ]

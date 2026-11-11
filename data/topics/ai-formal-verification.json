@@ -11,7 +11,11 @@
     "Axiom",
     "CFSG",
     "autoformalization",
-    "Mathlib"
+    "Mathlib",
+    "AlphaProof Code",
+    "Signal protocol verification",
+    "Gemini Carbon",
+    "machine-code verification"
   ],
   "featured": [
     {
@@ -41,7 +45,7 @@
     }
   ],
   "firstSeen": "2026-10-24",
-  "lastSeen": "2026-10-29",
+  "lastSeen": "2026-11-11",
   "lastTrend": "spreading",
   "name": "LLM 기반 형식 검증",
   "radar": [
@@ -55,6 +59,10 @@
     },
     {
       "date": "2026-10-29",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-11",
       "trend": "spreading"
     }
   ]
