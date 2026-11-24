@@ -7,7 +7,11 @@
     "PTQ",
     "boundary masking",
     "Nota AI",
-    "MLX"
+    "MLX",
+    "NariQ",
+    "Bitnet.cpp",
+    "2-bit quantization",
+    "trellis quantization"
   ],
   "featured": [
     {
@@ -23,13 +27,17 @@
     }
   ],
   "firstSeen": "2026-11-11",
-  "lastSeen": "2026-11-11",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "rising",
   "name": "초저비트(1.58비트) 사후 양자화",
   "radar": [
     {
       "date": "2026-11-11",
       "trend": "new"
+    },
+    {
+      "date": "2026-11-24",
+      "trend": "rising"
     }
   ]
 }

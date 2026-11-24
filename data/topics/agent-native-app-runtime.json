@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "Expo Exact",
+    "Exact",
+    "agent-native runtime",
+    "Contract DSL",
+    "virtual clock testing",
+    "agent app commands",
+    "agent-operable UI"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Expo Exact"
+      ],
+      "date": "2026-11-13",
+      "title": "앱이 처음부터 에이전트에게 '조종석'을 연다: Expo Exact의 명령 10개와 가상 시계",
+      "urls": [
+        "https://github.com/expo/exact",
+        "https://news.hada.io/topic?id=36991",
+        "https://news.ycombinator.com/item?id=50433541"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-13",
+  "lastSeen": "2026-11-13",
+  "lastTrend": "new",
+  "name": "에이전트 네이티브 앱 런타임",
+  "radar": [
+    {
+      "date": "2026-11-13",
+      "trend": "new"
+    }
+  ]
+}

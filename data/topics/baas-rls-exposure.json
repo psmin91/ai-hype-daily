@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "Supabase RLS",
+    "Row Level Security",
+    "Lovable data exposure",
+    "anon key",
+    "publishable key",
+    "vibe-coded app security",
+    "UpGuard Supabase",
+    "Crissy Field"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Crissy Field의 Lovable 앱 159,041개 조사",
+        "UpGuard Supabase 16,326개 DB 노출"
+      ],
+      "date": "2026-11-15",
+      "title": "Lovable로 만든 앱 2만 4천여 개가 로그인 없이 DB를 내줬다: 브라우저 키와 꺼진 행 단위 보안",
+      "urls": [
+        "https://cybernews.com/security/lovable-ai-apps-expose-personal-information/",
+        "https://www.techzine.eu/news/security/145550/thousands-of-lovable-apps-are-leaking-personal-data/",
+        "https://www.upguard.com/blog/everything-everywhere-systemic-data-exposure-in-supabase-apps"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-15",
+  "lastSeen": "2026-11-15",
+  "lastTrend": "new",
+  "name": "BaaS 권한 설정 노출 · 바이브 코딩 앱 보안",
+  "radar": [
+    {
+      "date": "2026-11-15",
+      "trend": "new"
+    }
+  ]
+}

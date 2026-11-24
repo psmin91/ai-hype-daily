@@ -15,7 +15,26 @@
     "AlphaProof Code",
     "Signal protocol verification",
     "Gemini Carbon",
-    "machine-code verification"
+    "machine-code verification",
+    "Fermat's Last Theorem formalization",
+    "Courtade–Kumar",
+    "Weil conjectures Lean",
+    "Antigravity Long Proof",
+    "proof verification trust",
+    "Kevin Buzzard",
+    "lake comparator",
+    "Aristotle Rust",
+    "statement auditing",
+    "who verifies the verifier",
+    "Riemann Hypothesis Lean",
+    "Alpöge",
+    "con-leche",
+    "con-ron",
+    "independent proof checker",
+    "Riemann Hypothesis",
+    "Riemann hypothesis Lean",
+    "proof bloat",
+    "micjm"
   ],
   "featured": [
     {
@@ -42,11 +61,39 @@
         "https://runtimewire.com/article/axiom-s-ceo-says-no-one-outside-the-company-has-rebuilt-its-43-million-line-proo",
         "https://news.ycombinator.com/item?id=50261647"
       ]
+    },
+    {
+      "cases": [
+        "버저드 네 가지 질문",
+        "OpenAI Lean 정리 290개 중 38개 주정리 미증명",
+        "Harmonic Aristotle Rust(11/16)",
+        "FLT·Weil 형식화 검증 논쟁"
+      ],
+      "date": "2026-11-17",
+      "title": "'Lean으로 확인됐다'를 어떻게 믿나: 수백만 줄 AI 증명에 붙은 케빈 버저드의 네 가지 질문",
+      "urls": [
+        "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/",
+        "https://www.harmonic.fun/news/aristotle-rust-verification/",
+        "https://news.ycombinator.com/item?id=50515058"
+      ]
+    },
+    {
+      "cases": [
+        "Alpöge·Claude 리만 가설 Lean 증명(1,700만 줄)",
+        "Lean·Mathlib 커뮤니티 독립 검사기 교차 확인(con-leche·con-ron)"
+      ],
+      "date": "2026-11-22",
+      "title": "1,700만 줄 증명을 사람 대신 검사기 여럿이 확인했다: Claude와 썼다는 리만 가설 Lean 증명의 검증 절차",
+      "urls": [
+        "https://leanprover-community.github.io/blog/posts/riemann-hypothesis/",
+        "https://alpo.ge/remark.pdf",
+        "https://news.hada.io/topic?id=37529"
+      ]
     }
   ],
   "firstSeen": "2026-10-24",
-  "lastSeen": "2026-11-11",
-  "lastTrend": "spreading",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "peak",
   "name": "LLM 기반 형식 검증",
   "radar": [
     {
@@ -64,6 +111,26 @@
     {
       "date": "2026-11-11",
       "trend": "spreading"
+    },
+    {
+      "date": "2026-11-16",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-17",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-22",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-23",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-24",
+      "trend": "peak"
     }
   ]
 }

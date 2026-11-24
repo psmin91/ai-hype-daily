@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "AI scientist",
+    "autonomous research agents",
+    "Claude black hole physics",
+    "modular bootstrap",
+    "Hawking-Page transition",
+    "agentic discovery",
+    "ARIS",
+    "open problem mining"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Anthropic Claude 블랙홀 물리 열린 문제 2개(호킹-페이지 전이·모듈러 부트스트랩)"
+      ],
+      "date": "2026-11-20",
+      "title": "에이전트 여러 개를 6주 동안 백그라운드에 풀었더니: Claude가 블랙홀 물리의 열린 문제 2개를 풀어낸 방식",
+      "urls": [
+        "https://www.anthropic.com/research/claude-black-hole-physics",
+        "https://hexagonmath.org/2611.00174v1",
+        "https://hexagonmath.org/2611.00175v1",
+        "https://news.ycombinator.com/item?id=50563148"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-20",
+  "lastSeen": "2026-11-20",
+  "lastTrend": "new",
+  "name": "자율 연구 에이전트",
+  "radar": [
+    {
+      "date": "2026-11-20",
+      "trend": "new"
+    }
+  ]
+}

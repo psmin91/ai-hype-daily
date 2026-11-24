@@ -12,7 +12,25 @@
     "small local models",
     "llama-modchip",
     "CPU-only MoE",
-    "Fractal-64"
+    "Fractal-64",
+    "Apple Harbor",
+    "MoE SSD routing prediction",
+    "smolmaxxing",
+    "Bonsai 1-bit",
+    "expert paging from flash",
+    "old devices LLM",
+    "FreeToken",
+    "Edge0 prerouter",
+    "Edge0-145B",
+    "hot experts",
+    "vocabulary SSD offload",
+    "ggml v1.0.0",
+    "edge0-strata",
+    "Gemma 4 12B Q4",
+    "CSAT offline LLM",
+    "Ternary Bonsai 2",
+    "Inkling 2",
+    "Unsloth"
   ],
   "featured": [
     {
@@ -27,11 +45,24 @@
         "https://news.ycombinator.com/item?id=50219700",
         "https://huggingface.co/papers/2609.18063"
       ]
+    },
+    {
+      "cases": [
+        "smolmaxxing (Xiaomi TV Box S·iPad Air 1)",
+        "Apple Harbor 보도"
+      ],
+      "date": "2026-11-13",
+      "title": "메모리 1GB짜리 TV 셋톱박스와 2013년 iPad에서 16B 모델을: smolmaxxing의 160번 실험",
+      "urls": [
+        "https://github.com/hyperionaidev/smolmaxxing/",
+        "https://news.ycombinator.com/item?id=50468888",
+        "https://news.hada.io/topic?id=36982"
+      ]
     }
   ],
   "firstSeen": "2026-10-26",
-  "lastSeen": "2026-11-09",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "spreading",
   "name": "소비자 GPU · 로컬 추론 최적화",
   "radar": [
     {
@@ -45,6 +76,38 @@
     {
       "date": "2026-11-09",
       "trend": "rising"
+    },
+    {
+      "date": "2026-11-12",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-13",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-14",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-15",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-16",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-17",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-20",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-24",
+      "trend": "spreading"
     }
   ]
 }

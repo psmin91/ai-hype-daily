@@ -13,7 +13,16 @@
     "Flide",
     "exact state forking",
     "JevBench",
-    "/v1/systemone"
+    "/v1/systemone",
+    "Gemini Decisions API",
+    "gemini-decision-1",
+    "Gemini Decision 1",
+    "OpenAI Decisions",
+    "Perplexity Decider",
+    "Decider v1.3",
+    "Decider Flash",
+    "PostHog decision models",
+    "TypeSafe"
   ],
   "featured": [
     {
@@ -42,11 +51,23 @@
         "https://news.hada.io/topic?id=36894",
         "https://news.ycombinator.com/item?id=50436640"
       ]
+    },
+    {
+      "cases": [
+        "Google Gemini Decisions API (gemini-decision-1)"
+      ],
+      "date": "2026-11-13",
+      "title": "구글도 '고르기만 하는' 모델을 API로 냈다: 질문 1,000개를 한 번에 판정하는 Gemini Decisions API",
+      "urls": [
+        "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+        "https://news.hada.io/topic?id=37011",
+        "https://news.ycombinator.com/item?id=50456791"
+      ]
     }
   ],
   "firstSeen": "2026-11-08",
-  "lastSeen": "2026-11-11",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-20",
+  "lastTrend": "spreading",
   "name": "신뢰도 기반 모델 캐스케이드",
   "radar": [
     {
@@ -56,6 +77,26 @@
     {
       "date": "2026-11-11",
       "trend": "rising"
+    },
+    {
+      "date": "2026-11-12",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-13",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-14",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-16",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-20",
+      "trend": "spreading"
     }
   ]
 }

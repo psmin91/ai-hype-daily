@@ -13,7 +13,20 @@
     "Momentic",
     "agent QA",
     "verification loop",
-    "human attention bottleneck"
+    "human attention bottleneck",
+    "Elephant-Goldfish Model",
+    "EGM",
+    "verify skill",
+    "REVIEW.md",
+    "commit gate",
+    "review bottleneck",
+    "Jellyfish study",
+    "Chen Stratton Harvard",
+    "StarSling",
+    "agent-volume CI",
+    "Reticle",
+    "agent app verification",
+    "app-driving verification"
   ],
   "featured": [
     {
@@ -27,10 +40,25 @@
         "https://entire.com/blog/the-git-forge-for-agent-human-collaboration",
         "https://news.hada.io/topic?id=35945"
       ]
+    },
+    {
+      "cases": [
+        "Claude Code 팀 검증 루프(verify 스킬·REVIEW.md·커밋 게이트)",
+        "Elephant-Goldfish Model(EGM)"
+      ],
+      "date": "2026-11-18",
+      "title": "에이전트를 수십 개 돌리려면 검증부터: Claude Code 팀의 검증 루프와 '금붕어 리뷰어'",
+      "urls": [
+        "https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/",
+        "https://news.ycombinator.com/item?id=50529612",
+        "https://egm.dev/",
+        "https://github.com/google/elephant-goldfish-model",
+        "https://news.ycombinator.com/item?id=50515291"
+      ]
     }
   ],
   "firstSeen": "2026-10-27",
-  "lastSeen": "2026-11-04",
+  "lastSeen": "2026-11-22",
   "lastTrend": "spreading",
   "name": "eval 점수 기반 코드 리뷰",
   "radar": [
@@ -48,6 +76,26 @@
     },
     {
       "date": "2026-11-04",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-18",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-19",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-20",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-21",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-22",
       "trend": "spreading"
     }
   ]

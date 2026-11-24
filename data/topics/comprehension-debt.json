@@ -6,7 +6,11 @@
     "AI code understanding",
     "skill formation",
     "fragile codebase",
-    "AI usage generates a fragile codebase"
+    "AI usage generates a fragile codebase",
+    "Socratic Tutor skill",
+    "Jane Street agent_skills",
+    "Jane Street interviews with LLMs",
+    "developer to architect"
   ],
   "featured": [
     {
@@ -24,8 +28,8 @@
     }
   ],
   "firstSeen": "2026-10-29",
-  "lastSeen": "2026-11-11",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-22",
+  "lastTrend": "spreading",
   "name": "이해 부채 · 사람 쪽 검증",
   "radar": [
     {
@@ -35,6 +39,22 @@
     {
       "date": "2026-11-11",
       "trend": "rising"
+    },
+    {
+      "date": "2026-11-12",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-13",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-17",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-22",
+      "trend": "spreading"
     }
   ]
 }

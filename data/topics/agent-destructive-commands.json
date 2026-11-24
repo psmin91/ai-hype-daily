@@ -1,0 +1,39 @@
+{
+  "aliases": [
+    "agent rm -rf",
+    "agent data loss",
+    "rsync --delete",
+    "double shell interpretation",
+    "WSL wipe",
+    "git clean",
+    "git worktree remove --force",
+    "destructive command guard",
+    "${VAR:?}"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Claude Code #109735 WSL rsync 삭제",
+        "Antigravity D 드라이브 삭제",
+        "Codex CLI git clean 설정 삭제",
+        "Claude Code Git Bash 600GB 삭제"
+      ],
+      "date": "2026-11-19",
+      "title": "빈 변수 하나에 rsync가 루트를 지웠다: 코딩 에이전트 삭제 사고 10건을 실행 명령으로 뜯어 보니",
+      "urls": [
+        "https://velog.io/@doolyk/coding-agent-deletion-incidents-shell-analysis",
+        "https://github.com/anthropics/claude-code/issues/109735"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-19",
+  "lastSeen": "2026-11-19",
+  "lastTrend": "new",
+  "name": "에이전트 파괴적 셸 명령 · 삭제 사고",
+  "radar": [
+    {
+      "date": "2026-11-19",
+      "trend": "new"
+    }
+  ]
+}

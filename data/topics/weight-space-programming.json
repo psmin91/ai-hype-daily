@@ -6,7 +6,17 @@
     "model surgery",
     "mechanistic interpretability",
     "Honnibal rebuttal",
-    "Sparks of Weight-Space Programming"
+    "Sparks of Weight-Space Programming",
+    "Weight Space Misfolding",
+    "weight-space virus",
+    "IWIBench",
+    "malicious weight editing",
+    "HCLTech",
+    "self-rewriting",
+    "Language Models Can Rewrite Their Own Weights",
+    "self-repair",
+    "rank-one edit",
+    "Qwen3.5-27B"
   ],
   "featured": [
     {
@@ -33,11 +43,36 @@
         "https://news.hada.io/topic?id=36478",
         "https://rikiyat.github.io/blog/weight-space-programming/"
       ]
+    },
+    {
+      "cases": [
+        "HCLTech Weight Space Misfolding",
+        "IWIBench"
+      ],
+      "date": "2026-11-14",
+      "title": "모델이 다른 모델의 가중치를 몰래 고친다면: '가중치 미스폴딩' 논문과 부풀려진 '바이러스' 제목",
+      "urls": [
+        "https://www.alphaxiv.org/abs/2611.weight-space-misfolding",
+        "https://news.ycombinator.com/item?id=50487762"
+      ]
+    },
+    {
+      "cases": [
+        "Language Models Can Rewrite Their Own Weights (arXiv 2611.21885)",
+        "Qwen3.5-27B self-rewriting"
+      ],
+      "date": "2026-11-21",
+      "title": "27B 모델이 학습 없이 자기 가중치를 고쳤다: '자기 재작성'으로 정답률 6.6%p, 손상 복구까지",
+      "urls": [
+        "https://arxiv.org/abs/2611.21885",
+        "https://arxiv.org/html/2611.21885",
+        "https://news.ycombinator.com/item?id=50577265"
+      ]
     }
   ],
   "firstSeen": "2026-11-03",
-  "lastSeen": "2026-11-06",
-  "lastTrend": "cooling",
+  "lastSeen": "2026-11-21",
+  "lastTrend": "rising",
   "name": "가중치 공간 프로그래밍",
   "radar": [
     {
@@ -55,6 +90,14 @@
     {
       "date": "2026-11-06",
       "trend": "cooling"
+    },
+    {
+      "date": "2026-11-14",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-21",
+      "trend": "rising"
     }
   ]
 }

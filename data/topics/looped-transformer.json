@@ -1,0 +1,59 @@
+{
+  "aliases": [
+    "looped transformer",
+    "recurrent depth",
+    "layer looping",
+    "Inkling 2 Mini",
+    "Thinking Machines",
+    "loop gate",
+    "Inkling-2-Mini",
+    "LookAtMyQuant",
+    "GLM-5.4",
+    "loop transformer",
+    "LoopLM",
+    "continued training to loop"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Thinking Machines Inkling 2 Mini(24층, 가운데 블록 3회 반복)"
+      ],
+      "date": "2026-11-22",
+      "title": "층 24개를 48번처럼 쓴다: Inkling 2 Mini가 보여 준 '루프 트랜스포머'",
+      "urls": [
+        "https://thinkingmachines.ai/news/inkling-2-mini/"
+      ]
+    },
+    {
+      "cases": [
+        "Z.ai GLM-5.4(GLM-5 28개 층 2회 반복, 이어 학습)"
+      ],
+      "date": "2026-11-24",
+      "title": "750B급 플래그십도 같은 층을 두 번 돈다: Z.ai GLM-5.4가 기존 모델을 '루프'로 바꾼 방법",
+      "urls": [
+        "https://z.ai/blog/glm-5.4",
+        "https://www.datacamp.com/blog/glm-5-4",
+        "https://www.testingcatalog.com/z-ai-launches-glm-5-4-its-first-loop-transformer-model/",
+        "https://news.ycombinator.com/item?id=50609685"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-22",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "spreading",
+  "name": "루프(반복) 트랜스포머",
+  "radar": [
+    {
+      "date": "2026-11-22",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-23",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-24",
+      "trend": "spreading"
+    }
+  ]
+}

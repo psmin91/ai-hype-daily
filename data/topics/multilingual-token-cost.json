@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "tokenizer tax",
+    "token inflation",
+    "multilingual energy",
+    "Language-Energy Divide",
+    "non-English token cost",
+    "Belebele",
+    "ML.Energy"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "EMNLP 2026 The Language–Energy Divide (미시간대)"
+      ],
+      "date": "2026-11-15",
+      "title": "같은 질문, 한국어로 물으면 에너지 3배: EMNLP 논문이 잰 '언어별 추론 비용'",
+      "urls": [
+        "https://aclanthology.org/2026.emnlp-main.2113/",
+        "https://aclanthology.org/2026.emnlp-main.2113.pdf",
+        "https://www.eurekalert.org/news-releases/1150646"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-15",
+  "lastSeen": "2026-11-15",
+  "lastTrend": "new",
+  "name": "언어별 토큰·추론 비용 격차",
+  "radar": [
+    {
+      "date": "2026-11-15",
+      "trend": "new"
+    }
+  ]
+}

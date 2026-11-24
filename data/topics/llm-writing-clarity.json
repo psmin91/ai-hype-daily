@@ -1,0 +1,38 @@
+{
+  "aliases": [
+    "AI slop",
+    "slop",
+    "writing clarity",
+    "unclear rate",
+    "Zonder Labs",
+    "No AI Slop Manifesto",
+    "IdeaLens",
+    "AI writing detector"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Zonder Labs 명료성 측정",
+        "No AI Slop 선언문"
+      ],
+      "date": "2026-11-20",
+      "title": "'delve'를 지워도 슬롭은 남는다: AI 글이 읽기 힘든 이유를 문장 단위로 잰 결과",
+      "urls": [
+        "https://zonderlabs.com/slop",
+        "https://news.hada.io/topic?id=37316",
+        "https://www.slopmanifesto.com/",
+        "https://news.hada.io/topic?id=37128"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-20",
+  "lastSeen": "2026-11-20",
+  "lastTrend": "new",
+  "name": "AI 글 명료성 · 슬롭 규범",
+  "radar": [
+    {
+      "date": "2026-11-20",
+      "trend": "new"
+    }
+  ]
+}

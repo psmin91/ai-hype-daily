@@ -17,7 +17,11 @@
     "Fork-and-Flush",
     "Scaling Discovery Requires Forgetting",
     "context inertia",
-    "Hermes /goal flush"
+    "Hermes /goal flush",
+    "company brain",
+    "company context document",
+    "Ramp Glass",
+    "validation question set"
   ],
   "featured": [
     {
@@ -34,11 +38,23 @@
         "https://arxiv.org/abs/2610.20563",
         "https://news.hada.io/topic?id=36019"
       ]
+    },
+    {
+      "cases": [
+        "Ramp '컴퍼니 브레인' 가이드",
+        "Ramp Glass"
+      ],
+      "date": "2026-11-12",
+      "title": "사내 지식을 AI에게 주는 순서: 2쪽짜리 문서, 정답 아는 질문 20개, 그리고 담당자",
+      "urls": [
+        "https://ramp.com/blog/how-to-give-ai-context",
+        "https://news.hada.io/topic?id=36856"
+      ]
     }
   ],
   "firstSeen": "2026-10-21",
-  "lastSeen": "2026-10-29",
-  "lastTrend": "rising",
+  "lastSeen": "2026-11-12",
+  "lastTrend": "spreading",
   "name": "에이전트 스킬 · 마크다운 컨텍스트",
   "radar": [
     {
@@ -64,6 +80,10 @@
     {
       "date": "2026-10-29",
       "trend": "rising"
+    },
+    {
+      "date": "2026-11-12",
+      "trend": "spreading"
     }
   ]
 }

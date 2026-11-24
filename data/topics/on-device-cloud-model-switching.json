@@ -1,0 +1,36 @@
+{
+  "aliases": [
+    "Apple Foundation Models framework",
+    "Dynamic Profiles",
+    "Private Cloud Compute",
+    "PCC",
+    "Language Model protocol",
+    "ClaudeForFoundationModels",
+    "fm CLI",
+    "hybrid on-device cloud LLM"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Apple Foundation Models Dynamic Profiles·PCC"
+      ],
+      "date": "2026-11-16",
+      "title": "대화 중간에 모델을 갈아 끼운다: Apple Foundation Models의 Dynamic Profiles와 '기기·클라우드 한 API'",
+      "urls": [
+        "https://developer.apple.com/foundation-models-framework/",
+        "https://news.hada.io/topic?id=37098",
+        "https://news.ycombinator.com/item?id=50474361"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-16",
+  "lastSeen": "2026-11-16",
+  "lastTrend": "new",
+  "name": "기기·클라우드 모델 전환 API",
+  "radar": [
+    {
+      "date": "2026-11-16",
+      "trend": "new"
+    }
+  ]
+}

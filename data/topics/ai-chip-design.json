@@ -1,0 +1,44 @@
+{
+  "aliases": [
+    "AI chip design",
+    "LLM RTL optimization",
+    "SystemVerilog",
+    "PPA",
+    "Jalapeño",
+    "GPT-Synopsys",
+    "Frostbite",
+    "Architect Labs",
+    "interaction nets",
+    "ASL",
+    "Arcmodel",
+    "PicoRV32",
+    "Ibex"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "OpenAI Jalapeño",
+        "AMD GPU IP",
+        "Architect Labs Frostbite"
+      ],
+      "date": "2026-11-21",
+      "title": "AI가 회로 코드를 다시 쓰고 CPU 구조까지 제안한다: OpenAI 칩 면적 10~15% 절감과 Frostbite",
+      "urls": [
+        "https://openai.com/index/advancing-chip-design-with-our-models/",
+        "https://architectlabs.com/blog/frostbite",
+        "https://news.ycombinator.com/item?id=50572503",
+        "https://news.hada.io/topic?id=37441"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-21",
+  "lastSeen": "2026-11-21",
+  "lastTrend": "new",
+  "name": "AI 칩·CPU 설계",
+  "radar": [
+    {
+      "date": "2026-11-21",
+      "trend": "new"
+    }
+  ]
+}

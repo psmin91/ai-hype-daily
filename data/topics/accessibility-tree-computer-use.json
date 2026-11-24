@@ -1,0 +1,36 @@
+{
+  "aliases": [
+    "agent-desktop",
+    "Vercel agent-desktop",
+    "accessibility tree",
+    "AX API",
+    "UI Automation",
+    "AT-SPI",
+    "computer use without screenshots",
+    "agent-browser",
+    "agent-device"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Vercel Labs agent-desktop"
+      ],
+      "date": "2026-11-12",
+      "title": "스크린샷 없이 데스크톱 앱을 누른다: Vercel agent-desktop이 접근성 트리를 에이전트에게 건넸다",
+      "urls": [
+        "https://github.com/vercel-labs/agent-desktop",
+        "https://news.hada.io/topic?id=36967"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-12",
+  "lastSeen": "2026-11-12",
+  "lastTrend": "new",
+  "name": "접근성 트리 기반 데스크톱 에이전트 조작",
+  "radar": [
+    {
+      "date": "2026-11-12",
+      "trend": "new"
+    }
+  ]
+}

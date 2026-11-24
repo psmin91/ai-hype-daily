@@ -1,0 +1,37 @@
+{
+  "aliases": [
+    "MIPS",
+    "maximum inner product search",
+    "SupportNet",
+    "KeyNet",
+    "learned index",
+    "IVF routing",
+    "FAISS",
+    "ICNN",
+    "Apple ML Research"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Apple SupportNet",
+        "Apple KeyNet"
+      ],
+      "date": "2026-11-14",
+      "title": "가장 가까운 군집 대신 '학습된 길잡이': Apple이 벡터 검색을 최대 8배 빠르게 만든 방법",
+      "urls": [
+        "https://machinelearning.apple.com/research/faster-retrieval",
+        "https://news.hada.io/topic?id=37031"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-14",
+  "lastSeen": "2026-11-14",
+  "lastTrend": "new",
+  "name": "학습형 벡터 검색 라우팅",
+  "radar": [
+    {
+      "date": "2026-11-14",
+      "trend": "new"
+    }
+  ]
+}

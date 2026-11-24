@@ -1,0 +1,47 @@
+{
+  "aliases": [
+    "autonomous attack agents",
+    "ARTEX",
+    "Artex AI",
+    "agentic pentest",
+    "offensive AI agents",
+    "Vapor Panda",
+    "Storm-0940",
+    "planning worker agents",
+    "autonomous pentest framework",
+    "artex-agent",
+    "artex-judge-r121"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "ARTEX 오픈소스 프레임워크",
+        "FBI 경보(11/16)",
+        "Vapor Panda 200여 조직 캠페인",
+        "DIVD 12분 루트 침해",
+        "한국 금융기관 6.8만 명 유출"
+      ],
+      "date": "2026-11-17",
+      "title": "침투 테스트 에이전트가 그대로 공격 도구가 됐다: ARTEX 실제 침해에 FBI 경보",
+      "urls": [
+        "https://techcrunch.com/2026/11/16/fbi-says-artex-ai-open-source-hacking-tool-used-to-breach-networks-in-under-three-hours/",
+        "https://www.sophos.com/en-us/blog/artex-attackers-apply-agentic-ai",
+        "https://bleepingcomputer.com/news/security/chinese-hackers-use-artex-ai-in-automated-attacks-against-200-orgs"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-17",
+  "lastSeen": "2026-11-23",
+  "lastTrend": "rising",
+  "name": "자율 공격 에이전트",
+  "radar": [
+    {
+      "date": "2026-11-17",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-23",
+      "trend": "rising"
+    }
+  ]
+}

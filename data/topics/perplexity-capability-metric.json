@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "perplexity",
+    "log perplexity",
+    "cross-entropy loss",
+    "joint development limits",
+    "bits per byte",
+    "Perplexity and Intelligence"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "OpenAI 로그 퍼플렉시티 공개(GPT-3.5 0.99→0.76)",
+        "공동 개발 한계선 제안"
+      ],
+      "date": "2026-11-24",
+      "title": "벤치마크 대신 '다음 토큰을 얼마나 잘 맞히나'로 능력을 잰다: OpenAI가 공개한 로그 퍼플렉시티 0.99→0.76",
+      "urls": [
+        "https://openai.com/index/perplexity-and-intelligence/",
+        "https://news.ycombinator.com/item?id=50601525",
+        "https://news.hada.io/topic?id=37649"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-24",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "new",
+  "name": "퍼플렉시티 기반 능력 지표",
+  "radar": [
+    {
+      "date": "2026-11-24",
+      "trend": "new"
+    }
+  ]
+}

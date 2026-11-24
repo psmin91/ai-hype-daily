@@ -1,0 +1,35 @@
+{
+  "aliases": [
+    "long-horizon agentic RL",
+    "agentic reinforcement learning",
+    "DaisyRose-27B",
+    "RadixArk",
+    "Miles",
+    "async RL",
+    "Eigent AI",
+    "AgentENV"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "RadixArk DaisyRose-27B(Qwen3.8-27B, 과제 1,200개, Miles 비동기 RL)"
+      ],
+      "date": "2026-11-22",
+      "title": "한 번 시도에 1.5시간·도구 호출 100번: 장시간 에이전트 작업으로 강화학습한 DaisyRose-27B",
+      "urls": [
+        "https://www.radixark.com/blog/daisyrose-27b",
+        "https://news.hada.io/topic?id=37459"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-22",
+  "lastSeen": "2026-11-22",
+  "lastTrend": "new",
+  "name": "장시간 에이전트 강화학습",
+  "radar": [
+    {
+      "date": "2026-11-22",
+      "trend": "new"
+    }
+  ]
+}

@@ -21,7 +21,15 @@
     "ransomware file recovery without key",
     "Scarab",
     "CVE-2026-53362",
-    "container escape"
+    "container escape",
+    "Glasswing ledger",
+    "VulnCheck",
+    "Anthropic Credited CVEs",
+    "OSS Scanner",
+    "find vs fix gap",
+    "curl false positives",
+    "Apache HTTP Server RCE 2026",
+    "mod_h2"
   ],
   "featured": [
     {
@@ -49,10 +57,22 @@
         "https://www.csoonline.com/article/4245265/openai-built-an-ai-pipeline-to-find-exploit-and-patch-linux-flaws.html",
         "https://thehackernews.com/2026/11/openai-ai-pipeline-generates-948-linux.html"
       ]
+    },
+    {
+      "cases": [
+        "VulnCheck Glasswing 11월 집계",
+        "curl 보고 34건 검증"
+      ],
+      "date": "2026-11-12",
+      "title": "AI가 찾은 취약점 3만 7,966건, 고쳐진 건 217건: VulnCheck가 Glasswing 7개월을 집계했다",
+      "urls": [
+        "https://www.vulncheck.com/blog/anthropic-glasswing-november-update",
+        "https://news.ycombinator.com/item?id=50447074"
+      ]
     }
   ],
   "firstSeen": "2026-10-22",
-  "lastSeen": "2026-11-08",
+  "lastSeen": "2026-11-17",
   "lastTrend": "peak",
   "name": "AI 에이전트 취약점 발굴",
   "radar": [
@@ -82,6 +102,18 @@
     },
     {
       "date": "2026-11-08",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-12",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-13",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-17",
       "trend": "peak"
     }
   ]

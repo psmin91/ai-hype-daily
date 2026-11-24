@@ -27,7 +27,14 @@
     "Pi",
     "pi.dev",
     "minimal harness",
-    "Harness-S"
+    "Harness-S",
+    "nac",
+    "Arcee nac",
+    "thread and episode harness",
+    "FrontierHarness Eval",
+    "Runta",
+    "harness cost per pass",
+    "harness-model fit"
   ],
   "featured": [
     {
@@ -58,11 +65,22 @@
         "https://aiweekly.co/alerts/memdoors-five-qwen38-27b-team-beats-fable-5-at-livecodebench",
         "https://startupfortune.com/small-open-models-match-fable-5-on-coding-but-the-win-is-a-myth/"
       ]
+    },
+    {
+      "cases": [
+        "Runta FrontierHarness Eval v1.1(하네스 22종 × 오픈 모델 5종)"
+      ],
+      "date": "2026-11-18",
+      "title": "같은 모델인데 하네스만 바꿔도 비용이 최대 5배: 2만 7천 번 돌려 본 하네스×모델 궁합",
+      "urls": [
+        "https://runta.com/blog/introducing-frontierharness-eval-v1-1/",
+        "https://news.ycombinator.com/item?id=50532191"
+      ]
     }
   ],
   "firstSeen": "2026-10-22",
-  "lastSeen": "2026-11-11",
-  "lastTrend": "peak",
+  "lastSeen": "2026-11-19",
+  "lastTrend": "cooling",
   "name": "하네스 엔지니어링",
   "radar": [
     {
@@ -120,6 +138,22 @@
     {
       "date": "2026-11-11",
       "trend": "peak"
+    },
+    {
+      "date": "2026-11-15",
+      "trend": "peak"
+    },
+    {
+      "date": "2026-11-17",
+      "trend": "cooling"
+    },
+    {
+      "date": "2026-11-18",
+      "trend": "cooling"
+    },
+    {
+      "date": "2026-11-19",
+      "trend": "cooling"
     }
   ]
 }

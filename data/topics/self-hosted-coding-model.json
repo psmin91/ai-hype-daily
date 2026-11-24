@@ -8,7 +8,10 @@
     "on-prem LLM for developers",
     "FP4 serving",
     "Kimi K3.1 Pro",
-    "local coding models"
+    "local coding models",
+    "GLM-5.3 NVFP4",
+    "DGX Station",
+    "vLLM multi-node TP"
   ],
   "featured": [
     {
@@ -24,7 +27,7 @@
     }
   ],
   "firstSeen": "2026-11-05",
-  "lastSeen": "2026-11-06",
+  "lastSeen": "2026-11-15",
   "lastTrend": "rising",
   "name": "오픈 웨이트 코딩 모델 자체 호스팅",
   "radar": [
@@ -34,6 +37,10 @@
     },
     {
       "date": "2026-11-06",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-15",
       "trend": "rising"
     }
   ]

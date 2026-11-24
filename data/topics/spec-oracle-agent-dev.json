@@ -1,0 +1,70 @@
+{
+  "aliases": [
+    "AWS Emulator",
+    "aws-emulator",
+    "Kiro",
+    "fidelity tests",
+    "reference implementation as oracle",
+    "Smithy API models",
+    "autonomous agent software factory",
+    "agent-built emulator",
+    "LocalStack alternative",
+    "curl Rust rewrite",
+    "kov/curl",
+    "urlx",
+    "test suite as oracle",
+    "agentic rewrite",
+    "Stenberg rebuttal",
+    "Fast-Anything",
+    "recorded calls as oracle",
+    "partial Rust port"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "AWS Emulator",
+        "Kiro"
+      ],
+      "date": "2026-11-14",
+      "title": "사람은 코드를 한 줄도 보지 않았다: 에이전트 수백 개가 실제 AWS를 정답지 삼아 만든 로컬 에뮬레이터",
+      "urls": [
+        "https://www.aboutamazon.com/news/aws/how-autonomous-ai-agents-built-aws-emulator",
+        "https://github.com/aws/aws-emulator",
+        "https://news.hada.io/topic?id=37001"
+      ]
+    },
+    {
+      "cases": [
+        "kov/curl Rust 재작성",
+        "urlx",
+        "Daniel Stenberg 반론"
+      ],
+      "date": "2026-11-20",
+      "title": "C 18만 5천 줄을 Rust 34만 줄로 3주 만에: curl 메인테이너가 에이전트 재작성에 던진 질문",
+      "urls": [
+        "https://daniel.haxx.se/blog/2026/11/17/actual-curl-rewrites-in-rust/",
+        "https://github.com/kov/curl",
+        "https://github.com/jonwiggins/urlx",
+        "https://simonwillison.net/2026/Nov/18/daniel-stenberg/"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-14",
+  "lastSeen": "2026-11-23",
+  "lastTrend": "rising",
+  "name": "명세·실서비스를 정답지로 삼는 자율 에이전트 개발",
+  "radar": [
+    {
+      "date": "2026-11-14",
+      "trend": "new"
+    },
+    {
+      "date": "2026-11-20",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-23",
+      "trend": "rising"
+    }
+  ]
+}

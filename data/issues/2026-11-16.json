@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-16",
+  "headline": "이번 주엔 '어떤 일을 어느 모델에 맡기나'를 구조로 푸는 흐름이 보였다. 리더 에이전트는 Postgres 표 5개로 1,000개 팀을 굴렸고, Apple은 한 대화 안에서 기기 모델과 클라우드 모델을 프로필로 갈아 끼우게 했다.",
+  "issueNo": 27,
+  "period": "11월 9일~16일",
+  "radar": [
+    {
+      "note": "10/31 게임 속 스웜 실험으로 첫 등장 → 이번 주 Google /teamwork 외부 공개(11/13)와 Anthropic 1,000개 팀 실험으로 연구소와 제품 양쪽에 확산.",
+      "since": "첫 포착 10/31",
+      "tech": "다중 에이전트 팀 · 오케스트레이션",
+      "topic": "multi-agent-swarm",
+      "trend": "spreading"
+    },
+    {
+      "note": "처음 포착. Apple Foundation Models 페이지가 HN 268점. 한 세션 안에서 모델을 바꾸는 Dynamic Profiles와 PCC 무료 조건이 쟁점.",
+      "since": "",
+      "tech": "기기·클라우드 모델 전환 API",
+      "topic": "on-device-cloud-model-switching",
+      "trend": "new"
+    },
+    {
+      "note": "11/11 확산 → Anthropic이 에이전트 팀으로 FLT Lean 증명을 재현하고, Google이 Courtade–Kumar 추측 증명을 약 5,000만 줄 Lean으로 형식화했다고 밝혀 정점으로 판단.",
+      "since": "첫 포착 10/24",
+      "tech": "LLM 기반 형식 검증",
+      "topic": "ai-formal-verification",
+      "trend": "peak"
+    },
+    {
+      "note": "확산 유지. Perplexity가 결정 모델 Decider v1.3을 Apache 라이선스로 공개(HN 146점). 쿼리 분류 63개 과제 평균 91.6%는 자체 측정.",
+      "since": "첫 포착 11/8",
+      "tech": "결정 모델 · 신뢰도 기반 캐스케이드",
+      "topic": "llm-cascade-routing",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. ggml v1.0.0이 HN 415점, Edge0-145B 공개가 HN 355점. 다만 Edge0의 29GB 표기는 시스템 RAM·SSD 요구를 뺀 값이라는 지적이 댓글에서 나옴.",
+      "since": "첫 포착 10/26",
+      "tech": "소비자 하드웨어 · 로컬 추론",
+      "topic": "local-inference-hacks",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 4,
+  "stories": [
+    {
+      "category": "에이전트 · 오케스트레이션",
+      "domains": [
+        "claude.dev",
+        "news.hada.io",
+        "research.google"
+      ],
+      "flow": [
+        "에이전트 하나가 긴 작업을 끝까지",
+        "연구자가 조율하는 에이전트 수십 개",
+        "리더 에이전트가 공유 DB로 조율하는 1,000개 팀"
+      ],
+      "how": "과제는 최종 정리와 중간 이정표 59개, 모두 60개 명제였고, Lean 검사기가 받아들여야 증명으로 쳤습니다. 각 에이전트는 자기 브랜치에만 푸시했고, 별도 병합 작업이 main에 합쳤습니다. DB는 권한 없는 공용 역할로 열고, SQL 문 하나에 5초 제한을 걸었습니다. 리더는 명제마다 16~17명 조와 조장을 붙였고, 27분쯤 도우미 다수가 어렵다고 본 47개를 내려놓고 남은 10개에 인원을 몰았습니다. 가장 어려운 Langlands–Tunnell 정리는 약 750개 도우미가 2,418개 작업, 최대 10단계 트리로 쪼개 풀었습니다. 큰 조각을 받은 도우미가 더 작은 하위 작업으로 나누고, 아래 조각이 풀렸다고 가정한 채 위를 증명하는 방식입니다. 30시간까지 DB 쓰기는 36,612회, 읽기는 311,734회였습니다.",
+      "hype": 4,
+      "meterNote": "저자들이 직접 '장난감 실험'이라 부른 연구 결과이고, 같은 구조를 외부에서 재현한 사례는 아직 없습니다",
+      "reality": "이미 있는 증명의 재현이고, 앞선 형식화에서 증명된 보조정리 47개를 받아 시작했습니다. 리더가 일찍 멈추지 않게 자동 시간 알림을 19번 보냈고, 18시간 무렵 DB 활동이 멈춰 마지막 저장 지점에서 다시 시작했습니다. 도우미들은 초반에 60개 중 47개를 예산 안에 못 푼다고 봤지만 대부분 풀렸습니다. 어려움을 비관적으로 오판하고 일찍 포기하는 경향은 저자들도 인정했습니다. 한 머신에 100개를 올렸을 땐 메모리·디스크·CPU가 바닥나, 에이전트마다 VM을 따로 주는 인프라가 필요했습니다. 이번 실행의 감시기는 행동만 보고 추론 과정은 보지 않았으며, 추론까지 보는 감시기는 실행 직후에 추가됐습니다. 비용은 공개되지 않았습니다.",
+      "refs": [
+        {
+          "src": "claude.dev · 11/9",
+          "title": "Anthropic, Claude Fable 5.2 에이전트 1,000개 팀으로 페르마의 마지막 정리 Lean 증명 재현",
+          "url": "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/"
+        },
+        {
+          "src": "GeekNews · 11/15",
+          "title": "GeekNews 소개: 에이전트 1,000개 팀 안전하게 돌리기",
+          "url": "https://news.hada.io/topic?id=37159"
+        },
+        {
+          "src": "Google Research · 11/13",
+          "title": "Google Research, Antigravity /teamwork의 설계 원칙과 결과",
+          "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "연구 실험",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트 1,000개가 메신저 없이 일했다: Git 브랜치와 Postgres 표 5개로 짠 에이전트 팀",
+      "tldr": [
+        "Anthropic 연구진은 11월 9일, 출시 전 Claude Fable 5.2로 리더 1개와 도우미 999개를 돌려 페르마의 마지막 정리 Lean 증명을 28.7시간 만에 재현했다고 밝혔습니다.",
+        "전용 협업 도구는 없었습니다. 에이전트마다 Git 브랜치 하나와 공유 Postgres만 줬고, 리더가 처음 10분 안에 announce·assign·notes·subtasks·landed 표 5개를 직접 만들었습니다.",
+        "에이전트마다 네트워크 없는 경량 VM을 줬고, 100만 회 넘는 도구 호출을 실행 전에 LLM 분류기가 모두 검사했지만 차단 기준에 걸린 호출은 없었습니다."
+      ],
+      "topic": "multi-agent-swarm",
+      "updateOf": {
+        "date": "2026-10-31",
+        "note": "게임 속 에이전트 50개의 행동을 관찰하던 실험에서, 리더 에이전트가 공유 DB와 Git만으로 1,000개 팀을 조율해 검사기로 확인되는 결과를 낸 실측으로 바뀌었다."
+      },
+      "use": 2,
+      "what": "에이전트 하나가 긴 작업을 혼자 끝까지 들고 가는 대신, 리더가 일을 쪼개고 수백 개 도우미가 나눠 맡는 구조입니다. 이번 실험의 핵심은 소통 방식입니다. 에이전트끼리 메시지를 주고받지 않고, 공유 DB의 표와 각자의 Git 브랜치에 상태를 적고 읽습니다. 결과가 맞는지는 Lean 증명 검사기가 기계적으로 판정합니다.",
+      "why": "Anthropic의 9월 실험은 에이전트 수십 개, 11일, 연구자 조종, 전용 그래프 플랫폼 Prove2Me를 썼습니다. 이번엔 연구자 조종 없이, 범용 도구만으로 출력 토큰은 약 3분의 1, 증명 길이는 약 7분의 1로 줄었다고 합니다. 같은 주 11월 13일 Google Research도 Antigravity의 다중 에이전트 기능 /teamwork 결과를 내며, 대규모 에이전트 팀 조율이 연구소마다 화두가 됐습니다. GeekNews에는 11월 15일 소개됐습니다."
+    },
+    {
+      "category": "앱 개발 · 모델 라우팅",
+      "domains": [
+        "developer.apple.com",
+        "news.hada.io",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "모델 공급자마다 SDK를 따로 붙임",
+        "온디바이스 모델과 클라우드 API를 분기 코드로 연결",
+        "한 세션 안에서 프로필로 모델·도구를 교체"
+      ],
+      "how": "공식 페이지에 오른 공급자 패키지는 Anthropic의 ClaudeForFoundationModels, Firebase SDK(Gemini), MLX Swift LM, Core AI 모델입니다. 쉬운 요청은 기기 안 모델로, 어려운 요청은 클라우드 모델 프로필로 넘기되 대화 기록은 그대로 이어집니다. macOS 27의 fm CLI로 앱 코드 없이 스크립트나 프로토타입을 만들 수 있고, Python SDK로 기존 평가 도구에 붙일 수 있습니다. 별도 Evaluations 프레임워크는 지시문·모델·프로필을 바꾼 뒤 동작이 유지되는지 시험하는 용도입니다. HN에서는 M1 8GB Mac에서 셸 오류 수정과 명령 추천에 쓴다는 사례, Claude 패키지가 App Attest 인증을 지원해 별도 서버 없이 앱에서 직접 호출할 수 있다는 언급이 나왔습니다.",
+      "hype": 3,
+      "meterNote": "배포 앱에서 쓰고 있다는 개발자 댓글이 있지만, PCC 사용 한도는 공개되지 않았습니다",
+      "reality": "'무료'는 개발자 기준입니다. HN 댓글에 따르면 PCC 사용량은 최종 사용자의 Apple ID·iCloud 계정 할당에서 빠지고, 정확한 한도는 알려지지 않았습니다. 기기 안 모델 평가는 엇갈립니다. 문법 검사 앱에 쓸 수 없어 Sonnet으로 바꿨다, 안전 제한이 지나쳐 Gemma로 갔다, 기본 도구 호출이 약하다는 댓글이 있었고, 컨텍스트 창이 작다는 지적도 나왔습니다. ChatGPT는 공식 목록에 없습니다. 페이지는 fm CLI의 macOS 27 외에 지원 OS 버전을 밝히지 않았습니다. 프로필을 바꾸면 모델마다 출력 품질과 형식이 달라질 수 있어, 전환 자체보다 전환 후 검증이 더 큰 일입니다.",
+      "refs": [
+        {
+          "src": "Apple Developer · 11/16 확인",
+          "title": "Apple Foundation Models 프레임워크: 한 API로 기기·PCC·서버 모델, Dynamic Profiles, PCC 무료 조건",
+          "url": "https://developer.apple.com/foundation-models-framework/"
+        },
+        {
+          "src": "GeekNews · 11/13",
+          "title": "GeekNews 소개: 온디바이스와 클라우드 LLM을 통합하는 Swift API",
+          "url": "https://news.hada.io/topic?id=37098"
+        },
+        {
+          "src": "Hacker News · 11/12",
+          "title": "Hacker News 토론: PCC 과금 주체, 기기 모델 품질, 서드파티 공급자",
+          "url": "https://news.ycombinator.com/item?id=50474361"
+        }
+      ],
+      "stages": [
+        {
+          "label": "개발자 공개",
+          "tone": "live"
+        }
+      ],
+      "title": "대화 중간에 모델을 갈아 끼운다: Apple Foundation Models의 Dynamic Profiles와 '기기·클라우드 한 API'",
+      "tldr": [
+        "Apple은 Foundation Models 프레임워크로 온디바이스 모델, Private Cloud Compute(PCC) 모델, Claude·Gemini 같은 서버 모델을 하나의 Swift API로 부르게 했고, 이 소개 페이지가 11월 12일 Hacker News 1면에서 268점을 받았습니다.",
+        "새 Dynamic Profiles는 모델·온도·추론 수준·도구 묶음을 프로필로 정의해, 대화 기록을 유지한 채 한 세션 안에서 바꿔 끼웁니다.",
+        "App Store Small Business Program에 가입하고 앱별 첫 다운로드가 200만 회 미만인 개발자는 PCC 모델을 클라우드 API 비용 없이 쓸 수 있습니다."
+      ],
+      "topic": "on-device-cloud-model-switching",
+      "use": 3,
+      "what": "앱에 LLM을 넣을 때 공급자마다 다른 SDK를 쓰는 대신, 공통 프로토콜(Language Model protocol)을 따르는 Swift 패키지로 모델을 붙이는 구조입니다. 구조화 출력(guided generation)과 도구 호출을 모델과 상관없이 같은 코드로 씁니다. Dynamic Profiles는 그 위에서 '이 단계엔 이 모델과 이 도구'를 선언적으로 정하는 층입니다.",
+      "why": "지난 몇 주 결정 모델과 캐스케이드처럼 '일마다 맞는 모델을 고르는' 흐름은 주로 서버 쪽에서 나왔습니다. 이번엔 플랫폼 SDK가 그 전환을 세션 API 수준으로 넣었습니다. 소규모 개발자에게 PCC 무료 조건은 비용 구조를 바꿀 수 있어, HN 댓글 36개 상당수가 무료 조건과 실제 과금 주체를 두고 오갔습니다. GeekNews에는 11월 13일 소개됐습니다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Google Research · 11/13",
+      "text": "Google Antigravity의 형식 증명 패턴 공개 예정. 외부 개발자가 장기 증명 워크플로를 직접 돌려볼 수 있을지 주목",
+      "url": "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/",
+      "when": "수 주 안"
+    }
+  ]
+}

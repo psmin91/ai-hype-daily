@@ -7,7 +7,20 @@
     "Mindcraft",
     "Minecraft agent harness",
     "multi-agent Mindustry",
-    "Olam Labs"
+    "Olam Labs",
+    "Antigravity /teamwork",
+    "verifier-driven multi-agent",
+    "falsifier agents",
+    "critic agent",
+    "agent teams",
+    "1,000-agent team",
+    "Claude Fable 5.2 FLT",
+    "Fermat's Last Theorem Lean",
+    "shared Postgres coordination",
+    "Prove2Me",
+    "TradingAgents",
+    "ARIS",
+    "PaperOrchestra"
   ],
   "featured": [
     {
@@ -22,16 +35,52 @@
         "https://github.com/yc-software/minecraft-agent-harness",
         "https://huggingface.co/papers/2610.34467"
       ]
+    },
+    {
+      "cases": [
+        "Google Antigravity /teamwork",
+        "/boost",
+        "Deep Review"
+      ],
+      "date": "2026-11-15",
+      "title": "에이전트를 늘리는 대신 '반박하는 에이전트'를 붙였다: Google Antigravity /teamwork의 검증자 중심 설계",
+      "urls": [
+        "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/"
+      ]
+    },
+    {
+      "cases": [
+        "Anthropic Claude Fable 5.2 에이전트 1,000개 FLT Lean 재현"
+      ],
+      "date": "2026-11-16",
+      "title": "에이전트 1,000개가 메신저 없이 일했다: Git 브랜치와 Postgres 표 5개로 짠 에이전트 팀",
+      "urls": [
+        "https://claude.dev/blog/safely-scaling-multi-agent-teams-with-fable-5-2/",
+        "https://news.hada.io/topic?id=37159",
+        "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/"
+      ]
     }
   ],
   "firstSeen": "2026-10-31",
-  "lastSeen": "2026-10-31",
-  "lastTrend": "new",
+  "lastSeen": "2026-11-19",
+  "lastTrend": "spreading",
   "name": "다중 에이전트 스웜 · 오케스트레이션",
   "radar": [
     {
       "date": "2026-10-31",
       "trend": "new"
+    },
+    {
+      "date": "2026-11-15",
+      "trend": "rising"
+    },
+    {
+      "date": "2026-11-16",
+      "trend": "spreading"
+    },
+    {
+      "date": "2026-11-19",
+      "trend": "spreading"
     }
   ]
 }

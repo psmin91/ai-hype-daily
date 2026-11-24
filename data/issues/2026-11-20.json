@@ -1,0 +1,231 @@
+{
+  "date": "2026-11-20",
+  "headline": "이번 주엔 AI가 만든 결과물을 '누가, 어떻게 믿을 수 있나'가 공통 질문이었다. 물리 난제 풀이는 이중 계산과 Lean으로, curl 재작성은 원본의 유지보수 속도로, AI 글은 문장 명료성으로 시험대에 올랐다.",
+  "issueNo": 31,
+  "period": "11월 13일~20일",
+  "radar": [
+    {
+      "note": "처음 포착. Anthropic이 에이전트 6주 운영으로 블랙홀 물리 열린 문제 2개를 풀었다고 발표해 HN 1면에 오름.",
+      "since": "",
+      "tech": "자율 연구 에이전트",
+      "topic": "autonomous-research-agents",
+      "trend": "new"
+    },
+    {
+      "note": "처음 포착. 문장 명료성 측정 글(GeekNews 38점)과 No AI Slop 선언문(37점)이 같은 주에 나옴.",
+      "since": "",
+      "tech": "AI 글 명료성 · 슬롭 규범",
+      "topic": "llm-writing-clarity",
+      "trend": "new"
+    },
+    {
+      "note": "11/14 첫 등장 → curl Rust 재작성 2건이 나오고 원본 메인테이너가 반론을 내며 부상.",
+      "since": "첫 포착 11/14",
+      "tech": "정답지 기반 에이전트 재작성",
+      "topic": "spec-oracle-agent-dev",
+      "trend": "rising"
+    },
+    {
+      "note": "확산 유지. PostHog가 PII 검사 요약의 98.7%에서 LLM 호출을 건너뛴다고 밝힘. 5단계 PR 리뷰 판정은 AUC 0.52로 실패했다는 단서도 함께.",
+      "since": "첫 포착 11/8",
+      "tech": "결정 모델 · 신뢰도 기반 캐스케이드",
+      "topic": "llm-cascade-routing",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. 7GB대 Gemma 4 12B Q4가 26학년도 수능 표준점수 405점을 냈다는 실험이 GeekNews에 올라 시험장 엣지 AI 논의로 번짐.",
+      "since": "첫 포착 10/26",
+      "tech": "소비자 기기 로컬 추론",
+      "topic": "local-inference-hacks",
+      "trend": "spreading"
+    },
+    {
+      "note": "확산 유지. 에이전트가 앱을 직접 눌러 보고 증거를 남기는 Reticle이 GitHub 별 약 1.3천 개로 GeekNews에 소개됨.",
+      "since": "첫 포착 10/27",
+      "tech": "검증 루프 · 에이전트 코드 리뷰",
+      "topic": "agent-code-review-evals",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 6,
+  "stories": [
+    {
+      "category": "연구 에이전트 · 과학",
+      "domains": [
+        "anthropic.com",
+        "hexagonmath.org",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사람이 문제를 정하고 AI는 계산을 돕는다",
+        "AI가 사람이 고른 문제 하나를 끝까지 판다",
+        "에이전트가 문제 목록부터 뽑고 서로의 진행을 읽으며 나눠 푼다"
+      ],
+      "how": "첫 문제는 2003년에 시작됐지만 끝나지 않았던 약결합 N=4 초대칭 양-밀스 이론의 호킹-페이지 전이 계산입니다. 도표 수천 개가 나오는 다중 루프 계산을 Claude 사본 몇 개가 나눠 맡았고, 거의 모든 조각을 서로 다른 에이전트가 두 번씩 계산했습니다. 결론은 전이가 강결합에서처럼 급격하다는 것이었습니다. 두 번째 문제에서는 한 에이전트가 수치 실험에서 c/9.1 근처 패턴을 보았고, 구 채우기 문제를 맡던 다른 에이전트가 그것을 스펙트럴 곡선을 쓰는 해석적 방법으로 바꿨습니다. 앞선 Claude 에이전트가 병렬 시도 61번에 모두 실패했던 문제였습니다. 물리학자 한 명이 부트스트랩 논문의 주요 결과를 모두 확인했다고 합니다.",
+      "hype": 4,
+      "meterNote": "결과물과 검증 방법은 공개됐지만, 같은 구조를 다른 연구팀이 재현한 사례는 아직 없음",
+      "reality": "Anthropic 스스로 두 결과 모두 우리 우주를 직접 설명하지 않고 실용적 쓰임도 없다고 밝혔습니다. 첫 문제는 Lean 형식 검증이 없고, 다른 물리학자의 별도 결과와 일치했지만 그 물리학자도 Claude를 썼습니다. 사용한 연산량과 비용은 공개되지 않았습니다. HN에서는 2차원·3차원 장난감 우주라는 점, 저자 표기가 Claude/Anthropic뿐이라는 점, 기존 연구를 가져온 건 아닌지에 대한 질문이 나왔고, 결국 계산 중심의 수학적 물리라 경험 과학으로 넘어갔다고 보긴 이르다는 의견도 있었습니다.",
+      "refs": [
+        {
+          "src": "Anthropic · 11/17",
+          "title": "Anthropic 연구 글: 열린 문제 22개 후보, 6주간의 에이전트 운영, 검증 방법",
+          "url": "https://www.anthropic.com/research/claude-black-hole-physics"
+        },
+        {
+          "src": "Hexagon · 11월",
+          "title": "모듈러 부트스트랩 논문: 가장 가벼운 블랙홀 질량 상한",
+          "url": "https://hexagonmath.org/2611.00174v1"
+        },
+        {
+          "src": "Hexagon · 11월",
+          "title": "호킹-페이지 전이 논문: 약결합 N=4 SYM 계산",
+          "url": "https://hexagonmath.org/2611.00175v1"
+        },
+        {
+          "src": "Hacker News · 11/20",
+          "title": "Hacker News 토론: 검증·저자 표기·독창성 질문",
+          "url": "https://news.ycombinator.com/item?id=50563148"
+        }
+      ],
+      "stages": [
+        {
+          "label": "연구 결과 공개",
+          "tone": "preview"
+        }
+      ],
+      "title": "에이전트 여러 개를 6주 동안 백그라운드에 풀었더니: Claude가 블랙홀 물리의 열린 문제 2개를 풀어낸 방식",
+      "tldr": [
+        "Anthropic은 11월 17일, Claude가 블랙홀·양자중력 분야의 열린 문제 2개를 거의 자율적으로 풀었고 논문 2편을 hexagonmath.org에 올렸다고 밝혔습니다.",
+        "연구자 Hongbin Chen이 8월에 열린 문제를 물었고, Claude가 후보 22개를 내자 문제마다 에이전트를 붙여 약 6주간 백그라운드로 돌렸습니다.",
+        "3차원 중력 모듈러 부트스트랩에서는 가장 가벼운 블랙홀 질량 상한을 기존 c/8.5에서 c/9.1266으로 좁히고 최적임을 보였으며, 이 결과는 9월 Lean으로 형식 검증됐습니다."
+      ],
+      "topic": "autonomous-research-agents",
+      "use": 2,
+      "what": "자율 연구 에이전트는 사람이 문제 하나를 주는 대신, 에이전트가 풀 만한 열린 문제를 직접 찾고 여러 에이전트가 나눠 맡아 오래 파고드는 구조입니다. 핵심은 계산 능력보다 운영 방식입니다. 에이전트들이 서로의 진행 기록을 읽고, 같은 계산을 독립적으로 두 번 해 맞춰 보며, 결과를 증명 검사기로 확인합니다.",
+      "why": "지금까지 AI 수학·과학 성과는 대부분 사람이 고른 문제를 푼 사례였습니다. 이번엔 문제 선정, 분업, 교차 검증까지 에이전트 운영으로 처리했다는 점이 다릅니다. HN 1면에 올라 같은 날 Anthropic 상장 소식과 나란히 화제가 됐고, Hugging Face 트렌딩 논문에도 적대적 다중 에이전트 연구 하네스 ARIS 같은 연구용 에이전트 구조가 올라 있습니다."
+    },
+    {
+      "category": "에이전트 개발 · 재작성",
+      "domains": [
+        "daniel.haxx.se",
+        "github.com",
+        "simonwillison.net"
+      ],
+      "flow": [
+        "사람이 몇 년에 걸쳐 언어를 옮긴다",
+        "에이전트가 기존 테스트를 정답지 삼아 통째로 다시 짠다",
+        "다시 짠 뒤 원본의 수정 속도를 따라갈 수 있느냐가 쟁점"
+      ],
+      "how": "kov/curl은 curl 저장소를 포크한 rust-rewrite 브랜치에서 libcurl.so.4를 그대로 바꿔 끼울 수 있는 라이브러리, curl 명령줄 도구, Rust API를 만듭니다. C 코드를 줄 단위로 옮기지 않고 참고 구현으로만 썼고, unsafe 코드는 정해진 모듈에만 두었다고 적었습니다. 테스트를 포함하면 Rust 약 43만 줄입니다. urlx는 MIT 라이선스의 별도 재구현으로, OpenSSL 대신 rustls를 쓰고 curl 테스트 1~1,400번 중 실행한 테스트는 모두 통과했다고 표시합니다(92개 건너뜀, 25개 제외). Stenberg는 curl이 문서와 테스트가 잘 갖춰진 데다 학습 데이터에 많이 들어 있어 가능했다고 봅니다.",
+      "hype": 4,
+      "meterNote": "재작성은 테스트를 통과했지만 실사용자는 거의 없음(kov/curl 별 2개, urlx 별 19개)",
+      "reality": "Stenberg의 반론은 코드를 한 번 쓰는 것은 어려운 부분이 아니라는 것입니다. curl은 하루 평균 약 11개 커밋이 들어가고 수십 년의 ABI·API 안정성을 쌓았는데, 복제본은 이 유지보수를 따로 감당해야 합니다. 그는 2026년 확인된 curl 취약점 81건 중 메모리 안전 언어가 막았을 법한 것은 14건(17.3%)이라며 Rust 판에도 67건은 남는다고 셌습니다. kov/curl 작성자가 밝힌 8,600달러는 구독제로 쓴 작업을 API 가격으로 환산한 추정치라는 댓글이 붙었습니다. 두 프로젝트가 개념 증명을 넘어서는지는 아직 알 수 없습니다.",
+      "refs": [
+        {
+          "src": "daniel.haxx.se · 11/17",
+          "title": "Daniel Stenberg: 에이전트가 만든 curl Rust 재작성 2건과 유지보수 속도 비교",
+          "url": "https://daniel.haxx.se/blog/2026/11/17/actual-curl-rewrites-in-rust/"
+        },
+        {
+          "src": "GitHub · 11/20 확인",
+          "title": "kov/curl: Claude Code로 만든 Rust 재작성, 플랫폼별 테스트 통과 수",
+          "url": "https://github.com/kov/curl"
+        },
+        {
+          "src": "GitHub · 11/20 확인",
+          "title": "urlx: rustls 기반 curl·libcurl 재구현",
+          "url": "https://github.com/jonwiggins/urlx"
+        },
+        {
+          "src": "Simon Willison · 11/18",
+          "title": "Simon Willison의 인용과 요약",
+          "url": "https://simonwillison.net/2026/Nov/18/daniel-stenberg/"
+        }
+      ],
+      "stages": [
+        {
+          "label": "업데이트",
+          "tone": "update"
+        },
+        {
+          "label": "반론",
+          "tone": "issue"
+        }
+      ],
+      "title": "C 18만 5천 줄을 Rust 34만 줄로 3주 만에: curl 메인테이너가 에이전트 재작성에 던진 질문",
+      "tldr": [
+        "curl 메인테이너 Daniel Stenberg는 11월 17일, 에이전트가 curl을 Rust로 다시 짠 공개 프로젝트 2개(kov/curl, urlx)를 두고 C 약 18만 5천 줄이 Rust 약 34만 줄이 됐다고 셌습니다.",
+        "kov/curl은 10월 20일부터 Claude Code로 커밋 약 2,300개를 쌓았고, C 테스트 스위트를 정답지로 써 Linux 기준 runtests 1,996개 중 1,992개를 통과했다고 밝혔습니다.",
+        "Stenberg는 같은 약 3주 동안 진짜 curl이 커밋 300개 이상, 버그 수정 200여 건을 머지했다며 '복제본이 이 속도를 따라갈 수 있나'를 물었습니다."
+      ],
+      "topic": "spec-oracle-agent-dev",
+      "updateOf": {
+        "date": "2026-11-14",
+        "note": "AWS가 에이전트로 만든 에뮬레이터 소개에서, 원본 메인테이너가 같은 방식의 재작성을 수치로 반박한 사례로 바뀌었다."
+      },
+      "use": 2,
+      "what": "정답지 기반 재작성은 잘 정리된 기존 시스템의 테스트나 실제 동작을 기준으로 삼아, 에이전트가 같은 기능을 다른 언어나 구조로 처음부터 다시 만드는 방식입니다. 11월 14일 호에서 다룬 AWS Emulator가 실제 AWS를 정답지로 썼다면, 이번엔 curl의 수천 개 테스트가 그 역할을 했습니다.",
+      "why": "에이전트로 큰 시스템을 통째로 다시 짓는 사례가 2주 사이 연달아 나왔습니다. 이번엔 원본을 30년 가까이 관리해 온 메인테이너가 직접 반응했다는 점이 다릅니다. Simon Willison이 이 글을 인용해 개발자 사이에 더 퍼졌습니다."
+    },
+    {
+      "category": "AI 글쓰기 · 품질",
+      "domains": [
+        "zonderlabs.com",
+        "slopmanifesto.com",
+        "news.hada.io"
+      ],
+      "flow": [
+        "AI 특유 단어를 지우거나 탐지기로 거른다",
+        "탐지기 점수로 'AI가 썼나'를 판단",
+        "누가 무엇을 했는지 드러나는지, 문장의 명료성을 잰다"
+      ],
+      "how": "주석자들이 이 세 기준으로 문장을 표시해 불명료한 문장 비율을 셉니다. 글은 Claude Code 답변에서 가장 흔한 결함이 모호한 표현이라고 짚었고, Triton 커널을 CUDA로 옮긴 답변을 예로 들어 수치는 촘촘했지만 그 주변 표현이 독자를 헤매게 했다고 설명합니다. 고치는 방법은 요점을 앞에 두고 행위자를 주어로 쓰는 것입니다. 선언문 쪽은 규칙으로 접근합니다. 에이전트가 쓴 글이면 밝히고, 보내기 전에 중요한 부분을 확인하며, 같은 실수가 두 번 나오면 린터·타입 검사 같은 시스템으로 막자는 내용입니다.",
+      "hype": 3,
+      "meterNote": "문제의식은 넓게 공유되지만, 측정은 표본 크기가 공개되지 않은 자체 분석이고 도구는 아직 없음",
+      "reality": "Zonder Labs는 표본 수와 주석자 일치도 수치를 공개하지 않았고, 작성자 이름도 없습니다. 명료성 판정에 쓰는 도구나 린터도 아직 내놓지 않았습니다. Claude Code 답변과 Stack Overflow 답변은 쓰임새가 달라 같은 잣대로 비교하기 어렵다는 점도 남습니다. 선언문은 참여자 서명을 받는 원칙 목록이라 강제력이 없고, 일회성 프롬프트나 바이브 코딩은 남에게 피해가 없으면 괜찮다고 스스로 예외를 둡니다.",
+      "refs": [
+        {
+          "src": "Zonder Labs · 11/9",
+          "title": "Zonder Labs: AI 글이 읽기 힘든 세 가지 이유와 불명료 문장 비율",
+          "url": "https://zonderlabs.com/slop"
+        },
+        {
+          "src": "GeekNews · 11/17",
+          "title": "GeekNews 요약: AI 슬롭은 왜 이렇게 읽기 짜증날까",
+          "url": "https://news.hada.io/topic?id=37316"
+        },
+        {
+          "src": "slopmanifesto.com · 11/14",
+          "title": "No AI Slop 선언문: 다섯 가지 가치와 실천 원칙",
+          "url": "https://www.slopmanifesto.com/"
+        },
+        {
+          "src": "GeekNews · 11/14",
+          "title": "GeekNews 소개와 토론: No AI Slop 선언문",
+          "url": "https://news.hada.io/topic?id=37128"
+        }
+      ],
+      "stages": [
+        {
+          "label": "측정 공개",
+          "tone": "preview"
+        },
+        {
+          "label": "커뮤니티 규범",
+          "tone": "live"
+        }
+      ],
+      "title": "'delve'를 지워도 슬롭은 남는다: AI 글이 읽기 힘든 이유를 문장 단위로 잰 결과",
+      "tldr": [
+        "Zonder Labs는 11월 9일 글에서 문장 명료성 기준으로 보면 AI 기사의 54%, Claude Code 답변의 78%가 불명료했고, 사람 기사는 10%, Stack Overflow 답변은 11%였다고 밝혔습니다(자체 측정).",
+        "AI 탐지기 IdeaLens는 AI 기사와 Claude Code 답변을 모두 99% AI로 잡았지만, 탐지 점수는 글이 명료한지와 따로 움직였다고 했습니다.",
+        "11월 14일에는 AIE Code Summit 참가자들이 애자일 선언문을 본뜬 'No AI Slop 선언문'을 냈고, GeekNews에서 두 글이 각각 38점·37점을 받았습니다."
+      ],
+      "topic": "llm-writing-clarity",
+      "use": 3,
+      "what": "AI 글의 문제를 'AI 같은 단어'가 아니라 명료성으로 보는 관점입니다. Zonder Labs는 불명료함을 세 가지로 나눴습니다. 문장 주어가 추상 명사라 누가 무엇을 했는지 숨는 것, 낯선 단어 조합과 명사를 겹겹이 쌓는 모호한 표현, 요점이 묻힌 빈 문장입니다.",
+      "why": "에이전트가 PR 설명, 커밋 메시지, 상태 보고를 대신 쓰는 일이 늘면서, 읽는 사람이 그 의미를 다시 짜 맞추는 비용이 동료에게 넘어가고 있습니다. 같은 주 GeekNews에서 두 글이 나란히 상위권에 올랐고, 'AI 단어 지우기' 스킬 대신 글 구조를 고치자는 쪽으로 논의가 옮겨 가고 있습니다."
+    }
+  ],
+  "watch": []
+}

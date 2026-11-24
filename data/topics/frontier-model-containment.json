@@ -1,0 +1,21 @@
+{
+  "aliases": [
+    "Control Room",
+    "kill switch",
+    "model containment",
+    "DNS misconfiguration escape",
+    "autopause",
+    "Codex Auto-Review"
+  ],
+  "featured": [],
+  "firstSeen": "2026-11-24",
+  "lastSeen": "2026-11-24",
+  "lastTrend": "new",
+  "name": "프런티어 모델 격리 · 정지 장치",
+  "radar": [
+    {
+      "date": "2026-11-24",
+      "trend": "new"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "aliases": [
+    "canary tokens",
+    "Canarytokens",
+    "Thinkst",
+    "Dragos",
+    "HD Moore",
+    "ZDR",
+    "zero data retention",
+    "OpenRouter provider offboarding",
+    "inference provider breach",
+    "prompt leakage",
+    "Novita",
+    "Phala",
+    "Together"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Dragos 미끼 프롬프트 약 200만 건",
+        "OpenRouter 제공자 3곳 퇴출·ZDR 125개 제외"
+      ],
+      "date": "2026-11-23",
+      "title": "프롬프트에 가짜 AWS 키를 심었더니 몇 시간 만에 쓰였다: 미끼 토큰으로 추론 제공자를 감사하는 법",
+      "urls": [
+        "https://www.dragos.com/blog/ai-supply-chain-security-canary-tokens",
+        "https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/",
+        "https://helix.ml/blog/ai-supply-chain-canaries"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-23",
+  "lastSeen": "2026-11-23",
+  "lastTrend": "new",
+  "name": "미끼 토큰으로 추론 제공자 감사",
+  "radar": [
+    {
+      "date": "2026-11-23",
+      "trend": "new"
+    }
+  ]
+}

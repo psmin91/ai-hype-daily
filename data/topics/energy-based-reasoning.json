@@ -1,0 +1,39 @@
+{
+  "aliases": [
+    "energy-based reasoner",
+    "EBR",
+    "energy-based model",
+    "EBM",
+    "recurrent reasoning model",
+    "adaptive halting",
+    "Sudoku-Extreme",
+    "TRM",
+    "EqR",
+    "GRAM"
+  ],
+  "featured": [
+    {
+      "cases": [
+        "Duke·UIUC·Harvard Energy-Based Reasoners(EBR)"
+      ],
+      "date": "2026-11-19",
+      "title": "다음 상태를 '배우지' 않고 에너지를 낮춰 찾는다: 180만 파라미터 에너지 기반 추론기, 연산 345배 절감",
+      "urls": [
+        "https://energy-based-reasoners.github.io",
+        "https://arxiv.org/abs/2611.08977",
+        "https://github.com/wwillchen/ebr",
+        "https://news.ycombinator.com/item?id=50543989"
+      ]
+    }
+  ],
+  "firstSeen": "2026-11-19",
+  "lastSeen": "2026-11-19",
+  "lastTrend": "new",
+  "name": "에너지 기반 추론기",
+  "radar": [
+    {
+      "date": "2026-11-19",
+      "trend": "new"
+    }
+  ]
+}

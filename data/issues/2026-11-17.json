@@ -1,0 +1,165 @@
+{
+  "date": "2026-11-17",
+  "headline": "이번 주 화두는 '검증의 검증'이다. 지난주 에이전트가 수백만 줄짜리 증명을 쏟아내자, 이번 주엔 '그게 진짜 맞는지 누가 보나'라는 되물음이 나왔다. 공격 쪽에서도 자율 에이전트가 가설이 아니라 로그 남은 침해로 등장했다.",
+  "issueNo": 28,
+  "period": "11월 12일~17일",
+  "radar": [
+    {
+      "note": "정점에서 논점 이동. 지난주 FLT·/teamwork·Weil 결과가 쏟아진 뒤, 버저드의 'Lean 검증을 어떻게 믿나'(11/12)와 Harmonic의 Rust 확장(11/16)으로 무게가 '결과'에서 '검증의 신뢰'로 옮겨감.",
+      "since": "첫 포착 10/24",
+      "tech": "LLM 기반 형식 검증",
+      "topic": "ai-formal-verification",
+      "trend": "peak"
+    },
+    {
+      "note": "침투 테스트용 오픈소스 프레임워크 ARTEX가 실제 침해에 쓰였고 FBI가 경보를 냄(11/16). AI 공격 '가능성'이 로그 남은 사건으로 바뀜.",
+      "since": "",
+      "tech": "자율 공격 에이전트",
+      "topic": "autonomous-attack-agents",
+      "trend": "new"
+    },
+    {
+      "note": "정점 유지. Project Zero가 공개 유예를 90+30일에서 단계적으로 30일까지 줄이며 그 이유로 'LLM이 발굴·패치 역설계를 빠르게 한다'를 들었고(11/13), AI 가속 공세가 방어 정책을 움직이기 시작.",
+      "since": "첫 포착 10/22",
+      "tech": "AI 취약점 발굴",
+      "topic": "ai-vuln-discovery",
+      "trend": "peak"
+    },
+    {
+      "note": "체감 논쟁을 넘어 측정 사례가 쌓임. '테스트 전부 통과'가 왜 거짓인지 보여 주는 안드로이드 앱 실측(3,066개 통과했지만 기기에서 DB가 안 열린 식)과 'Software is breaking down'(HN 128점)이 같은 주에 나옴.",
+      "since": "첫 포착 10/29",
+      "tech": "이해 부채 · AI 코드 신뢰",
+      "topic": "comprehension-debt",
+      "trend": "spreading"
+    },
+    {
+      "note": "정점에서 식는 중. 새 기법보다 'No AI Slop' 선언이나 'AI가 코딩을 해결했다면 왜 소프트웨어는 그대로인가'(Jonathan Blow 영상) 같은 피로·회의 글이 상위를 차지.",
+      "since": "첫 포착 10/22",
+      "tech": "하네스 엔지니어링",
+      "topic": "harness-engineering",
+      "trend": "cooling"
+    },
+    {
+      "note": "확산 유지. 로컬 추론 토대 ggml이 v1.0.0 정식판에 도달(HN 415점). 다만 Edge0-145B의 29GB 표기는 시스템 RAM·SSD 요구를 뺀 값이라는 지적이 댓글에서 이어짐.",
+      "since": "첫 포착 10/26",
+      "tech": "소비자 GPU · 로컬 추론",
+      "topic": "local-inference-hacks",
+      "trend": "spreading"
+    }
+  ],
+  "readMinutes": 5,
+  "stories": [
+    {
+      "category": "형식 검증 · 신뢰",
+      "domains": [
+        "xenaproject.wordpress.com",
+        "harmonic.fun",
+        "news.ycombinator.com"
+      ],
+      "flow": [
+        "사람이 논문으로 증명하고 동료가 읽는다",
+        "사람이 Lean으로 옮기고 커널이 확인한다",
+        "에이전트 수백~천 개가 수백만 줄을 쓰고, 사람은 '무엇을 증명했나'를 따로 감사한다"
+      ],
+      "how": "버저드는 남이 내놓은 저장소를 받으면 먼저 진술 파일이 informal 명제와 맞는지 사람이 읽고, `lake comparator`로 신뢰하는 진술과 증명이 맞물리는지, 표준 공리만 썼는지 확인하라고 권한다. 큰 증명은 신뢰하는 진술 파일이 거대한 증명 라이브러리를 import하면서 용어를 재정의하거나 공리를 더할 수 있어, `--paranoid` 옵션으로 독립 커널 여러 개에 다시 돌려 보라고 한다. AI가 만든 Lean 코드는 빌드 중 임의 명령을 실행할 수 있으니 샌드박스에서 돌리라는 경고도 붙였다. 같은 흐름에서 Harmonic은 11월 16일 증명 도구 Aristotle을 Rust로 넓혀, 미정의 동작이 없음과 명세 일치를 증명한다며 Solana 주문장 Manifest에서 결과 28개를 증명하고 반올림 버그 하나를 찾았다고 했다.",
+      "hype": 5,
+      "meterNote": "수학 연구 쪽 결과는 쏟아지지만, 그 결과를 검증·감사하는 비용과 실무 코드 적용은 아직 좁음",
+      "reality": "진술 감사는 무겁다. 버저드가 든 Axiom의 유한단순군 분류 형식화는 핵심 진술만 약 5,600줄이고, 산발군 정의를 사람이 검토했다는 얘기는 못 들었다고 했다. Anthropic의 페르마 발표는 60개 진술이 정리를 제대로 옮겼는지, 어떤 공리에 기대는지는 다루지 않는다. Google 결과는 자체 발표이고 HN에서는 벤치마크가 어디 있느냐는 지적이 나왔다. Harmonic은 증명 방법과 지원하는 Rust 범위를 공개하지 않았고, 보증은 명세가 맞다는 전제 위에서만 성립한다. Lean 커널 자체도 과거 건전성 버그가 발견돼 네 시간 만에 고쳐진 전례가 있다.",
+      "refs": [
+        {
+          "src": "Xena Project · 11/12",
+          "title": "케빈 버저드: 'Lean으로 확인됐다'는 주장을 읽는 네 가지 질문",
+          "url": "https://xenaproject.wordpress.com/2026/11/12/and-the-proof-is-checked-in-lean/"
+        },
+        {
+          "src": "Harmonic · 11/16",
+          "title": "Harmonic: 증명 도구 Aristotle이 Rust 코드 검증을 지원",
+          "url": "https://www.harmonic.fun/news/aristotle-rust-verification/"
+        },
+        {
+          "src": "Hacker News · 11/16",
+          "title": "Hacker News 토론: Lean 검증 주장 해석",
+          "url": "https://news.ycombinator.com/item?id=50515058"
+        }
+      ],
+      "stages": [
+        {
+          "label": "검증 논쟁",
+          "tone": "issue"
+        }
+      ],
+      "title": "'Lean으로 확인됐다'를 어떻게 믿나: 수백만 줄 AI 증명에 붙은 케빈 버저드의 네 가지 질문",
+      "tldr": [
+        "지난주 Anthropic은 에이전트 1,000개로 페르마의 마지막 정리를, Google은 /teamwork로 Weil 추측(약 180만 줄)과 Courtade–Kumar 추측(약 5,000만 줄)을 Lean으로 형식화했다고 밝혔다.",
+        "11월 12일 Lean 커뮤니티의 케빈 버저드는 AI가 낸 증명 저장소를 믿기 전에 물을 네 질문을 제시했다: 진술이 informal 명제와 맞나, 컴파일되나, 그 진술을 증명했나, 커널 버그를 썼나.",
+        "그는 OpenAI가 Lean 코드를 붙인 정리 290개 중 약 38개는 논문의 주정리를 증명하지 않았고(한 예는 Lech 추측 대신 따름정리 5.4만 증명), Anthropic의 첫 페르마 저장소(약 1,300만 줄)는 자기 PC에서 메모리가 모자라 96코어·500GB 램 서버로야 컴파일됐다고 적었다."
+      ],
+      "topic": "ai-formal-verification",
+      "use": 3,
+      "what": "Lean은 수학 진술과 증명을 코드로 쓰면 커널이라는 검사기가 논리적으로 맞는지 기계적으로 확인하는 언어다. 증명이 통과하면 '틀릴 수 없다'고 말하기 쉽지만, 확인되는 것은 '파일에 적힌 진술'이 맞다는 것뿐이다. 진술을 잘못 옮기거나 추가 공리를 몰래 넣으면 엉뚱한 명제가 깔끔하게 통과한다. 버저드가 든 예로, ℕ이 0을 포함하므로 a=b=c=0, n=3을 반례로 삼는 가짜 '페르마 정리' 진술도 컴파일된다.",
+      "why": "한 주 사이 Anthropic·Google·Harmonic이 연달아 대규모 형식 증명 결과를 냈고, 증명 규모가 사람이 통째로 읽을 수 없는 수준이 됐다. 그래서 '누가 검증을 검증하나'가 추상적 질문이 아니라 실무 질문이 됐다. 버저드의 글은 Hacker News 1면에서 249점·댓글 109개를 받았다."
+    },
+    {
+      "category": "보안 · 공격 에이전트",
+      "domains": [
+        "techcrunch.com",
+        "sophos.com",
+        "bleepingcomputer.com"
+      ],
+      "flow": [
+        "사람이 도구를 하나씩 돌리는 침투 테스트",
+        "LLM이 다음 명령을 추천하는 보조 도구",
+        "계획 에이전트가 작업 에이전트 여러 개를 부려 여러 침입 경로를 병렬로 시도하는 자율 공격"
+      ],
+      "how": "방어 쪽 보고서들이 공통으로 짚는 특징은 '빠르고 시끄럽다'는 점이다. 네덜란드 취약점 공개기관 DIVD는 9월 자사를 겨냥한 ARTEX 공격이 초기 침입에서 루트 권한까지 12분 걸렸고, 요청 45만 건과 스크립트 2,500개를 남겨 '매우 시끄럽고 지저분했다'고 기록했다. Sophos는 소수 고객사에서 에이전트 주도로 보이는 빠른 명령 연쇄와 반복 시도를 봤다며 보호 이벤트가 수백 건 쌓였다고 했다. 공격자들은 CrowdStrike가 깔린 기기는 건너뛰고 보호가 없는 호스트에 집중하라고 지시하기도 했다.",
+      "hype": 4,
+      "meterNote": "여러 보안업체 텔레메트리에 실제 침해가 잡혔지만, 쓰인 수법은 알려진 약점이고 새 취약점이 아님",
+      "reality": "FBI와 Sophos 모두 이 공격들이 '시끄러워' 경보를 울리기 쉽다고 강조한다. 뚫린 경로도 노출되거나 폐기 안 된 자격증명, 다중인증 부재처럼 이미 알려진 약점이었다. 즉 ARTEX가 준 것은 새로운 취약점이 아니라 속도와 병렬성이고, 다중인증·만료된 벤더 자격증명 회수·서비스 주체 점검·도구를 인터넷에 노출하지 않기 같은 기본기가 상당수를 막거나 잡아냈다. 보고 상당수가 벤더 자체 텔레메트리라는 점도 감안해야 한다. Censys는 암호 없이 인터넷에 열린 ARTEX 시스템이 수백 대 있다고 전했다.",
+      "refs": [
+        {
+          "src": "TechCrunch · 11/16",
+          "title": "TechCrunch: FBI, 오픈소스 공격 도구 ARTEX가 침해에 쓰였다고 경고",
+          "url": "https://techcrunch.com/2026/11/16/fbi-says-artex-ai-open-source-hacking-tool-used-to-breach-networks-in-under-three-hours/"
+        },
+        {
+          "src": "Sophos · 11월",
+          "title": "Sophos X-Ops: ARTEX 공격의 특징과 방어 권고",
+          "url": "https://www.sophos.com/en-us/blog/artex-attackers-apply-agentic-ai"
+        },
+        {
+          "src": "BleepingComputer · 11/2",
+          "title": "BleepingComputer: ARTEX로 200여 조직을 자동 공격한 캠페인",
+          "url": "https://bleepingcomputer.com/news/security/chinese-hackers-use-artex-ai-in-automated-attacks-against-200-orgs"
+        }
+      ],
+      "stages": [
+        {
+          "label": "실제 침해 확인",
+          "tone": "issue"
+        },
+        {
+          "label": "FBI 경보",
+          "tone": "issue"
+        }
+      ],
+      "title": "침투 테스트 에이전트가 그대로 공격 도구가 됐다: ARTEX 실제 침해에 FBI 경보",
+      "tldr": [
+        "ARTEX는 2026년 7월 공개된 Go 기반 오픈소스 다중 에이전트 침투 테스트 프레임워크다. 범죄 조직이 실제 공격에 쓰자 개발자가 비공개로 돌렸지만, 이전 공개판이 여전히 퍼져 있다.",
+        "BleepingComputer가 전한 CrowdStrike 분석에 따르면 한 캠페인은 10월 17일 시작해 14개국 200여 조직을 두드렸고 최소 9곳이 침해됐다. 한 침입에서 입력 토큰을 14억 개 넘게 썼다.",
+        "TechCrunch는 11월 16일, FBI가 자율 AI 공격 도구에 대한 경보를 냈다고 전했다. 한국 금융기관들도 다중인증 부재 등 허술한 방어 탓에 뚫려 최소 6만 8천 명의 개인정보가 유출됐다."
+      ],
+      "topic": "autonomous-attack-agents",
+      "use": 4,
+      "what": "ARTEX는 공격 방어를 점검하려는 침투 테스트를 자동화하는 틀이다. '계획' 에이전트가 표적을 훑어 다음 단계를 정하고 '작업' 에이전트가 도구를 돌려 결과를 돌려주면, 계획 에이전트가 판을 고쳐 다시 시킨다. 발견한 자산과 약점을 그래프로 쌓으며 여러 경로를 한꺼번에 밀어붙인다. 모델은 DeepSeek·GLM·Grok 등 여러 LLM 백엔드에 붙일 수 있다.",
+      "why": "'AI가 공격자를 도울 것'이라는 경고가 그동안 가설에 가까웠다면, 이번엔 FBI 경보와 여러 보안업체의 로그로 뒷받침된 사건이 됐다. 같은 흐름에서 Google Project Zero는 11월 13일 취약점 공개 유예를 'LLM이 발굴·패치 역설계를 빠르게 한다'는 이유로 단계적으로 90일에서 30일까지 줄이겠다고 밝혔다. 자동화된 공세가 방어 정책까지 움직이기 시작한 것이다."
+    }
+  ],
+  "watch": [
+    {
+      "src": "Project Zero · 11/13",
+      "text": "Google Project Zero의 취약점 공개 유예가 'Full 60'(보고 60일 후 공개)으로 단축. 2028년 1월엔 30일로.",
+      "url": "https://projectzero.google/2026/11/disclosure-policy.html",
+      "when": "2027년 2월 2일"
+    }
+  ]
+}
